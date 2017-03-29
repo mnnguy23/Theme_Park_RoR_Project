@@ -1,15 +1,8 @@
 <?php
   ob_start();
   session_start();
-           
-?>
-
-<?
-  // error_reporting(E_ALL);
-  // ini_set("display_errors", 1);
-//Attempt to Connect to the Database
-?>
-$dsn = "pgsql:"
+//Attempt to Connect to the Database  
+  $dsn = "pgsql:"
     . "ec2-50-17-236-15.compute-1.amazonaws.com;"
     . "dbname=d2641hluvfmus5;"
     . "user=nqxatreczgovme;"
@@ -18,6 +11,14 @@ $dsn = "pgsql:"
     . "password=91ef1bd79a01039737b248bdc7a465b27b284af93a537cfd217a5135d94f95d8";
 
 $db = new PDO($dsn);
+
+?>
+
+<?
+  // error_reporting(E_ALL);
+  // ini_set("display_errors", 1);
+?>
+
 
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->  
@@ -43,10 +44,10 @@ $db = new PDO($dsn);
         
           // This is currently hard coded and needs to be changed to pull actual information from the database.
           
-          if ($_POST['username'] == 'tutorialspoint' && $_POST['password'] == '1234') {
+          if ($_POST['username'] == 'user' && $_POST['password'] == 'pass') {
             $_SESSION['valid'] = true;
             $_SESSION['timeout'] = time();
-            $_SESSION['username'] = 'tutorialspoint';        
+            $_SESSION['username'] = 'user';        
             echo 'You have entered a valid user name and password!';
           } else {
             $msg = 'Wrong username and password';
