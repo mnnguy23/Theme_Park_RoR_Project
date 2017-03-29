@@ -1,14 +1,13 @@
 <?php
   ob_start();
   session_start();
-
+           
 ?>
 
 <?
   // error_reporting(E_ALL);
   // ini_set("display_errors", 1);
 ?>
-
 
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->  
@@ -21,7 +20,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     
     <link href="css/main.css" rel="stylesheet">
-          </head>
+          
+  </head>
   <body>
     <h1>Theme Park Management Portal</h1>
     <h2>Enter Username and Password</h2>
@@ -33,10 +33,10 @@
         
           // This is currently hard coded and needs to be changed to pull actual information from the database.
           
-          if ($_POST['username'] == 'user' && $_POST['password'] == 'pass') {
+          if ($_POST['username'] == 'tutorialspoint' && $_POST['password'] == '1234') {
             $_SESSION['valid'] = true;
             $_SESSION['timeout'] = time();
-            $_SESSION['username'] = 'user';        
+            $_SESSION['username'] = 'tutorialspoint';        
             echo 'You have entered a valid user name and password!';
           } else {
             $msg = 'Wrong username and password';
@@ -61,7 +61,6 @@
           name="login">Login</button>
       </form>
     </div>
-  
     
     
     
