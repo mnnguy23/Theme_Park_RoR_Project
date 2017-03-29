@@ -2,13 +2,13 @@
   ob_start();
   session_start();
   $dbopts = parse_url(getenv('postgres://nqxatreczgovme:91ef1bd79a01039737b248bdc7a465b27b284af93a537cfd217a5135d94f95d8@ec2-50-17-236-15.compute-1.amazonaws.com:5432/d2641hluvfmus5'));
-  $app->register(new Herrera\Pdo\PdoServiceProvider(),
+ $app->register(new Herrera\Pdo\PdoServiceProvider(),
                array(
-                   'pdo.dsn' => 'pgsql:dbname='.ltrim($dbopts["d2641hluvfmus5"],'/').';host='.$dbopts["ec2-50-17-236-15.compute-1.amazonaws.com"] . ';port=' . $dbopts["5432"],
-                   'pdo.username' => $dbopts["nqxatreczgovme"],
-                   'pdo.password' => $dbopts["91ef1bd79a01039737b248bdc7a465b27b284af93a537cfd217a5135d94f95d8"]
+                   'pdo.dsn' => 'pgsql:dbname='.ltrim($dbopts["path"],'/').';host='.$dbopts["host"] . ';port=' . $dbopts["port"],
+                   'pdo.username' => $dbopts["user"],
+                   'pdo.password' => $dbopts["pass"]
                )
-  );         
+);         
 ?>
 
 <?
