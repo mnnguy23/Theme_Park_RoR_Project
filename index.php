@@ -31,8 +31,7 @@ $db = new PDO($dsn);
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     
     <link href="css/main.css" rel="stylesheet">
-          
-  </head>
+          </head>
   <body>
     <h1>Theme Park Management Portal</h1>
     <h2>Enter Username and Password</h2>
@@ -72,6 +71,7 @@ $db = new PDO($dsn);
           name="login">Login</button>
       </form>
     </div>
+  
     
     
     
