@@ -1,15 +1,3 @@
-<?php
-$dsn = "pgsql:"
-    . "ec2-50-17-236-15.compute-1.amazonaws.com;"
-    . "d2641hluvfmus5;"
-    . "user=nqxatreczgovme;"
-    . "port=5432;"
-    . "sslmode=require;"
-    . "password=91ef1bd79a01039737b248bdc7a465b27b284af93a537cfd217a5135d94f95d8";
-
-$db = new PDO($dsn);
-?>
-
 <html>
  <head>
   <title>Employees</title>
