@@ -112,4 +112,4 @@ CREATE TYPE public.t_type AS ENUM
     ('season', 'regular');
     
 /*-------------------------------Altering-------------------------------*/
-ALTER TABLE employee ADD startdate date not NULL;
+ALTER TABLE employee ADD startdate date;
