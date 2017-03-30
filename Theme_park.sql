@@ -113,3 +113,4 @@ CREATE TYPE public.t_type AS ENUM
     
 /*-------------------------------Altering-------------------------------*/
 ALTER TABLE employee ADD startdate date;
+ALTER TABLE ride ALTER COLUMN rider_time SET NOT null;
