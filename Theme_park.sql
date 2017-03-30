@@ -93,24 +93,14 @@ CREATE TABLE public.ticket
 )
 
 /*-------------------------------TRIGGERS-------------------------------*/
-CREATE TRIGGER update_ride_changetimestamp
-    BEFORE UPDATE 
-    ON public.ride
-    FOR EACH ROW
-    EXECUTE PROCEDURE public.update_changetimestamp_column();
-
-/*-------------------------------Trigger Functions-------------------------------*/
-CREATE FUNCTION public.update_changetimestamp_column()
-    RETURNS trigger
-    LANGUAGE 'plpgsql'
-    COST 100.0
-    VOLATILE NOT LEAKPROOF 
-AS $BODY$
-
+CREATE OR REPLACE FUNCTION update_changetimestamp_column()
+RETURNS TRIGGER AS $$
 BEGIN
    NEW.changetimestamp = now(); 
    RETURN NEW;
 END;
+$$ language 'plpgsql';
+
 /*-------------------------------ENUMS-------------------------------*/
 CREATE TYPE public.gprize AS ENUM
     ('small', 'medium', 'large');
@@ -120,3 +110,6 @@ CREATE TYPE public.stype AS ENUM
 
 CREATE TYPE public.t_type AS ENUM
     ('season', 'regular');
+    
+/*-------------------------------Altering-------------------------------*/
+ALTER TABLE employee ADD startdate date not NULL;
