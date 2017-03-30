@@ -23,6 +23,6 @@ $twig = new Twig_Environment($loader, array(
 
 <?php
 $template = $twig->load('logout.html');
-$msg = 'You have cleaned session';
+$msg = 'You have clean session';
 echo $template->render(array('msg' => $msg, 'login' => $loginLink));
 ?>
