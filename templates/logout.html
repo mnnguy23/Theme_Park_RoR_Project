@@ -1,5 +1,6 @@
 {% extends "base.html" %}
+{% block title %}Clear Session{% endblock %}
 {% block content %}
   <h1>{{ msg }}</h1>
-  <h2>Return to <a href="{{ loginLink }}">Login Page.</a></h2>
+  <h2>Return to <a href={{ login }}>Login Page.</a></h2>
 {% endblock %}
