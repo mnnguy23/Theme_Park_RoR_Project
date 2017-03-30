@@ -114,3 +114,9 @@ CREATE TYPE public.t_type AS ENUM
 /*-------------------------------Altering-------------------------------*/
 ALTER TABLE employee ADD startdate date;
 ALTER TABLE ride ALTER COLUMN rider_time SET NOT null;
+
+/*-------------------------------Inserting-------------------------------*/
+INSERT INTO employee
+VALUES
+('Jose', 'Perez', 963852741, '1994-4-21', '4444 Road', 'M', 50000, 987654321, 1, 7137654321, 'user3', 'password3'),
+('Carlos', 'Puerta', 852741963, '1993-7-15', '5555 Road', 'M', 55000, 987654321, 1, 2817654321, 'user4', 'password4');
