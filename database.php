@@ -29,7 +29,7 @@ $db = new PDO($dsn);
    <tbody>
 <?php
 $query = "SELECT ssn, lname, fname, title "
-     . "FROM employees ORDER BY lname ASC, fname ASC";
+     . "FROM employee ORDER BY lname ASC, fname ASC";
 $result = $db->query($query);
 while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
     echo "<tr>";
