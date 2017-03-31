@@ -26,10 +26,9 @@
              // This is currently hard coded and needs to be changed to pull actual information from the database.
           
             if ($_POST['username'] == $username && $_POST['password'] == $password) {
-              //$_SESSION['valid'] = true;
-              //$_SESSION['timeout'] = time();
-              //$msg = 'You have entered a valid user name and password!';
-              $clearSession = "https://theme-park-management.herokuapp.com/database.php";
+              $_SESSION['valid'] = true;
+              $_SESSION['timeout'] = time();
+              $msg = 'You have entered a valid user name and password!';
             } else {
               $msg = 'Wrong username and password';
             }
