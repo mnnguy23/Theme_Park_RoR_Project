@@ -1,3 +1,24 @@
+<?php
+
+$dsn = "pgsql:"
+    . "host=ec2-50-17-236-15.compute-1.amazonaws.com;"
+    . "dbname=d2641hluvfmus5;"
+    . "user=nqxatreczgovme;"
+    . "port=5432;"
+    . "sslmode=require;"
+    . "password=91ef1bd79a01039737b248bdc7a465b27b284af93a537cfd217a5135d94f95d8";
+
+$db = new PDO($dsn);
+  ob_start();
+  session_start();
+           
+?>
+
+<?
+  // error_reporting(E_ALL);
+  // ini_set("display_errors", 1);
+?>
+
 <html>
  <head>
   <title>Employees</title>
