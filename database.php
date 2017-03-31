@@ -15,27 +15,27 @@ $db = new PDO($dsn);
 
 <html>
  <head>
-  <title>Employees</title>
+  <title>Attractions</title>
  </head>
  <body>
   <table>
    <thead>
     <tr>
-     <th>Employee ID</th>
-     <th>Last Name</th>
-     <th>First Name</th>
+     <th>Attraction ID</th>
+     <th>Attraction Name</th>
+     <th>Price</th>
     </tr>
    </thead>
    <tbody>
 <?php
-$query = "SELECT ssn, lname, fname"
-     . "FROM employee ORDER BY lname ASC, fname ASC";
+$query = "SELECT ride_id, name, date_built"
+     . "FROM employee";
 $result = $db->query($query);
 while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
     echo "<tr>";
-    echo "<td>" . $row["ssn"] . "</td>";
-    echo "<td>" . htmlspecialchars($row["lname"]) . "</td>";
-    echo "<td>" . htmlspecialchars($row["fname"]) . "</td>";
+    echo "<td>" . $row["ride_id"] . "</td>";
+    echo "<td>" . htmlspecialchars($row["name"]) . "</td>";
+    echo "<td>" . $row["date_built"] . "</td>";
     echo "</tr>";
 }
 $result->closeCursor();
