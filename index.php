@@ -8,6 +8,7 @@
   } else {
     // deployment link
     $clearSession = "https://theme-park-management.herokuapp.com/logout.php";
+    $themeparkdb = "https://theme-park-management.herokuapp.com/database.php";
   }
 ?>
 <?php
@@ -29,6 +30,7 @@
               $_SESSION['valid'] = true;
               $_SESSION['timeout'] = time();
               $msg = 'You have entered a valid user name and password!';
+              $template = $twig->load($clearSession);
             } else {
               $msg = 'Wrong username and password';
             }
