@@ -30,7 +30,6 @@
               $_SESSION['valid'] = true;
               $_SESSION['timeout'] = time();
               $msg = 'You have entered a valid user name and password!';
-              echo $template->render(array('msg' => $msg, 'database' => $database));
             } else {
               $msg = 'Wrong username and password';
             }
