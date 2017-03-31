@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 $dsn = "pgsql:"
     . "host=ec2-50-17-236-15.compute-1.amazonaws.com;"
     . "dbname=d2641hluvfmus5;"
