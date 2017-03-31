@@ -28,7 +28,7 @@ $db = new PDO($dsn);
    </thead>
    <tbody>
 <?php
-$query = "SELECT ssn, lname, fname, title "
+$query = "SELECT ssn, lname, fname"
      . "FROM employee ORDER BY lname ASC, fname ASC";
 $result = $db->query($query);
 while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
