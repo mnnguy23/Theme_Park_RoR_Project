@@ -8,7 +8,6 @@
   } else {
     // deployment link
     $clearSession = "https://theme-park-management.herokuapp.com/logout.php";
-    $themeparkdb = "https://theme-park-management.herokuapp.com/database.php";
   }
 ?>
 <?php
