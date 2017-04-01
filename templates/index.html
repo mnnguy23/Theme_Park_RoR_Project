@@ -4,9 +4,7 @@
 {% block content %}
   <h1>Theme Park Management Portal</h1>
   <h2>Enter Username and Password</h2>
-
   <div class = "container form-signin">
-    
     <form class ="form-signin" role = "form"
       action = "index.php" method = "post">
       <h4 class="form-signin-heading">{{ msg }}</h4>
@@ -19,8 +17,7 @@
         name="password" placeholder="enter your password" required>
       <button class="btn btn-lg btn-primary btn-block" type="submit"
         name="login">Login</button>
-    </form>
-    
+    </form>  
   </div>
   <div class "container">
     <p>click here to clean <a href={{ clear }}> Session </a></p>
