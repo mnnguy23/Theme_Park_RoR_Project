@@ -10,42 +10,33 @@ $twig = loadEnvironment();
 ?>
 
 <html>
-
-  <head>
-   <title>Database</title>
-  </head>
-
-  <body bgcolor="white">
-
-  <?
-    $isDevelopment = false;
-    $dbConn = loadDB($isDevelopment);
-    $result = pg_query($dbConn, "select name,ride_id from ride");
-    $numrows = pg_numrows($result);
-    echo "<h1>$result</h1>";
-  ?>
-
-  <table border="1">
-  <tr>
-   <th>Name</th>
-   <th>ID</th>
-  </tr>
-  <?
-
-   // Loop on rows in the result set.
-
-   for($ri = 0; $ri < $numrows; $ri++) {
-    echo "<tr>\n";
-    $row = pg_fetch_array($result, $ri);
-    echo " <td>", $row["name"], "</td>
-   <td>", $row["ride_id"], "</td>
-  </tr>
-  ";
-   }
-   pg_close($link);
-  ?>
+ <head>
+  <title>Attractions</title>
+ </head>
+ <body>
+  <table>
+   <thead>
+    <tr>
+     <th>Ride ID</th>
+     <th>Name</th>
+     <th>Department Number</th>
+    </tr>
+   </thead>
+   <tbody>
+<?php
+$query = "SELECT ride_id, name, dno"
+     . "FROM employee ORDER BY name ASC";
+$result = $db->query($query);
+while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+    echo "<tr>";
+    echo "<td>" . $row["ride_id"] . "</td>";
+    echo "<td>" . htmlspecialchars($row["name"]) . "</td>";
+    echo "<td>" . htmlspecialchars($row["dno"]) . "</td>";
+    echo "</tr>";
+}
+$result->closeCursor();
+?>
+   </tbody>
   </table>
-
-  </body>
-
-  </html>
+ </body>
+</html>
