@@ -32,11 +32,12 @@
           . " FROM employee";
      $result = $db->query($query);
      while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-       $user[] = $row["employee_username"];
+       $users[] = $row["employee_username"];
        $passwords[] = $row["employee_password"];
      }
      $result->closeCursor();
    }
+   
    return array($users, $passwords);
  }
  ?>
@@ -76,7 +77,6 @@ function findUser($usernames) {
   $userFound = false;
   $index = 0;
   while($index < sizeof($usernames) && !$userFound) {
-    echo $usernames[$index];
     if($_POST['username'] == $usernames[$index]) {
       $userFound = true;
     } else {
