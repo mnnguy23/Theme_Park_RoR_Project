@@ -29,12 +29,13 @@
      }
    } else {
      $query = "SELECT employee_username, employee_password"
-          . "FROM employee";
+          . " FROM employee";
      $result = $db->query($query);
      while($row = $result->fetch(PDO::FETCH_ASSOC)) {
        $user[] = $row["employee_username"];
        $passwords[] = $row["employee_password"];
      }
+     $result->closeCursor();
    }
    return array($users, $passwords);
  }
