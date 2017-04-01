@@ -9,7 +9,7 @@
 
 <?php
   $template = $twig->load('index.html');
-  $results = pg_query($dbConn, "SELECT employee_username, employee_password FROM employee");
+  $results = pg_query($dbConn, "SELECT employee_username, employee_password FROM d2641hluvfmus5.employee");
   
   if(!$dbConn) {
     $msg = "An error occured.";
