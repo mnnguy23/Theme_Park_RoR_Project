@@ -6,7 +6,7 @@ $twig = loadEnvironment();
 
 <?php
   $template = $twig->load('menu.html');
-  echo $template->render(array('login' => $loginLink));
+  echo $template->render(array('login' => $loginLink)); 
 ?>
 
 <html>
@@ -22,6 +22,7 @@ $twig = loadEnvironment();
     $dbConn = loadDB($isDevelopment);
     $result = pg_query($dbConn, "select name,ride_id from ride");
     $numrows = pg_numrows($result);
+    echo "<h1>$result</h1>";
   ?>
 
   <table border="1">
