@@ -11,6 +11,34 @@
  } 
 ?> 
  
+ <?php
+ function queryUserAccess($db){
+   if($isDevelopment == true) {
+     $users = array();
+     $passwords = array();
+     $results = pg_query($dbConn, "SELECT employee_username, employee_password FROM public.employee");
+  
+     if(!$dbConn) {
+       $msg = "An error occured.";
+       exit;
+     }
+  
+     while($row = pg_fetch_row($results)) {
+       $users[] = $row[0];
+       $passwords[] = $row[1];
+     }
+   } else {
+     $query = "SELECT employee_username, employee_password"
+          . "FROM employee";
+     $result = $db->query($query);
+     while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+       $user[] = $row["employee_username"];
+       $passwords[] = $row["employee_password"];
+     }
+   }
+   return array($users, $passwords);
+ }
+ ?>
 <?php
   function checkCredential($usernames, $passwords){
     if (isset($_POST['login']) && !empty($_POST['username']) && !empty($_POST['password']))  {

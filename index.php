@@ -9,20 +9,7 @@
 
 <?php
   $template = $twig->load('index.html');
-  $results = pg_query($dbConn, "SELECT employee_username, employee_password FROM DATABASE.employee");
-  
-  if(!$dbConn) {
-    $msg = "An error occured.";
-    exit;
-  }
-  
-  $users = array();
-  $passwords = array();
-  
-  while($row = pg_fetch_row($results)) {
-    $users[] = $row[0];
-    $passwords[] = $row[1];
-  }
+  list($users, $passwords) = queryUserAccess($dbConn);
   $msg = checkCredential($users, $passwords);
   echo $template->render(array('msg' => $msg, 'clear' => $clearSession));
 ?>
