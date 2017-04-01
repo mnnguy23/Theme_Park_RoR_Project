@@ -4,6 +4,8 @@
   $loginLink = "http://ta_code.dev/index.php";
   $isDevelopment = false;
   $db = loadDB($isDevelopment);
+  $result = pg_query($db, "SELECT ride_id,name, FROM ride");
+  $numrows = pg_numrows($result);
 ?>
 
 <?php
@@ -18,24 +20,28 @@
  <body>
   <table>
    <thead>
+    <table border="1">
     <tr>
-     <th>Ride ID</th>
-     <th>Name</th>
-     <th>Department Number</th>
+      <th>Name</th>
+      <th>ID</th>
     </tr>
+  <?
    </thead>
    <tbody>
-<?php
+  <?php
 $query = "SELECT ride_id, name, dno"
      . "FROM employee ORDER BY name ASC";
 $result = $db->query($query);
-while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-    echo "<tr>";
-    echo "<td>" . $row["ride_id"] . "</td>";
-    echo "<td>" . htmlspecialchars($row["name"]) . "</td>";
-    echo "<td>" . htmlspecialchars($row["dno"]) . "</td>";
-    echo "</tr>";
-}
+// Loop on rows in the result set.
+
+   for($ri = 0; $ri < $numrows; $ri++) {
+    echo "<tr>\n";
+    $row = pg_fetch_array($result, $ri);
+    echo " <td>", $row["name"], "</td>
+   <td>", $row["ride_id"], "</td>
+  </tr>
+  ";
+   }
 $result->closeCursor();
 ?>
    </tbody>
