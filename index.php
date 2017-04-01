@@ -2,7 +2,7 @@
   include 'app/base.php';
   include 'app/indexFunctions.php';
   $twig = loadEnvironment();
-  $isDevelopment = true;
+  $isDevelopment = false;
   $clearSession = developmentMode($isDevelopment);
   $dbConn = loadDB($isDevelopment);
 ?>
