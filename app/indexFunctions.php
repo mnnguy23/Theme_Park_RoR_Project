@@ -12,13 +12,13 @@
 ?> 
  
  <?php
- function queryUserAccess($db){
+ function queryUserAccess($db, $isDevelopment){
    if($isDevelopment == true) {
      $users = array();
      $passwords = array();
-     $results = pg_query($dbConn, "SELECT employee_username, employee_password FROM public.employee");
+     $results = pg_query($db, "SELECT employee_username, employee_password FROM public.employee");
   
-     if(!$dbConn) {
+     if(!$db) {
        $msg = "An error occured.";
        exit;
      }
