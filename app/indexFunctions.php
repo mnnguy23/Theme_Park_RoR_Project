@@ -32,8 +32,6 @@
           . " FROM employee";
      $result = $db->query($query);
      while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-       echo $row["employee_username"];
-       echo $row["employee_password"];
        $user[] = $row["employee_username"];
        $passwords[] = $row["employee_password"];
      }
@@ -42,6 +40,7 @@
    return array($users, $passwords);
  }
  ?>
+
 <?php
   function checkCredential($usernames, $passwords){
     if (isset($_POST['login']) && !empty($_POST['username']) && !empty($_POST['password']))  {
@@ -77,6 +76,7 @@ function findUser($usernames) {
   $userFound = false;
   $index = 0;
   while($index < sizeof($usernames) && !$userFound) {
+    echo $usernames[$index];
     if($_POST['username'] == $usernames[$index]) {
       $userFound = true;
     } else {
