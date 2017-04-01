@@ -9,11 +9,11 @@
   echo $template->render(array('login' => $loginLink)); 
 ?>
 <html>
-
   <head>
    <title>Database</title>
   </head>
-<body bgcolor="white">
+  
+  <body bgcolor="white">
 
   <?
   $db = loadDB($isDevelopment);
