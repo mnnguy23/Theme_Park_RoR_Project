@@ -1,7 +1,9 @@
 <?php
-include 'app/base.php';
-$twig = loadEnvironment();
+  include 'app/base.php';
+  $twig = loadEnvironment();
   $loginLink = "http://ta_code.dev/index.php";
+  $isDevelopment = false;
+  $db = loadDB($isDevelopment);
 ?>
 
 <?php
