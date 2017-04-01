@@ -2,14 +2,14 @@
   include 'app/base.php';
   include 'app/indexFunctions.php';
   $twig = loadEnvironment();
-  $isDevelopment = false;
+  $isDevelopment = true;
   $clearSession = developmentMode($isDevelopment);
   $dbConn = loadDB($isDevelopment);
 ?>
 
 <?php
   $template = $twig->load('index.html');
-  list($users, $passwords) = queryUserAccess($dbConn);
+  list($users, $passwords) = queryUserAccess($dbConn, $isDevelopment);
   $msg = checkCredential($users, $passwords);
   echo $template->render(array('msg' => $msg, 'clear' => $clearSession));
 ?>
