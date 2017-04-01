@@ -32,8 +32,8 @@
           . " FROM employee";
      $result = $db->query($query);
      while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-       echo $row["employee_username"]" "$row["employee_password"];
-       echo "\n";
+       echo $row["employee_username"];
+       echo $row["employee_password"];
        $user[] = $row["employee_username"];
        $passwords[] = $row["employee_password"];
      }
