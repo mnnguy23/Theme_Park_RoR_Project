@@ -8,11 +8,15 @@
   $template = $twig->load('menu.html');
   echo $template->render(array('login' => $loginLink)); 
 ?>
+<html>
 
+  <head>
+   <title>Database</title>
+  </head>
 <body bgcolor="white">
 
   <?
-  $db = loadDB($isDevelopment)
+  $db = loadDB($isDevelopment);
   $result = pg_query($db, "select ride_id,name from ride");
   $numrows = pg_numrows($result);
   ?>
