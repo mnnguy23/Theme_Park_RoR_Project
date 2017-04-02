@@ -1,7 +1,7 @@
 <?php
   include 'app/base.php';
   $twig = loadEnvironment();
-  $loginLink = "https://theme-park-management.herokuapp.com/attractions.php";
+  $loginLink = "https://theme-park-management.herokuapp.com/index.php";
 ?>
 
 <?php
