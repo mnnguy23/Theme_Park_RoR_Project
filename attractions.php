@@ -6,9 +6,10 @@
   <body bgcolor="white">
 
   <?
-  $db = loadDB($isDevelopment)  or die('Could not connect: ' . pg_last_error());
-  $result = pg_query($db, "select ride_id,name from ride") or die('Query failed: ' . pg_last_error());
-  $numrows = pg_numrows($result);
+    $isDevelopment = false;
+    $db = loadDB($isDevelopment)  or die('Could not connect: ' . pg_last_error());
+    $result = pg_query($db, "select ride_id,name from ride") or die('Query failed: ' . pg_last_error());
+    $numrows = pg_numrows($result);
   ?>
     
   <table border="1">
