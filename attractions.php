@@ -6,8 +6,8 @@
   <body bgcolor="white">
 
   <?
-  $db = loadDB($isDevelopment);
-  $result = pg_query($db, "select ride_id,name from ride");
+  $db = loadDB($isDevelopment)  or die('Could not connect: ' . pg_last_error());
+  $result = pg_query($db, "select ride_id,name from ride") or die('Query failed: ' . pg_last_error());
   $numrows = pg_numrows($result);
   ?>
     
