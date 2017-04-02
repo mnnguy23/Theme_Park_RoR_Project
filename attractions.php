@@ -10,9 +10,7 @@
   $result = pg_query($db, "select ride_id,name from ride");
   $numrows = pg_numrows($result);
   ?>
-  <?php
-         echo "<h1>Hello, PHP!</h1>";
-  ?>
+    
   <table border="1">
   <tr>
    <th>Ride ID</th>
