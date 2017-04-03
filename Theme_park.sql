@@ -92,6 +92,15 @@ CREATE TABLE public.ticket
     CONSTRAINT ticket_pkey PRIMARY KEY (ticket_id)
 )
 
+CREATE TABLE public.merchandise 
+(
+    product character varying(25) COLLATE pg_catalog."default" NOT NULL,
+    inventory integer NOT NULL,
+    sold integer NOT NULL,
+    constraint valid_number 
+      check (inventory <= 500)
+);
+
 /*-------------------------------TRIGGERS-------------------------------*/
 CREATE OR REPLACE FUNCTION update_changetimestamp_column()
 RETURNS TRIGGER AS $$
