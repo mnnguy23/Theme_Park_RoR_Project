@@ -17,7 +17,7 @@
   ));
   $isDevelopment = false;
   $clearSession = developmentMode($isDevelopment);
-  $dbConn = loadDB($isDevelopment);
+  $db = loadDB($isDevelopment);
   $result = pg_query($db, "select ride_id,name from ride") or die('Query failed: ' . pg_last_error());
   $numrows = pg_numrows($result);
 ?>
