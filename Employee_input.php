@@ -1,4 +1,4 @@
-<?php
+<?php/*
 	
     $conn= pg_connect("host=localhost dbname=postgres user=postgres password=warrior12");
    if(! $conn ) {
@@ -7,8 +7,9 @@
    
    echo 'Connected successfully';
    pg_close($conn);
-?>
-<?php/*
+*/?>
+
+<?php
   session_start();
   require_once 'vendor/autoload.php';
   $isDevelopment = false;
@@ -18,13 +19,16 @@
   } else {
     // deployment link
     $clearSession = "https://theme-park-management.herokuapp.com/logout.php";
-  }*/
+  }
 ?>
 <?php
   $loader = new Twig_Loader_Filesystem('templates');
   $twig = new Twig_Environment($loader, array(
     'auto_reload' => true
   ));
+  $isDevelopment = false;
+  $clearSession = developmentMode($isDevelopment);
+  $dbConn = loadDB($isDevelopment);
 ?>
 <?php
 	$template = $twig->load('addEmployee.html');
@@ -131,12 +135,12 @@ if(isset($_POST['submit'])){
         
         require_once('../mysqli_connect.php');// needs to deal with .....whatever my db my local db is on
         
-        $query = "INSERT INTO Employees (first_name, last_name, email,
+        $query = "INSERT INTO Employees VALUES 
+	(first_name, last_name, email,
         address, phone, birth_date, sex,
-        SSN, Employee_ID, Wage, Start_Date, Supervisor) VALUES (?, ?, ?,
-        ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?,?)";// needs editing
+        SSN, Employee_ID, Wage, Start_Date, Supervisor)";// needs editing
         
-        $stmt = mysqli_prepare($dbc, $query);
+        $stmt = mysqli_prepare($dbConn, $query);
         
         mysqli_stmt_bind_param($stmt, "sssssisssdis", $f_name,
                                $l_name, $email, $address,
