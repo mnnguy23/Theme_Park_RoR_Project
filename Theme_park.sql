@@ -120,3 +120,4 @@ INSERT INTO employee
 VALUES
 ('Jose', 'Perez', 963852741, '1994-4-21', '4444 Road', 'M', 50000, 987654321, 1, 7137654321, 'user3', 'password3'),
 ('Carlos', 'Puerta', 852741963, '1993-7-15', '5555 Road', 'M', 55000, 987654321, 1, 2817654321, 'user4', 'password4');
+('Etienne', 'Pierre', 123987654, '1995-4-7', '333 Street', 'M', 55500, 846294750, 1, 3847592749, 'user4', 'password5');
