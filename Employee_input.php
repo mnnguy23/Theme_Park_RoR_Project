@@ -133,7 +133,7 @@ if(isset($_POST['submit'])){
     
     if(empty($data_missing)){
         
-        require_once('../mysqli_connect.php');// needs to deal with .....whatever my db my local db is on
+        //require_once('../mysqli_connect.php');// needs to deal with .....whatever my db my local db is on
         
         $query = "INSERT INTO Employees(fname,lname,StartDate,email,ssn,bdate,address,sex,salary,super_ssn,phone_number) VALUES 
 	($first_name, $last_name,$Start_Date, $email,
