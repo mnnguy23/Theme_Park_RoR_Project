@@ -22,7 +22,7 @@
    for($ri = 0; $ri < $numrows; $ri++) {
     echo "<tr>\n";
     $row = pg_fetch_array($result, $ri);
-    echo " <td>", $row["ride_id"], "</td>
+    echo " <td>", $row["attraction_id"], "</td>
    <td>", $row["name"], "</td>
   </tr>
   ";
