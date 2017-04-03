@@ -152,14 +152,7 @@ if(isset($_POST['submit'])){
     		exit(); 
 	} 
 
-   
-        
-        $_close($dbc);
-            
-        } else {
-            
-            
-        }
+  	pg_close();
         
     } else {
         
