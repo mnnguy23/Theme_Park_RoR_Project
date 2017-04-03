@@ -28,7 +28,7 @@
   ));
   $isDevelopment = false;
   $clearSession = developmentMode($isDevelopment);
-  $dbConn = loadDB($isDevelopment);
+  //$dbConn = loadDB($isDevelopment);
 ?>
 <?php
 	$template = $twig->load('addEmployee.html');
