@@ -129,3 +129,16 @@ INSERT INTO employee
 VALUES
 ('Jose', 'Perez', 963852741, '1994-4-21', '4444 Road', 'M', 50000, 987654321, 1, 7137654321, 'user3', 'password3'),
 ('Carlos', 'Puerta', 852741963, '1993-7-15', '5555 Road', 'M', 55000, 987654321, 1, 2817654321, 'user4', 'password4');
+
+INSERT INTO merchandise
+VALUES
+('Plushies', 350, 75748, 275),
+('Tumblers', 750, 15000, 487),
+('Shirts', 650, 15000, 564),
+('Hats', 650, 15000, 578),
+('Coloring Books', 300, 15000, 147),
+('Sunglasses', 200, 15000, 78),
+('Toys', 500, 15000, 324),
+('Backpacks', 350, 25412, 158),
+('Magnets', 1000, 112340, 754),
+('Keychains', 1000, 123456, 684);
