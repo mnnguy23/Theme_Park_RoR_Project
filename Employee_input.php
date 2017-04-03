@@ -125,7 +125,7 @@ if(isset($_POST['submit'])){
     }
 	if(empty($_POST['Manages'])){
         // Adds name to array
-        $data_missing[] = 'Manages';
+         $data_missing[] = 'Manages';
     } else {
         // Trim white space from the name and store the name
         $Manages = trim($_POST['Manages']);
@@ -135,38 +135,29 @@ if(isset($_POST['submit'])){
         
         require_once('../mysqli_connect.php');// needs to deal with .....whatever my db my local db is on
         
-        $query = "INSERT INTO Employees VALUES 
-	(first_name, last_name, email,
-        address, phone, birth_date, sex,
-        SSN, Employee_ID, Wage, Start_Date, Supervisor)";// needs editing
+        $query = "INSERT INTO Employees(fname,lname,StartDate,email,ssn,bdate,address,sex,salary,super_ssn,phone_number) VALUES 
+	($first_name, $last_name,$Start_Date, $email,
+        $ssn, $birth_date, $address, $sex,
+        $salary,$supervisor,$phone)";// needs editing
         
-        $stmt = mysqli_prepare($dbConn, $query);
+        //$stmt = mysqli_prepare($dbConn, $query);
+	
+	
+	    
+	    
+        $result = pg_query($dbconn,$query); 
+	if (!$result) { 
+    		$errormessage = pg_last_error(); 
+   		echo "Error with query: " . $errormessage; 
+    		exit(); 
+	} 
+
+   
         
-        mysqli_stmt_bind_param($stmt, "sssssisssdis", $f_name,
-                               $l_name, $email, $address,
-								$phone, $b_date,
-                               $sex,$SSN, $Employee_ID,$Wage,$Start_Date,$Supervisor);//should i add $Manages
-        
-        mysqli_stmt_execute($stmt);
-        
-        $affected_rows = mysqli_stmt_affected_rows($stmt);
-        
-        if($affected_rows == 1){
-            
-            echo 'Employee Entered';
-            
-            mysqli_stmt_close($stmt);
-            
-            mysqli_close($dbc);
+        $_close($dbc);
             
         } else {
             
-            echo 'Error Occurred<br />';
-            echo mysqli_error();
-            
-            mysqli_stmt_close($stmt);
-            
-            mysqli_close($dbc);
             
         }
         
