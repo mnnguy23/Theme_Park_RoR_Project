@@ -5,6 +5,6 @@
 ?>
 
 <?php
-  $template = $twig->load('menu.html');
+  $template = $twig->load('addEmployee.html');
   echo $template->render(array('login' => $loginLink)); 
 ?>
