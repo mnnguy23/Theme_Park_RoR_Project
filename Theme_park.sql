@@ -92,14 +92,16 @@ CREATE TABLE public.ticket
     CONSTRAINT ticket_pkey PRIMARY KEY (ticket_id)
 )
 
-CREATE TABLE public.merchandise 
+CREATE TABLE public.merchandise
 (
     product character varying(25) COLLATE pg_catalog."default" NOT NULL,
     inventory integer NOT NULL,
     sold integer NOT NULL,
-    constraint valid_number 
-      check (inventory <= 500)
-);
+    units_sold_weekly integer NOT NULL,
+    serial_number integer NOT NULL,
+    CONSTRAINT merchandise_serial_number_key UNIQUE (serial_number),
+    CONSTRAINT max_inventory CHECK (inventory <= 1000)
+)
 
 /*-------------------------------TRIGGERS-------------------------------*/
 CREATE OR REPLACE FUNCTION update_changetimestamp_column()
@@ -132,13 +134,13 @@ VALUES
 
 INSERT INTO merchandise
 VALUES
-('Plushies', 350, 75748, 275),
-('Tumblers', 750, 15000, 487),
-('Shirts', 650, 15000, 564),
-('Hats', 650, 15000, 578),
-('Coloring Books', 300, 15000, 147),
-('Sunglasses', 200, 15000, 78),
-('Toys', 500, 15000, 324),
-('Backpacks', 350, 25412, 158),
-('Magnets', 1000, 112340, 754),
-('Keychains', 1000, 123456, 684);
+('Plushies', 350, 75748, 275, 0000001),
+('Tumblers', 750, 15000, 487, 0000002),
+('Shirts', 650, 15000, 564, 0000003),
+('Hats', 650, 15000, 578, 0000004),
+('Coloring Books', 300, 15000, 147, 0000005),
+('Sunglasses', 200, 15000, 78, 0000006),
+('Toys', 500, 15000, 324, 0000007),
+('Backpacks', 350, 25412, 158, 0000008),
+('Magnets', 1000, 112340, 754, 0000009),
+('Keychains', 1000, 123456, 684, 0000010);
