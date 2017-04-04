@@ -7,10 +7,15 @@
 1. Create the php file: Example.php
 
 2. This will load the html file to be viewed:
+
   `<?php
+  
     include 'app/base.php';
+    
     $twig = loadEnvironment();
+    
     $template = $twig->load('example.html');
+    
   ?>`
   
   The loadEnvironment() function is from the base.php.
@@ -30,14 +35,15 @@
   $msg is a message variable and $clearSession is a link that clears the session.
     
 3. This will connect to the database:
-    ``<?php
+
+  `<?php
+  
+    $isDevelopment = false;
     
-      $isDevelopment = false;
-      
-      $db = loadDB($isDevelopment);
-      
-      will create the database connection.
-    ?>``
+    $db = loadDB($isDevelopment);
+    
+    will create the database connection.
+  ?>`
 
 
 ### HTML
