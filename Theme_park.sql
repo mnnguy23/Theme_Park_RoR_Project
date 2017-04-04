@@ -170,10 +170,10 @@ BEGIN
  RETURN NEW;
 END;
 
-$BODY$;
+$BODY$
 
-LANGUAGE 'plpgsql'
-COST 100.0
+LANGUAGE plpgsql VOLATILE
+COST 100;
 
 
 CREATE OR REPLACE FUNCTION update_changetimestamp_column()
