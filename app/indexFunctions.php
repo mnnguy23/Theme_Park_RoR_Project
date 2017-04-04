@@ -66,7 +66,7 @@
         unset($_SESSION["login"]);
       }
     } else {
-      $msg = 'Enter Username and Password';
+      $msg = '';
     }
     return $msg;
   }
