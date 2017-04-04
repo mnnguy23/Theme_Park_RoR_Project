@@ -14,7 +14,6 @@
   include 'app/indexFunctions.php';
   session_start();
   require_once 'vendor/autoload.php';
-  $isDevelopment = false;
 ?>
 <?php
   $loader = new Twig_Loader_Filesystem('templates');
