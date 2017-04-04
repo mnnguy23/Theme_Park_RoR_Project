@@ -187,6 +187,6 @@ $$ language 'plpgsql';
 /*-------------------------------Triggers-------------------------------*/
 CREATE TRIGGER maintenance
   BEFORE UPDATE
-  ON attractions
+  ON attraction
   FOR EACH ROW
   EXECUTE PROCEDURE schedule_new_maintenance();
