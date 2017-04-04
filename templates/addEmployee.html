@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %} Add Employe
+<form action="http://localhost/Employee_input.php" method="post">
+
+<b>Add a New Employee</b>
+
+<p>First Name:
+<input type="text" name="first_name" size="30" value="" />
+</p>
+
+<p>Last Name:
+<input type="text" name="last_name" size="30" value="" />
+</p>
+
+<p>Email:
+<input type="text" name="email" size="30" value="" />
+</p>
+
+<p>Full Address:
+<input type="text" name="address" size="60" value="" />
+</p>
+
+
+<p>Phone Number:
+<input type="text" name="phone" size="30" value="" />
+</p>
+
+<p>Birth Date (YYYY-MM-DD):
+<input type="text" name="birth_date" size="30" value="" />
+</p>
+
+<p>Sex (M or F):
+<input type="text" name="sex" size="30" maxlength="1" value="" />
+</p>
+
+<p> SSN:
+<input type="text" name="SSN" size="30" value="" />
+</p>
+
+<p> Start Date:
+<input type="text" name="Start_Date" size="30" value="" />
+</p>
+
+<p> Employee ID:
+<input type="text" name="Employee_ID" size="30" value="" />
+</p>
+
+<p>  Wage:
+<input type="text" name="Salary" size="30" value="" />
+</p>
+
+<p> Supervisor:
+<input type="text" name="Supervisor" size="30" value="" />
+</p>
+
+<p> Manages:
+<input type="text" name="Manages" size="30" value="" />
+</p>
+
+
+<p>
+<input type="submit" name="submit" value="Send" />
+</p>
+
+</form>
+
+{% endblock %}
