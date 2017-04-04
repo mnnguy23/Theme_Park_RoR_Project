@@ -15,7 +15,7 @@
 
 <?php
   include 'app/base.php';
-  include 'app/indexfuntions.php';
+  include 'app/indexFuntions.php';
 
   $twig = loadEnvironment();
   $isDevelopment = false;
