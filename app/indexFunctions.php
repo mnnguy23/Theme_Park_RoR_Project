@@ -49,7 +49,6 @@
     if (isset($_POST['login']) && !empty($_POST['username']) && !empty($_POST['password']))  {
       
       $result = $data[$_POST['username']] ?? null;
-      echo $result;
       $username = NULL;
       $password = NULL;
       if($result != null) {
@@ -60,18 +59,21 @@
       if ($_POST['username'] == $username && $_POST['password'] == $password) {
         $_SESSION['valid'] = true;
         $_SESSION['timeout'] = time();
-        $msg = 'You have entered a valid user name and password!';
-        menuRedirect();
+        $_SESSION['user'] = $username;
+        $_SESSION['fname'] = $result[1];
+        $_SESSION['lname'] = $result[2];
+        $info = 'Valid username and password';
       } else {
-        $msg = 'Wrong username and password';
+        $_SESSION['valid'] = false;
+        $info = 'Wrong username and/or password';
         unset($_SESSION["username"]);
         unset($_SESSION["password"]);
         unset($_SESSION["login"]);
       }
     } else {
-      $msg = '';
+      $info = '';
     }
-    return $msg;
+    return array($_SESSION['valid'], $info);
   }
 ?>
 

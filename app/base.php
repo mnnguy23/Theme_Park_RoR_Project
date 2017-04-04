@@ -11,7 +11,6 @@ function loadEnvironment() {
 ?>
 
 <?php
-
 function loadDB($isDevelopment) {
   if($isDevelopment) {
     $host = "localhost";
@@ -20,7 +19,6 @@ function loadDB($isDevelopment) {
     $user = "tester";
     $password = "1234";
     $db = pg_connect("host=$host port=$port dbname=$dbname user=$user password=$password");
-    
   } else {
     $dsn = "pgsql:"
         . "host=ec2-50-17-236-15.compute-1.amazonaws.com;"
@@ -31,9 +29,6 @@ function loadDB($isDevelopment) {
         . "password=91ef1bd79a01039737b248bdc7a465b27b284af93a537cfd217a5135d94f95d8";
     $db = new PDO($dsn);
   }
-  
-  
   return $db;
 }
-
 ?>

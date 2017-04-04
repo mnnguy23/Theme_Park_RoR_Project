@@ -1,7 +1,9 @@
 {% extends "base.html" %}
+
 {% block title %} Main Menu {% endblock %}
 
 {% block content %}
-<h1>Main Menu</h1>
-<p><a href={{ login }}>Login Page</a>
+{% include 'baseMenu.html' %}
+<h1>Welcome {{ fname }} {{ lname }}</h1>
+<p><a href={{ logout }}>Log out </a>
 {% endblock %}
