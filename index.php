@@ -9,14 +9,15 @@
 
 <?php
   $template = $twig->load('index.html');
-  list($users, $passwords) = queryUserAccess($dbConn, $isDevelopment);
-  $msg = checkCredential($users, $passwords);
+  $data = queryUserAccess($dbConn, $isDevelopment);
+  $msg = checkCredential($data);
+
   echo $template->render(array('msg' => $msg, 'clear' => $clearSession));
 ?>
 
 <?php
-  function pg_list_tables($dbConn) {
-    $sql = "select relname from pg_stat_user_tables order by relname;";
-    return pg_query($dbConn, $sql);
-  }
+function pg_list_tables($dbConn) {
+  $sql = "select relname from pg_stat_user_tables order by relname;";
+  return pg_query($dbConn, $sql);
+}
 ?>

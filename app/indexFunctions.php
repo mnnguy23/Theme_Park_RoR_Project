@@ -14,44 +14,47 @@
  <?php
  function queryUserAccess($db, $isDevelopment){
    if($isDevelopment == true) {
-     $users = array();
-     $passwords = array();
-     $results = pg_query($db, "SELECT employee_username, employee_password FROM public.employee");
+
+     $data = array();
+     $results = pg_query($db, "SELECT fname, lname, employee_username, employee_password FROM public.employee");
   
      if(!$db) {
        $msg = "An error occured.";
        exit;
-     }
-  
+     }  
+     
      while($row = pg_fetch_row($results)) {
-       $users[] = $row[0];
-       $passwords[] = $row[1];
+       $fname = $row[0];
+       $lname = $row[1];
+       $user = $row[2];
+       $password = $row[3];
+       $data[$user] = array($password, $fname, $lname); 
      }
+
    } else {
-     $query = "SELECT employee_username, employee_password"
+     $query = "SELECT fname, lname, employee_username, employee_password"
           . " FROM employee";
      $result = $db->query($query);
      while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-       $users[] = $row["employee_username"];
-       $passwords[] = $row["employee_password"];
+       $data[$row["employee_username"]] = array($row["employee_password"], $row["fname"], $row["lname"]);
      }
      $result->closeCursor();
    }
-   
-   return array($users, $passwords);
+   return $data;
  }
  ?>
 
 <?php
-  function checkCredential($usernames, $passwords){
+  function checkCredential($data){
     if (isset($_POST['login']) && !empty($_POST['username']) && !empty($_POST['password']))  {
       
-      list($result, $index) = findUser($usernames);
+      $result = $data[$_POST['username']] ?? null;
+      echo $result;
       $username = NULL;
       $password = NULL;
-      if($result) {
-        $username = $usernames[$index];
-        $password = $passwords[$index];
+      if($result != null) {
+        $username = $_POST['username'];
+        $password = $result[0];
       }
    
       if ($_POST['username'] == $username && $_POST['password'] == $password) {
@@ -70,21 +73,6 @@
     }
     return $msg;
   }
-?>
-
-<?php
-function findUser($usernames) {
-  $userFound = false;
-  $index = 0;
-  while($index < sizeof($usernames) && !$userFound) {
-    if($_POST['username'] == $usernames[$index]) {
-      $userFound = true;
-    } else {
-      $index++;
-    }
-  }
-  return array($userFound, $index);
-}
 ?>
 
 <?php
