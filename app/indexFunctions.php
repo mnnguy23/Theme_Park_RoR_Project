@@ -38,7 +38,11 @@
      $result = $db->query($query);
      
      while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-       $data[$row["employee_username"]] = array($row["employee_password"], $row["fname"], $row["lname"]);
+       $fname = $row['fname'];
+       $lname = $row['lname'];
+       $user = $row['employee_username'];
+       $password = $row['employee_password'];
+       $data[$user] = array($password, $fname, $lname);
      }
      $result->closeCursor();
 
