@@ -1,6 +1,43 @@
 {% extends "base.html" %}
-{% block title %} EMPLOYEES {% endblock %}
+{% block title %} Employees 
+
+
+{% endblock %}
 
 {% block content %}
-
+<div class="container">
+  <div class="page-header">
+    <h1>Employees info</h1>
+  </div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Social Security</th>
+          <th>Birthday</th>
+		  <th>Address</th>
+		  <th>Salary</th>
+		  <th>Department Number</th>
+		  <th>Phone Number</th>
+        </tr>
+      </thead>
+      
+      <tbody>
+        {% for info in empData %}
+        <tr>
+          <td>{{ info[0] }}</td>
+          <td>{{ info[1] }}</td>
+          <td>{{ info[2] }}</td>
+		  <td>{{ info[3] }}</td>
+		  <td>{{ info[4] }}</td>
+		  <td>{{ info[5] }}</td>
+		  <td>{{ info[6] }}</td>
+		  <td>{{ info[7] }}</td>
+          <td> yes </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+</div>
 {% endblock %}
