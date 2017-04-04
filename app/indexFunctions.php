@@ -13,9 +13,9 @@
  
  <?php
  function queryUserAccess($db, $isDevelopment){
+   $data = array();
+   
    if($isDevelopment == true) {
-
-     $data = array();
      $results = pg_query($db, "SELECT fname, lname, employee_username, employee_password FROM public.employee");
   
      if(!$db) {
