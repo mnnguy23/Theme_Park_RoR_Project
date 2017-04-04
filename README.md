@@ -9,28 +9,28 @@
 1. Create the php file: Example.php
 
 2. This will load the html file to be viewed:
-    <?php
-      include 'app/base.php';
-      $twig = loadEnvironment();
-      $template = $twig->load('example.html');
-    ?>
+    `<?php__
+      include 'app/base.php';__
+      $twig = loadEnvironment();__
+      $template = $twig->load('example.html');__
+    ?>__`
     
-    The loadEnvironment() function is from the base.php.
-    That's why you need the 'app/base.php'.
-    $twig is the variable that will have the Twig_Environment loaded to it.
-    $template will then load the html file.
-    For example, $template = $twig->load('index.html');
-    Whatever variables you have created and want loaded into the html file, you will echo it.
-    Example: echo $template->render(array('msg' => $msg, 'clear' => $clearSession));
-    $msg is a message variable and $clearSession is a link that clears the session.
+    The loadEnvironment() function is from the base.php.__
+    That's why you need the 'app/base.php'.__
+    $twig is the variable that will have the Twig_Environment loaded to it.__
+    $template will then load the html file.__
+    For example, $template = $twig->load('index.html');__
+    Whatever variables you have created and want loaded into the html file, you will echo it.__
+    Example: echo $template->render(array('msg' => $msg, 'clear' => $clearSession));__
+    $msg is a message variable and $clearSession is a link that clears the session.__
     
 3. This will connect to the database:
-    <?php
-      $isDevelopment = false;
-      $db = loadDB($isDevelopment);
+    `<?php__
+      $isDevelopment = false;__
+      $db = loadDB($isDevelopment);__
       
-      will create the database connection.
-    ?>
+      will create the database connection.__
+    ?>`
 
 
 ### HTML
@@ -41,17 +41,17 @@
 
 3. Include {% block title %} Login {% endblock %} to set the title of the web page.
 
-4. {% block content %}
-    Write your html code here...
-    {% endblock %}
+4. {% block content %}__
+    Write your html code here...__
+    {% endblock %}__
     
     this will create load all of the html code you have written
     
-5. If you want to include logic to your code use
-    {% for example in examples %}
+5. If you want to include logic to your code use__
+    {% for example in examples %}__
     {% endfor %}
 
-6. If you want to call the variable created in the php file that is a string
+6. If you want to call the variable created in the php file that is a string__
     {{ msg }}
 
 ]]></content>
