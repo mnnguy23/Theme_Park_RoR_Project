@@ -15,8 +15,8 @@
 ?>
 
 <?php
-function pg_list_tables($dbConn) {
-  $sql = "select relname from pg_stat_user_tables order by relname;";
-  return pg_query($dbConn, $sql);
-}
+  function pg_list_tables($dbConn) {
+    $sql = "select relname from pg_stat_user_tables order by relname;";
+    return pg_query($dbConn, $sql);
+  }
 ?>
