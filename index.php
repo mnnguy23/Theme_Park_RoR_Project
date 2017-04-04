@@ -9,7 +9,7 @@
 
 <?php
   $template = $twig->load('index.html');
-  //$data = queryUserAccess($dbConn, $isDevelopment);
+  $data = queryUserAccess($dbConn, $isDevelopment);
   //list($valid, $result) = checkCredential($data);
   
   echo $template->render(array('msg' => $result, 'clear' => $clearSession));
