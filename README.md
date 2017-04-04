@@ -1,3 +1,5 @@
+<snippet>
+  <content><![CDATA[
 # Theme_Park_RoR_Project
 
 ## Set up Process
@@ -51,3 +53,7 @@
 
 6. If you want to call the variable created in the php file that is a string
     {{ msg }}
+
+]]></content>
+  <tabTrigger>readme</tabTrigger>
+</snippet>
