@@ -8,28 +8,16 @@
    echo 'Connected successfully';
    pg_close($conn);
 */
-include 'app/base.php';
+
 
 
 ?>
 
 <?php
-  session_start();
-  require_once 'vendor/autoload.php';
-  $isDevelopment = false;
-  if($isDevelopment == true) {
-    // development link what does this line do ?
-    $clearSession = "http://ta_code.dev/logout.php";
-  } else {
-    // deployment link
-    $clearSession = "https://theme-park-management.herokuapp.com/logout.php";
-  }
-?>
-<?php
-  $loader = new Twig_Loader_Filesystem('templates');
-  $twig = new Twig_Environment($loader, array(
-    'auto_reload' => true
-  ));
+  include 'app/base.php';
+  include 'app/indexfuntions';
+
+  $twig = loadEnvironment();
   $isDevelopment = false;
   $clearSession = developmentMode($isDevelopment);
   $db = loadDB($isDevelopment);
@@ -157,6 +145,7 @@ if(isset($_POST['submit'])){
 	} 
 
   	pg_close();*/
+	  $result->closeCursor();
         
     } else {
         
