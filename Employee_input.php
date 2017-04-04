@@ -7,14 +7,18 @@
    
    echo 'Connected successfully';
    pg_close($conn);
-*/?>
+*/
+include 'app/base.php';
+
+
+?>
 
 <?php
   session_start();
   require_once 'vendor/autoload.php';
   $isDevelopment = false;
   if($isDevelopment == true) {
-    // development link
+    // development link what does this line do ?
     $clearSession = "http://ta_code.dev/logout.php";
   } else {
     // deployment link
@@ -28,7 +32,7 @@
   ));
   $isDevelopment = false;
   $clearSession = developmentMode($isDevelopment);
-  //$dbConn = loadDB($isDevelopment);
+  $db = loadDB($isDevelopment);
 ?>
 <?php
 	$template = $twig->load('addEmployee.html');
@@ -145,14 +149,14 @@ if(isset($_POST['submit'])){
 	
 	    
 	    
-        $result = pg_query($dbconn,$query); 
-	if (!$result) { 
+        $result = pg_query($db,$query); 
+	/*if (!$result) { 
     		$errormessage = pg_last_error(); 
    		echo "Error with query: " . $errormessage; 
     		exit(); 
 	} 
 
-  	pg_close();
+  	pg_close();*/
         
     } else {
         
@@ -168,5 +172,5 @@ if(isset($_POST['submit'])){
     
 }
   
-  //echo $template->render(array('msg' => $msg, 'clear' => $clearSession));
+  echo $template->render(array('msg' => $msg, 'clear' => $clearSession));
   ?>
