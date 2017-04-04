@@ -10,8 +10,8 @@
 */?>
 
 <?php
-include 'app/base.php';
-include 'app/indexFunctions.php';
+  include 'app/base.php';
+  include 'app/indexFunctions.php';
   session_start();
   require_once 'vendor/autoload.php';
   $isDevelopment = false;
@@ -163,7 +163,6 @@ include 'app/indexFunctions.php';
     }
     
 }
-  
 $msg ='';
   echo $template->render(array('msg' => $msg, 'clear' => $clearSession));
   ?>
