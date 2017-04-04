@@ -1,8 +1,14 @@
 {% extends "base.html" %}
-{% block title %} Add Employe
-<form action="http://localhost/Employee_input.php" method="post">
+{% block title %} Add Employee {% endblock %}
 
-<b>Add a New Employee</b>
+{% block content %}
+<div class="container">
+  <div class="page-header">
+    <h1>Add a New Employee</h1>
+  </div>
+<div class="container">
+
+<form role = "form" action="Employee_input.php" method="post">
 
 <p>First Name:
 <input type="text" name="first_name" size="30" value="" />
@@ -63,5 +69,6 @@
 </p>
 
 </form>
+</div>
 
 {% endblock %}

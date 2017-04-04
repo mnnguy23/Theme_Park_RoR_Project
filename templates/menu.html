@@ -5,5 +5,37 @@
 {% block content %}
 {% include 'baseMenu.html' %}
 <h2>Welcome {{ fname }} {{ lname }}</h2>
+<div class="container">
+  <div class="page-header">
+    <h1>Maintenance: Ride</h1>
+  </div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Maintenance Date</th>
+          <th>Operational</th>
+        </tr>
+      </thead>
+      
+      <tbody>
+        {% for ride in rides %}
+        <tr>
+          <td>{{ ride[0] }}</td>
+          <td>{{ ride[1] }}</td>
+          <td>{{ ride[2] }}</td>
+          <td> yes </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+</div>
 <p><a href={{ logout }}>Log out </a>
+  
+<script>
+  $(document).ready(function () {
+      $('#home').addClass('active');
+  });
+</script>
 {% endblock %}

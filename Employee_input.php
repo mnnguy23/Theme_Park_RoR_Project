@@ -10,16 +10,11 @@
 */?>
 
 <?php
+include 'app/base.php';
+include 'app/indexFunctions.php';
   session_start();
   require_once 'vendor/autoload.php';
   $isDevelopment = false;
-  if($isDevelopment == true) {
-    // development link
-    $clearSession = "http://ta_code.dev/logout.php";
-  } else {
-    // deployment link
-    $clearSession = "https://theme-park-management.herokuapp.com/logout.php";
-  }
 ?>
 <?php
   $loader = new Twig_Loader_Filesystem('templates');
@@ -32,7 +27,8 @@
 ?>
 <?php
 	$template = $twig->load('addEmployee.html');
-if(isset($_POST['submit'])){
+  
+  if(isset($_POST['submit'])){
     
     $data_missing = array();
     
@@ -168,5 +164,6 @@ if(isset($_POST['submit'])){
     
 }
   
-  //echo $template->render(array('msg' => $msg, 'clear' => $clearSession));
+$msg ='';
+  echo $template->render(array('msg' => $msg, 'clear' => $clearSession));
   ?>

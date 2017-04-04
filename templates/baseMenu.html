@@ -1,18 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="container">
+<div class="container">
 
-      <!-- The justified navigation menu is meant for single line per list item.
-           Multiple lines will require custom code not provided by Bootstrap. -->
-      <div class="masthead">
-        <h1 class="text-muted">Theme Park</h1>
-        <nav>
-          <ul class="nav nav-justified">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">Reports</a></li>
-            <li><a href="#">Notifications</a></li>
-          </ul>
-        </nav>
-      </div>
+  <!-- The justified navigation menu is meant for single line per list item.
+       Multiple lines will require custom code not provided by Bootstrap. -->
+  <div class="masthead">
+    <h1 class="text-muted">Theme Park Management</h1>
+    <nav>
+      <ul class="nav nav-justified">
+        <li id="home" class="active"><a href="menu.php">Home</a></li>
+        <li id="reports"><a href="#">Reports</a></li>
+        <li id="employees"><a href="#">Employees</a></li>
+        <li id="reports"><a href="Employee_input.php">Add Employee</a></li>
+      </ul>
+    </nav>
+  </div>
+  
 {% endblock %}
