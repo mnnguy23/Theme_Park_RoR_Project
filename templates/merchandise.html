@@ -2,10 +2,35 @@
 {% block title %} Merchandise Report {% endblock %}
 
 {% block content %}
-<h1> Food </h1>
-	<p> Enter type of food: <input type="text" name="food" size="30" value="" /> </p>
-<h2> Gifts </h2>
-	<p> Enter type of gift: <input type="text" name="food" size="30" value="" /> </p>
-<h3> Lockers </h3>
-	<p> Enter locker number: <input type="text" name="food" size="30" value="" /> </p> 
+<div class="header">
+    <div id="header-text">
+      <h1>Merchandise Report</h1>
+      <h2>A list of all merchandise that was sold for the week.</h2>
+    </div>
+</div>
+
+<div class="food">
+    <div id="food-text">
+      <h1>Food</h1>
+      <h2>A report on the food sold in theme park.</h2>
+	  <p> Enter type of food: <input type="text" name="food" size="30" value="" /> </p>
+    </div>
+</div>
+
+<div class="gifts">
+    <div id="gifts-text">
+      <h1> Gifts </h1>
+	<h2>A report on the gifts sold in theme park.</h2>
+	  <p> Enter type of gift: <input type="text" name="food" size="30" value="" /> </p>
+    </div>
+</div>
+
+<div class="locker">
+    <div id="locker-text">
+      <h1>Lockers</h1>
+      <h2>A report on the lockers used in theme park.</h2>
+	  <p> Enter locker number: <input type="text" name="food" size="30" value="" /> </p>
+    </div>
+</div>
+
 {% endblock %}
