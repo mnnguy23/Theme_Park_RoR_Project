@@ -13,7 +13,9 @@
   //list($valid, $result) = checkCredential($data);
   
   echo $template->render(array('msg' => $result, 'clear' => $clearSession));
+  /*
     if($valid) {
       menuRedirect();
     }
+  */
 ?>
