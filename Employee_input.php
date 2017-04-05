@@ -123,10 +123,11 @@
         $e_name=$first_name+" "+$last_name;
 	$username=$firstname+$lastname;
 	 $number=22;
+	$password="password"
         //require_once('../mysqli_connect.php');// needs to deal with .....whatever my db my local db is on
         
-        $query = "INSERT INTO employee(e_name,ssn,employee_id ,super_ssn,bdate,startdate,address,sex,salary,dno,phone_number,employee_username) VALUES 
-	($e_name,$SSN,$Supervisor,$Employee_ID,$birth_date,$Start_Date, $address, $sex,$Wage,$Manages,$phone,$username)";// needs editing
+        $query = "INSERT INTO employee(e_name,ssn,employee_id ,super_ssn,bdate,startdate,address,sex,salary,dno,phone_number,employee_username,employee_password) VALUES 
+	($e_name,$SSN,$Supervisor,$Employee_ID,$birth_date,$Start_Date, $address, $sex,$Wage,$Manages,$phone,$username,$password)";// needs editing
         
         //$stmt = mysqli_prepare($dbConn, $query);
 	
