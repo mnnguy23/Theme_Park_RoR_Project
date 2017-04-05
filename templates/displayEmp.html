@@ -21,15 +21,15 @@
       </thead>
       
       <tbody>
-        {% for info in empData %}
+        {% for employee in employees %}
         <tr>
-          <td>{{ info[0] }}</td>
-          <td>{{ info[1] }}</td>
-          <td>{{ info[2] }}</td>
-	  <td>{{ info[3] }}</td>
-	  <td>{{ info[4] }}</td>
-	  <td>{{ info[5] }}</td>
-  	  <td>{{ info[6] }}</td>
+          <td>{{ employee[0] }}</td>
+          <td>{{ employee[1] }}</td>
+          <td>{{ employee[2] }}</td>
+      	  <td>{{ employee[3] }}</td>
+      	  <td>{{ employee[4] }}</td>
+      	  <td>{{ employee[5] }}</td>
+        	<td>{{ employee[6] }}</td>
         </tr>
         {% endfor %}
       </tbody>
