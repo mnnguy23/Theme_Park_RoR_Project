@@ -133,7 +133,7 @@
 	
 	
 	    
-	$result = $dbconn->query($query);     
+	$result = $pg_querry($dbConn,$query);     
 	if (!$result) { 
    		echo "Error with query: " . $errormessage; 
     		exit(); 
