@@ -4,7 +4,7 @@
 
 {% block content %}
 {% include 'baseMenu.html' %}
-<h2>Welcome {{ fname }} {{ lname }}</h2>
+<h2>Welcome {{ name }}</h2>
 <div class="container">
   <div class="page-header">
     <h1>Maintenance: Ride</h1>
@@ -25,7 +25,7 @@
           <td>{{ ride[0] }}</td>
           <td>{{ ride[1] }}</td>
           <td>{{ ride[2] }}</td>
-          <td> yes </td>
+          <td>{{ ride[3] }} </td>
         </tr>
         {% endfor %}
       </tbody>

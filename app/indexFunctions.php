@@ -5,7 +5,7 @@
      $clearSession = "logout.php";
    } else {
      // deployment link
-     $clearSession = "https://theme-park-management.herokuapp.com/logout.php";
+     $clearSession = "logout.php";
    }
    return $clearSession;
  } 
@@ -13,10 +13,10 @@
  
  <?php
  function queryUserAccess($db, $isDevelopment){
-   $data = array();
-   
    if($isDevelopment == true) {
-     $results = pg_query($db, "SELECT fname, lname, employee_username, employee_password FROM public.employee");
+
+     $data = array();
+     $results = pg_query($db, "SELECT name, employee_username, employee_password FROM public.employee");
   
      if(!$db) {
        $msg = "An error occured.";
@@ -24,27 +24,20 @@
      }  
      
      while($row = pg_fetch_row($results)) {
-       $fname = $row[0];
-       $lname = $row[1];
-       $user = $row[2];
-       $password = $row[3];
-       $data[$user] = array($password, $fname, $lname); 
+       $name = $row[0];
+       $user = $row[1];
+       $password = $row[2];
+       $data[$user] = array($password, $name); 
      }
 
    } else {
-     
      $query = "SELECT name, employee_username, employee_password"
           . " FROM employee";
      $result = $db->query($query);
-     
      while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-       $name = $row['name'];
-       $user = $row['employee_username'];
-       $password = $row['employee_password'];
-       $data[$user] = array($password, $name);
+       $data[$row["employee_username"]] = array($row["employee_password"], $row["name"]);
      }
      $result->closeCursor();
-
    }
    return $data;
  }
@@ -66,8 +59,7 @@
         $_SESSION['valid'] = true;
         $_SESSION['timeout'] = time();
         $_SESSION['user'] = $username;
-        $_SESSION['fname'] = $result[1];
-        $_SESSION['lname'] = $result[2];
+        $_SESSION['name'] = $result[1];;
         $info = 'Valid username and password';
       } else {
         $_SESSION['valid'] = false;
