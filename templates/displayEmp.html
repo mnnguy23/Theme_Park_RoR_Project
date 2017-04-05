@@ -4,19 +4,19 @@
 {% block content %}
 <div class="container">
   <div class="page-header">
-    <h1>Employees info</h1>
+    <h1>Employees Info</h1>
   </div>
     <table class="table table-striped">
       <thead>
         <tr>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Social Security</th>
-          <th>Birthday</th>
-		  <th>Address</th>
-		  <th>Salary</th>
-		  <th>Department Number</th>
-		  <th>Phone Number</th>
+          <th>Name</th>
+	  <th>Employee ID</th>
+          <th>Birth Date</th>
+	  <th>Address</th>
+	  <th>Phone Number</th>
+          <th>Salary</th>
+	  <th>Manager ID</th>
+	  <th>Department Number</th>
         </tr>
       </thead>
       
@@ -26,12 +26,12 @@
           <td>{{ info[0] }}</td>
           <td>{{ info[1] }}</td>
           <td>{{ info[2] }}</td>
-		  <td>{{ info[3] }}</td>
-		  <td>{{ info[4] }}</td>
-		  <td>{{ info[5] }}</td>
-		  <td>{{ info[6] }}</td>
-		  <td>{{ info[7] }}</td>
-          <td> yes </td>
+	  <td>{{ info[3] }}</td>
+	  <td>{{ info[4] }}</td>
+	  <td>{{ info[5] }}</td>
+  	  <td>{{ info[6] }}</td>
+	  <td>{{ info[7] }}</td>
+          <td>{{ info[8] }}</td>
         </tr>
         {% endfor %}
       </tbody>
