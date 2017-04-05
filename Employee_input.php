@@ -22,7 +22,6 @@
   ));
   $isDevelopment = false;
   $clearSession = developmentMode($isDevelopment);
-  $dbConn = loadDB($isDevelopment);
 ?>
 <?php
 	$template = $twig->load('addEmployee.html');
@@ -120,6 +119,7 @@
     }
     
     if(empty($data_missing)){
+	$dbConn = loadDB($isDevelopment);
         $e_name=$first_name+" "+$last_name;
 	$username=$firstname+$lastname;
 	 $number=22;
@@ -139,7 +139,7 @@
     		exit(); 
 	} 
 
-  	 $result->closeCursor();
+  	 $result->$closeCursor();
 
         
     } else {
