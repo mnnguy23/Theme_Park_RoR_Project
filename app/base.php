@@ -33,7 +33,6 @@ function loadDB($isDevelopment) {
 }
 ?>
 <?php
-<?php
 function loginRedirect() {
   header('Location: index.php');
 }
