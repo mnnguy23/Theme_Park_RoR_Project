@@ -1,7 +1,7 @@
 <?php
 include 'app/base.php';
 include 'app/indexFunctions.php';
-$isDevelopment = true;
+$isDevelopment = false;
 $twig = loadEnvironment();
 $clearSession = developmentMode($isDevelopment);
 $dbConn = loadDB($isDevelopment);
@@ -43,7 +43,7 @@ function maintenanceReport($db, $isDevelopment) {
       } else {
         $isOperational = "No";
       }
-      $data[] = array($row["ride_id"], $row["name"], $row["maintenance_date"], $isOperational);
+      $data[] = array($row["attraction_id"], $row["name"], $row["maintenance_date"], $isOperational);
     }
     $result->closeCursor();
   }  
