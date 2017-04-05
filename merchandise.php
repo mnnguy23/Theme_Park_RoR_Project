@@ -2,7 +2,6 @@
 	include 'app/base.php';
 	include 'app/indexFunctions.php';
 	$twig = loadEnvironment();
-	$template = $twig->load('merchandise.html');
 ?>
 
 <?php
