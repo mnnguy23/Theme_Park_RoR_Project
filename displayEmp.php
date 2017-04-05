@@ -8,10 +8,10 @@ $dbConn = loadDB($isDevelopment);
 ?>
 
 <?php
-  $rides = displayEmployees($dbConn, $isDevelopment);
+  $employee = displayEmployees($dbConn, $isDevelopment);
   
   $template = $twig->load('displayEmp.html');
-  $params = array('logout' => $clearSession, 'user' => $user, 'name' => $name);
+  $params = array('logout' => $clearSession, 'user' => $user, 'name' => $name, 'emplyee' => $employee);
   echo $template->render($params);
 ?>
 
