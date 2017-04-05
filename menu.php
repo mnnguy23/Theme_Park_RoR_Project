@@ -35,7 +35,7 @@ function maintenanceReport($db, $isDevelopment) {
       $data[] = array($empName, $attractName, $maintDate, $cost, $isOperational);
     }
   } else {
-    $query = "SELECT E.name, A.name, M.maintenance_date, M.maintenance_cost, A.operational FROM employee as E, attraction as A, attraction_maintenance as M WHERE M.e_id=E.employee_id and M.am_id=A.attraction_id;";
+    $query = "SELECT E.employee_id, A.name, M.maintenance_date, M.maintenance_cost, A.operational FROM employee as E, attraction as A, attraction_maintenance as M WHERE M.e_id=E.employee_id and M.am_id=A.attraction_id;";
     $result = $db->query($query);
     while($row = $result->fetch(PDO::FETCH_ASSOC)) {
       if($row['operational'] == 't') {
@@ -43,7 +43,7 @@ function maintenanceReport($db, $isDevelopment) {
       } else {
         $isOperational = "No";
       }
-      $data[] = array($row["Ename"], $row["name"], $row["maintenance_date"],$row["maintenance_cost"],  $isOperational);
+      $data[] = array($row["employee_id"], $row["name"], $row["maintenance_date"],$row["maintenance_cost"],  $isOperational);
     }
     $result->closeCursor();
   }  
