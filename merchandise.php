@@ -1,14 +1,16 @@
 <?php
 	include 'app/base.php';
-	include 'app/indexFunctions.php';
-	$isDevelopment = false;
 	$twig = loadEnvironment();
-	$clearSession = developmentMode($isDevelopment);
+	$template = $twig->load('merchandise.html');
+?>
+
+<?php
+	$isDevelopment = false;
 	$db = loadDB($isDevelopment);
-	$loginLink = "http://ta_code.dev/index.php";
-?>	
-	
+?>
+
 <?php
 	$template = $twig->load('merchandise.html');
-	echo $template->render(array('login' => $clearSession)); 
-?>
+    	$msg ='';
+	echo $template->render(array('msg' => $msg, 'clear' => $clearSession));
+ ?>
