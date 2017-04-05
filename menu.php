@@ -43,7 +43,7 @@ function maintenanceReport($db, $isDevelopment) {
       } else {
         $isOperational = "No";
       }
-      $data[] = array($row["name"], $row["name"], $row["maintenance_date"],$row["maintenance_cost"],  $isOperational);
+      $data[] = array($row["E.name"], $row["name"], $row["maintenance_date"],$row["maintenance_cost"],  $isOperational);
     }
     $result->closeCursor();
   }  
