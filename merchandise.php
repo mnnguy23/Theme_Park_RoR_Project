@@ -1,5 +1,6 @@
 <?php
 	include 'app/base.php';
+	include 'app/indexFunctions.php';
 	$isDevelopment = false;
 	$twig = loadEnvironment();
 	$clearSession = developmentMode($isDevelopment);
