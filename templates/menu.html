@@ -7,25 +7,27 @@
 <h2>Welcome {{ name }}</h2>
 <div class="container">
   <div class="page-header">
-    <h1>Maintenance: Ride</h1>
+    <h1>Maintenance: Attractions</h1>
   </div>
     <table class="table table-striped">
       <thead>
         <tr>
-          <th>ID</th>
-          <th>Name</th>
+          <th>Employee Name</th>
+          <th>Attraction Name</th>
           <th>Maintenance Date</th>
+          <th>Maintenance Cost</th>
           <th>Operational</th>
         </tr>
       </thead>
       
       <tbody>
-        {% for ride in rides %}
+        {% for maintenance in maintenances %}
         <tr>
-          <td>{{ ride[0] }}</td>
-          <td>{{ ride[1] }}</td>
-          <td>{{ ride[2] }}</td>
-          <td>{{ ride[3] }} </td>
+          <td>{{ maintenance[0] }}</td>
+          <td>{{ maintenance[1] }}</td>
+          <td>{{ maintenance[2] }}</td>
+          <td>{{ maintenance[3] }}</td>
+          <td>{{ maintenance[4] }}</td>
         </tr>
         {% endfor %}
       </tbody>
