@@ -35,7 +35,7 @@ function maintenanceReport($db, $isDevelopment) {
     }
   } else {
     $query = "SELECT attraction_id, name, maintenance_date, operational"
-         . " FROM ride";
+         . " FROM attraction";
     $result = $db->query($query);
     while($row = $result->fetch(PDO::FETCH_ASSOC)) {
       if($row['operational'] == 't') {
