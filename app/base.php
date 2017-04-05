@@ -32,3 +32,9 @@ function loadDB($isDevelopment) {
   return $db;
 }
 ?>
+<?php
+<?php
+function loginRedirect() {
+  header('Location: index.php');
+}
+?>

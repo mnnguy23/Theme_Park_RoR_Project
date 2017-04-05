@@ -14,7 +14,11 @@ $dbConn = loadDB($isDevelopment);
   
   $template = $twig->load('menu.html');
   $params = array('logout' => $clearSession, 'user' => $user, 'name' => $name, 'maintenances' => $maintenances);
-  echo $template->render($params);
+  if($_SESSION['valid']){
+    echo $template->render($params);
+  } else {
+    loginRedirect();
+  }
 ?>
 
 <?php
