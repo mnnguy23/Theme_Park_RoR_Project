@@ -9,7 +9,7 @@
 <?php
 	$merchandises = merchandiseReport($dbConn); 
 	$template = $twig->load('merchandise.html');
-	echo $template->render(array('merchandises' => $merchandises));
+	echo $template->render(array('merchandises' => $merchandises, 'logout' => $clearSession));
 ?>
 
 <?php
