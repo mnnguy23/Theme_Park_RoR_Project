@@ -8,8 +8,6 @@
 ?>
 
 <?php
-	$user = $_SESSION['user'];
-	$name = $_SESSION['name'];
 	$merchandise = merchandiseReport($dbConn, $isDevelopment); 
 	$template = $twig->load('merchandise.html');
 ?>
