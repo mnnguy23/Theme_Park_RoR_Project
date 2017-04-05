@@ -123,7 +123,7 @@
         $e_name=$first_name+" "+$last_name;
         //require_once('../mysqli_connect.php');// needs to deal with .....whatever my db my local db is on
         
-        $query = "INSERT INTO Employees(e_name,ssn ,super_ssn,bdate,startdate,address,sex,salary,dno,phone_number) VALUES 
+        $query = "INSERT INTO employee(e_name,ssn ,super_ssn,bdate,startdate,address,sex,salary,dno,phone_number) VALUES 
 	($e_name,$supervisor,$Start_Date,$bdate,
         $ssn, $birth_date, $address, $sex,
         $Wage,$manages,$phone)";// needs editing
