@@ -2,26 +2,45 @@
 {% block title %} Merchandise Report {% endblock %}
 
 {% block content %}
-<header>
+<div class ="container">
 	<div class="header">
-		<div id="header-text">
+		<div id="page-header">
 			<h1>Merchandise Report</h1>
-			<h2>A list of all merchandise that was sold for the week.</h2>
+			<h2>A list of all merchandise that was sold for the day.</h2>
 		</div>
 	</div>
-</header>
 
-<body>
 	<div class="data">
 		<select name = "Merchandise">
 			<option>Food</option>
 			<option>Gifts</option>
-			<option>Lockers</option>
 		</select>
 		<input type = "submit" name = "" class = "" />
 	</div>
-</body>
-
+	
+	<table class = "table table-striped">
+		<thead>
+			<tr>
+				<th>Product</th>
+				<th>Inventory</th>
+				<th>Serial Number</th>
+				<th>ID</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			{% for merchandise in merchandises %}
+			<tr>
+				<td>{{ merchandise[0] }}</td>
+				<td>{{ merchandise[1] }}</td>
+				<td>{{ merchandise[2] }}</td>
+				<td>{{ merchandise[3] }}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+	
 <footer>
 	<div class="logout">
 		<p><a href={{ logout }}>Log Out</a>
