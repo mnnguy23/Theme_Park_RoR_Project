@@ -155,5 +155,5 @@
     
 }
 $msg ='';
--  echo $template->render(array('msg' => $msg, 'clear' => $clearSession));
+echo $template->render(array('msg' => $msg, 'clear' => $clearSession));
 ?>
