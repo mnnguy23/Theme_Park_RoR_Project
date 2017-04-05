@@ -19,16 +19,16 @@ $dbConn = loadDB($isDevelopment);
 function displayEmployees($db, $isDevelopment) {
   $data = array();
   if($isDevelopment) {
-    $results = pg_query($db ,"SELECT name, employee_id, bdate, address, phone_number, salary, dno  FROM public.attraction");
+    $results = pg_query($db ,"SELECT e_name, employee_id, bdate, address, phone_number, salary, dno  FROM public.attraction");
     while($row = pg_fetch_row($results)) {
       $data[] = array($row["name"], $row["employee_id"], $row["bdate"], row["address"], row["phone_number"], row["salary"], row["dno"]);
     }
   } else {
-    $query = "SELECT name, employee_id, bdate, address, phone_number, salary, dno"
+    $query = "SELECT e_name, employee_id, bdate, address, phone_number, salary, dno"
          . " FROM employee";
     $result = $db->query($query);
     while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-      $data[] = array($row["name"], $row["employee_id"], $row["bdate"], row["address"], row["phone_number"], row["salary"], row["dno"]);
+      $data[] = array($row["e_name"], $row["employee_id"], $row["bdate"], row["address"], row["phone_number"], row["salary"], row["dno"]);
     }
     $result->closeCursor();
   }
