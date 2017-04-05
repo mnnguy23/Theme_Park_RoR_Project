@@ -129,6 +129,7 @@ ALTER TABLE employee ADD startdate date;
 ALTER TABLE ride ALTER COLUMN rider_time SET NOT null;
 
 /*-------------------------------Inserting-------------------------------*/
+INSERT INTO employee
 VALUES
 ('Michael Nguyen', 123456789, null, 1111111, '1995-02-16', '2012-12-9', '1111 Some Rd.', 'M', 120000, 1, 7137654321, 'user', 'password'),
 ('Joshua Pham', 987654321, null, 1111112, '1994-4-21', '2012-12-9', '2222 Some Rd.', 'M', 100000, 2, 7139845261, 'user1', 'password1'),

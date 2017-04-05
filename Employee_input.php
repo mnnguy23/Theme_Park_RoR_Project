@@ -22,7 +22,7 @@
   ));
   $isDevelopment = false;
   $clearSession = developmentMode($isDevelopment);
-  //$dbConn = loadDB($isDevelopment);
+  $dbConn = loadDB($isDevelopment);
 ?>
 <?php
 	$template = $twig->load('addEmployee.html');
@@ -44,13 +44,6 @@
     } else{
         // Trim white space from the name and store the name
         $l_name = trim($_POST['last_name']);
-    }
-    if(empty($_POST['email'])){
-        // Adds name to array
-        $data_missing[] = 'Email';
-    } else {
-        // Trim white space from the name and store the name
-        $email = trim($_POST['email']);
     }
     if(empty($_POST['address'])){
         // Adds name to array
@@ -127,22 +120,20 @@
     }
     
     if(empty($data_missing)){
-        
+        $e_name=$first_name+" "+$last_name;
+	$username=$firstname+$lastname;
+	 $number=22;
         //require_once('../mysqli_connect.php');// needs to deal with .....whatever my db my local db is on
         
-        $query = "INSERT INTO Employees(fname,lname,StartDate,email,ssn,bdate,address,sex,salary,super_ssn,phone_number) VALUES 
-	($first_name, $last_name,$Start_Date, $email,
-        $ssn, $birth_date, $address, $sex,
-        $salary,$supervisor,$phone)";// needs editing
+        $query = "INSERT INTO employee(e_name,ssn,employee_id ,super_ssn,bdate,startdate,address,sex,salary,dno,phone_number,employee_username) VALUES 
+	($e_name,$SSN,$Supervisor,$Employee_ID,$birth_date,$Start_Date, $address, $sex,$Wage,$Manages,$phone,$username)";// needs editing
         
         //$stmt = mysqli_prepare($dbConn, $query);
 	
 	
 	    
-	    
-        $result = pg_query($dbconn,$query); 
+	$result = $db->query($query);     
 	if (!$result) { 
-    		$errormessage = pg_last_error(); 
    		echo "Error with query: " . $errormessage; 
     		exit(); 
 	} 
@@ -163,5 +154,5 @@
     
 }
 $msg ='';
-  echo $template->render(array('msg' => $msg, 'clear' => $clearSession));
-  ?>
+echo $template->render(array('msg' => $msg, 'clear' => $clearSession));
+?>
