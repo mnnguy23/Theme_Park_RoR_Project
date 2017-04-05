@@ -155,5 +155,5 @@
     
 }
 $msg ='';
-$template = $twig->load('addEmployee.html');
+-  echo $template->render(array('msg' => $msg, 'clear' => $clearSession));
 ?>
