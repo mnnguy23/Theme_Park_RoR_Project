@@ -123,7 +123,7 @@
         $e_name=$first_name+" "+$last_name;
 	$username=$firstname+$lastname;
 	 $number=22;
-	$password="password"
+	$password="password";
         //require_once('../mysqli_connect.php');// needs to deal with .....whatever my db my local db is on
         
         $query = "INSERT INTO employee(e_name,ssn,employee_id ,super_ssn,bdate,startdate,address,sex,salary,dno,phone_number,employee_username,employee_password) VALUES 
