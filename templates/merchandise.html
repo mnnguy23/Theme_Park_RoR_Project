@@ -2,19 +2,29 @@
 {% block title %} Merchandise Report {% endblock %}
 
 {% block content %}
-<div class="header">
-	<div id="header-text">
-		<h1>Merchandise Report</h1>
-		<h2>A list of all merchandise that was sold for the week.</h2>
-    </div>
-</div>
+<header>
+	<div class="header">
+		<div id="header-text">
+			<h1>Merchandise Report</h1>
+			<h2>A list of all merchandise that was sold for the week.</h2>
+		</div>
+	</div>
+</header>
 
-<div class="data">
-	<select name = "Merchandise">
-		<option>Food</option>
-		<option>Gifts</option>
-		<option>Lockers</option>
-	</select>
-	<input type = "submit" name = "" class = "" />
-</div>
+<body>
+	<div class="data">
+		<select name = "Merchandise">
+			<option>Food</option>
+			<option>Gifts</option>
+			<option>Lockers</option>
+		</select>
+		<input type = "submit" name = "" class = "" />
+	</div>
+</body>
+
+<footer>
+	<div class="logout">
+		<button class="btn" type="Log Out">Log Out</button>
+	</div>
+</footer>
 {% endblock %}
