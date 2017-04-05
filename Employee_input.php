@@ -121,10 +121,11 @@
     
     if(empty($data_missing)){
         $e_name=$first_name+" "+$last_name;
+	 $number=22;
         //require_once('../mysqli_connect.php');// needs to deal with .....whatever my db my local db is on
         
-        $query = "INSERT INTO employee(e_name,ssn ,super_ssn,bdate,startdate,address,sex,salary,dno,phone_number) VALUES 
-	($e_name,$supervisor,$Start_Date,$bdate,
+        $query = "INSERT INTO employee(e_name,ssn,employee_id ,super_ssn,bdate,startdate,address,sex,salary,dno,phone_number) VALUES 
+	($e_name,$supervisor,$number,$Start_Date,$bdate,
         $ssn, $birth_date, $address, $sex,
         $Wage,$manages,$phone)";// needs editing
         
