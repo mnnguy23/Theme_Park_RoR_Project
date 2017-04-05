@@ -125,8 +125,8 @@
         //require_once('../mysqli_connect.php');// needs to deal with .....whatever my db my local db is on
         
         $query = "INSERT INTO employee(e_name,ssn,employee_id ,super_ssn,bdate,startdate,address,sex,salary,dno,phone_number) VALUES 
-	($e_name,$supervisor,$number,$Start_Date,$bdate,
-        $ssn, $birth_date, $address, $sex,
+	($e_name,$ssn,$supervisor,$number,$bdate,
+         $birth_date,$Start_Date, $address, $sex,
         $Wage,$manages,$phone)";// needs editing
         
         //$stmt = mysqli_prepare($dbConn, $query);
@@ -155,5 +155,5 @@
     
 }
 $msg ='';
-  echo $template->render(array('msg' => $msg, 'clear' => $clearSession));
-  ?>
+$template = $twig->load('addEmployee.html');
+?>
