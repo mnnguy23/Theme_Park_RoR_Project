@@ -21,16 +21,12 @@ $db = new PDO($dsn);
   
 <?php
 	$template = $twig->load('displayEmp.html');
-	echo $template->render(array('msg' => $msg, 'clear' => $clearSession));
 	
-	//$query = "SELECT fname, lname, ssn, bdate, addredd, sex, salary, super_ssn, dno, phone_number, employee_username, employee_password"
-	//		"FROM employee";
-	//$result = $db->query($query);
-//while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-    //echo "<tr>";
-    //echo "<td>" . $row["ride_id"] . "</td>";
-    //echo "<td>" . htmlspecialchars($row["name"]) . "</td>";
-    //echo "<td>" . $row["date_built"] . "</td>";
-    //echo "</tr>";
-			 
+	$query = "SELECT fname, lname, ssn, bdate, address, salary, dno, phone_number"
+			"FROM employee";
+	$result = $db->query($query);
+while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+      $data[] = array($row["fname"], $row["lname"], $row["snn"], $row["salary"]);
+    }
+	echo $template->render(array('msg' => $msg, 'clear' => $clearSession, 'empData' => $data));
 ?>
