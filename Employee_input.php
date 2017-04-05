@@ -133,7 +133,7 @@
 	
 	
 	    
-	$result = $db->query($query);     
+	$result = $dbconn->query($query);     
 	if (!$result) { 
    		echo "Error with query: " . $errormessage; 
     		exit(); 
