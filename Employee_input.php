@@ -45,13 +45,6 @@
         // Trim white space from the name and store the name
         $l_name = trim($_POST['last_name']);
     }
-    if(empty($_POST['email'])){
-        // Adds name to array
-        $data_missing[] = 'Email';
-    } else {
-        // Trim white space from the name and store the name
-        $email = trim($_POST['email']);
-    }
     if(empty($_POST['address'])){
         // Adds name to array
         $data_missing[] = 'address';
@@ -130,10 +123,10 @@
         $e_name=$first_name+" "+$last_name;
         //require_once('../mysqli_connect.php');// needs to deal with .....whatever my db my local db is on
         
-        $query = "INSERT INTO Employees(,lname,StartDate,email,ssn,bdate,address,sex,salary,super_ssn,phone_number) VALUES 
-	($first_name, $last_name,$Start_Date, $email,
+        $query = "INSERT INTO Employees(e_name,ssn ,super_ssn,bdate,startdate,address,sex,salary,dno,phone_number) VALUES 
+	($e_name,$supervisor,$Start_Date,$bdate,
         $ssn, $birth_date, $address, $sex,
-        $Wage,$supervisor,$phone)";// needs editing
+        $Wage,$manages,$phone)";// needs editing
         
         //$stmt = mysqli_prepare($dbConn, $query);
 	
