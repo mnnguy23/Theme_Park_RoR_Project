@@ -5,39 +5,4 @@
 {% block content %}
 {% include 'baseMenu.html' %}
 <h2>Welcome {{ name }}</h2>
-<div class="container">
-  <div class="page-header">
-    <h1>Attractions</h1>
-  </div>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Employee Name</th>
-          <th>Attraction Name</th>
-          <th>Maintenance Date</th>
-          <!-- <th>Maintenance Cost</th> -->
-          <th>Operational</th>
-        </tr>
-      </thead>
-      
-      <tbody>
-        {% for maintenance in maintenances %}
-        <tr>
-          <td>{{ maintenance[0] }}</td>
-          <td>{{ maintenance[1] }}</td>
-          <td>{{ maintenance[2] }}</td>
-          <td>{{ maintenance[3] }}</td>
-          <!-- <td>{{ maintenance[4] }}</td> -->
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-</div>
-<p><a href={{ logout }}>Log out </a>
-  
-<script>
-  $(document).ready(function () {
-      $('#home').addClass('active');
-  });
-</script>
 {% endblock %}
