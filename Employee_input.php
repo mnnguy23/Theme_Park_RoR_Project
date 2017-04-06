@@ -104,15 +104,15 @@ $template = $twig->load('addEmployee.html');
     }
 	
 	if(empty($_POST['Supervisor'])){
-        // Adds name to array
-        //$data_missing[] = 'Supervisor';
+        	$Supervisor=NULL;
     } else {
         // Trim white space from the name and store the name
         $Supervisor = trim($_POST['Supervisor']);
     }
 	if(empty($_POST['Manages'])){
         // Adds name to array
-         $data_missing[] = 'Manages';
+        // $data_missing[] = 'Manages';
+		$Manages=NULL;;
     } else {
         // Trim white space from the name and store the name
         $Manages = trim($_POST['Manages']);
