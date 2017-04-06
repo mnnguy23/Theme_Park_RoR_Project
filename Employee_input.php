@@ -1,16 +1,9 @@
 <?php
-  include 'app/base.php';
-  include 'app/indexFunctions.php';
-  session_start();
-  require_once 'vendor/autoload.php';
-  $isDevelopment = false;
-  if($isDevelopment == true) {
-    // development link
-    $clearSession = "http://ta_code.dev/logout.php";
-  } else {
-    // deployment link
-    $clearSession = "https://theme-park-management.herokuapp.com/logout.php";
-  }
+	include 'app/base.php';
+	include 'app/indexFunctions.php';
+	$isDevelopment = false;
+	$twig = loadEnvironment();
+	$clearSession = developmentMode($isDevelopment);
 ?>
 <?php
   $loader = new Twig_Loader_Filesystem('templates');
