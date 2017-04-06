@@ -11,39 +11,57 @@
 		</div>
 	</div>
 	
-	<div class="data">
-		<select name = "Merchandise">
-			<option>Food</option>
-			<option>Gifts</option>
-		</select>
-		<input type = "submit" name = "" class = "" />
-	</div>
-	
 	<div class="food">
 		<div id="food-report">
 			<h1>Food Report</h1>
-	
-	<table class = "table table-striped">
-		<thead>
-			<tr>
-				<th>Product</th>
-				<th>Inventory</th>
-				<th>Serial Number</th>
-				<th>ID</th>
-			</tr>
-		</thead>
+			<table class = "table table-striped">
+				<thead>
+					<tr>
+						<th>Product</th>
+						<th>Inventory</th>
+						<th>Serial Number</th>
+						<th>ID</th>
+					</tr>
+				</thead>
 		
-		<tbody>
-			{% for merchandise in merchandises %}
-			<tr>
-				<td>{{ merchandise[0] }}</td>
-				<td>{{ merchandise[1] }}</td>
-				<td>{{ merchandise[2] }}</td>
-				<td>{{ merchandise[3] }}</td>
-			</tr>
-			{% endfor %}
-		</tbody>
-	</table>
+				<tbody>
+					{% for merchandise in merchandises %}
+					<tr>
+						<td>{{ merchandise[0] }}</td>
+						<td>{{ merchandise[1] }}</td>
+						<td>{{ merchandise[2] }}</td>
+						<td>{{ merchandise[3] }}</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+	
+	<div class="gift">
+		<div id="gift-report">
+			<h1>Gifts Report</h1>
+			<table class = "table table-striped">
+				<thead>
+					<tr>
+						<th>Product</th>
+						<th>Inventory</th>
+						<th>Serial Number</th>
+						<th>ID</th>
+					</tr>
+				</thead>
+		
+				<tbody>
+					{% for merchandise in merchandises %}
+					<tr>
+						<td>{{ merchandise[0] }}</td>
+						<td>{{ merchandise[1] }}</td>
+						<td>{{ merchandise[2] }}</td>
+						<td>{{ merchandise[3] }}</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
 		</div>
 	</div>
 </div>
