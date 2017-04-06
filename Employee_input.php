@@ -143,6 +143,7 @@ $template = $twig->load('addEmployee.html');
     
 }
 echo ='Employee Added';
+$msg= ' ';
 echo $template->render(array('msg' => $msg, 'clear' => $clearSession));
 ?>
 
