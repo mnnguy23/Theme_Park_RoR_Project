@@ -8,18 +8,30 @@
 ?>
 
 <?php
-	$merchandises = merchandiseReport($dbConn); 
+	$foods = foodsReport($dbConn); 
+	$gifts = giftsReport($dbConn);
 	$template = $twig->load('merchandise.html');
-	echo $template->render(array('merchandises' => $merchandises, 'logout' => $clearSession));
+	echo $template->render(array('foods' => $foods, 'gifts' => $gifts, 'logout' => $clearSession));
 ?>
 
 <?php
-	function merchandiseReport($db) {
+	function foodsReport($db) {
 		$data = array();
-		$query = "SELECT M.product, M.inventory, M.serial_number, M.s_id FROM merchandise as M;";
+		$query = "SELECT M.s_id, M.product, M.serial_number, M.inventory, E.m_date, E.units_sold FROM merchandise as M, merchandise_sales as E, shop as S WHERE S.service_type = 'food', M.s_id = S.shop_id;";
 		$result = $db->query($query);
 		while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-			$data[] = array($row["product"], $row["inventory"], $row["serial_number"], $row["s_id"]);
+			$data[] = array($row["s_id"], $row["product"], $row["serial_number"], $row["inventory"]);
+		}
+		$result->closeCursor();
+		return $data;
+	}
+	
+	function giftsReport($db) {
+		$data = array();
+		$query = "SELECT M.s_id, M.product, M.serial_number, M.inventory, E.m_date, E.units_sold FROM merchandise as M, merchandise_sales as E, shop as S WHERE S.service_type = 'gifts', M.s_id = S.shop_id;";
+		$result = $db->query($query);
+		while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+			$data[] = array($row["s_id"], $row["product"], $row["serial_number"], $row["inventory"]);
 		}
 		$result->closeCursor();
 		return $data;
