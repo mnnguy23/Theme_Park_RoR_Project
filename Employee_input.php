@@ -124,18 +124,36 @@ $template = $twig->load('addEmployee.html');
 	$username=$l_name.$f_name;
 	$password="password";
         
-        $query = "INSERT INTO public.employee (e_name, ssn, employee_id, super_ssn, bdate, startdate, address, sex, salary, dno, phone_number, employee_username, employee_password) VALUES 
-	($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)";// needs editing
+        $query = "INSERT INTO public.employee (e_name, ssn, employee_id, super_ssn, bdate, startdate, address, sex, salary, dno, phone_number, employee_username, employee_password) VALUES
+	(:name,:SSN,:employee,:super,:bdate,:sdate,:address,:sex,:wage,:dno,:phone,:user,:password)";
+	//($e_name,$SSN, $Employee_ID, $Supervisor, $b_date, $Start_Date, $address, $sex,$Wage,$Manages,$phone,$username,$password)";
+	//($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)";// needs editing
        	
 	
-	    
-	$result = pg_query_params($dbConn,$query,array($e_name,$SSN, $Employee_ID, $Supervisor, $b_date, $Start_Date, $address, $sex,$Wage,$Manages,$phone,$username,$password));
-	if (!$result) { 
+	$STH=$dbConn->prepare($query);  
+	    # assign variables to each place holder, indexed 1-3
+	$STH->bindParam(':name', $e_name);
+	$STH->bindParam(':ssn', $SSN);
+	$STH->bindParam(':employee', $Employee_ID);
+	$STH->bindParam(':super', $Supervisor);
+	$STH->bindParam(':bdate', $b_date);
+	$STH->bindParam(':sdate', $Start_Date);
+	$STH->bindParam(':address', $address);
+	$STH->bindParam(':sex', $sex);
+	$STH->bindParam(':wage', $Wage);
+	$STH->bindParam(':dno', $Manages);
+	$STH->bindParam(':phone', $phone);
+	$STH->bindParam(':user', $username);
+	$STH->bindParam(':password', $password);
+	 $STH->execute();
+	//$result = pg_query_params($dbConn,$query,array($e_name,$SSN, $Employee_ID, $Supervisor, $b_date, $Start_Date, $address, $sex,$Wage,$Manages,$phone,$username,$password));
+	/*if (!$result) { 
    		echo "Error with query: " . $errormessage; 
     		exit(); 
 	} 
-	    //var_dump($dbConn);
-  	 $result->$closeCursor();
+	    //var_dump($dbConn)
+  	 $result->$closeCursor();*/
+	    
 	 
         
     } else {
