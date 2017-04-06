@@ -124,7 +124,7 @@
    		echo "Error with query: " . $errormessage; 
     		exit(); 
 	} 
-	    var_dump($dbConn);
+	    //var_dump($dbConn);
   	 $result->$closeCursor();
 	 
         
