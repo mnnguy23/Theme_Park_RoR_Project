@@ -120,25 +120,24 @@
     
     if(empty($data_missing)){
 	$dbConn = loadDB($isDevelopment);
-        $e_name=$first_name+" "+$last_name;
-	$username=$firstname+$lastname;
-	 $number=22;
+        $e_name=$f_name+" "+$l_name;
+	$username=$l_name+$f_name;
 	$password="password";
         //require_once('../mysqli_connect.php');// needs to deal with .....whatever my db my local db is on
         
         $query = "INSERT INTO employee(e_name,ssn,employee_id ,super_ssn,bdate,startdate,address,sex,salary,dno,phone_number,employee_username,employee_password) VALUES 
-	($e_name,$SSN,$Supervisor,$Employee_ID,$birth_date,$Start_Date, $address, $sex,$Wage,$Manages,$phone,$username,$password)";// needs editing
+	($e_name,$SSN,$Supervisor,$Employee_ID,$b_date,$Start_Date, $address, $sex,$Wage,$Manages,$phone,$username,$password)";
         
         //$stmt = mysqli_prepare($dbConn, $query);
 	
 	
 	    
-	$result = $pg_querry($dbConn,$query);     
+	$result = $pg_query($dbConn,$query);     
 	if (!$result) { 
    		echo "Error with query: " . $errormessage; 
     		exit(); 
 	} 
-
+	    
   	 $result->$closeCursor();
 
         
