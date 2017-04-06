@@ -1,14 +1,3 @@
-<?php/*
-	
-    $conn= pg_connect("host=localhost dbname=postgres user=postgres password=warrior12");
-   if(! $conn ) {
-      die('Could not connect: ' . pg_error());
-   }
-   
-   echo 'Connected successfully';
-   pg_close($conn);
-*/?>
-
 <?php
   include 'app/base.php';
   include 'app/indexFunctions.php';
@@ -23,6 +12,7 @@
   $isDevelopment = false;
   $clearSession = developmentMode($isDevelopment);
 ?>
+
 <?php
 	$template = $twig->load('addEmployee.html');
   
@@ -105,7 +95,7 @@
 	
 	if(empty($_POST['Supervisor'])){
         // Adds name to array
-        $data_missing[] = 'Supervisor';
+        //$data_missing[] = 'Supervisor';
     } else {
         // Trim white space from the name and store the name
         $Supervisor = trim($_POST['Supervisor']);
@@ -120,26 +110,23 @@
     
     if(empty($data_missing)){
 	$dbConn = loadDB($isDevelopment);
-        $e_name=$f_name+" "+$l_name;
-	$username=$l_name+$f_name;
+        $e_name=$f_name.' '.$l_name;
+	$username=$l_name.$f_name;
 	$password="password";
-        //require_once('../mysqli_connect.php');// needs to deal with .....whatever my db my local db is on
         
-        $query = "INSERT INTO employee(e_name,ssn,employee_id ,super_ssn,bdate,startdate,address,sex,salary,dno,phone_number,employee_username,employee_password) VALUES 
-	($e_name,$SSN,$Supervisor,$Employee_ID,$b_date,$Start_Date, $address, $sex,$Wage,$Manages,$phone,$username,$password)";
-        
-        //$stmt = mysqli_prepare($dbConn, $query);
-	
+        $query = "INSERT INTO employee (e_name, ssn, employee_id, super_ssn, bdate, startdate, address, sex, salary, dno, phone_number, employee_username, employee_password) VALUES 
+	($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)";// needs editing
+       	
 	
 	    
-	$result = $pg_query($dbConn,$query);     
+	$result = pg_query_params($dbConn,$query,array($e_name,$SSN, $Employee_ID, $Supervisor, $b_date, $Start_Date, $address, $sex,$Wage,$Manages,$phone,$username,$password));
 	if (!$result) { 
    		echo "Error with query: " . $errormessage; 
     		exit(); 
 	} 
-	    
+	    var_dump($dbConn);
   	 $result->$closeCursor();
-
+	 
         
     } else {
         
@@ -154,7 +141,7 @@
     }
     
 }
-$msg ='Employee Added';
+echo ='Employee Added';
 echo $template->render(array('msg' => $msg, 'clear' => $clearSession));
 ?>
 
