@@ -124,7 +124,7 @@ $template = $twig->load('addEmployee.html');
 	$username=$l_name.$f_name;
 	$password="password";
         
-        $query = "INSERT INTO employee (e_name, ssn, employee_id, super_ssn, bdate, startdate, address, sex, salary, dno, phone_number, employee_username, employee_password) VALUES 
+        $query = "INSERT INTO public.employee (e_name, ssn, employee_id, super_ssn, bdate, startdate, address, sex, salary, dno, phone_number, employee_username, employee_password) VALUES 
 	($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)";// needs editing
        	
 	
