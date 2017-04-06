@@ -124,14 +124,13 @@ $template = $twig->load('addEmployee.html');
 	$username=$l_name.$f_name;
 	$password="password";
         
-        //$query = "INSERT INTO public.employee (e_name, ssn, employee_id, super_ssn, bdate, startdate, address, sex, salary, dno, phone_number, employee_username, employee_password) VALUES
-	//(:name,:SSN,:employee,:super,:bdate,:sdate,:address,:sex,:wage,:dno,:phone,:user,:password)";
+        $query = "INSERT INTO employee (e_name, ssn, employee_id, super_ssn, bdate, startdate, address, sex, salary, dno, phone_number, employee_username, employee_password) VALUES
+	(:name,:SSN,:employee,:super,:bdate,:sdate,:address,:sex,:wage,:dno,:phone,:user,:password)";
 	//($e_name,$SSN, $Employee_ID, $Supervisor, $b_date, $Start_Date, $address, $sex,$Wage,$Manages,$phone,$username,$password)";
 	//($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)";// needs editing
        	
 	
-	$STH=$dbConn->("INSERT INTO public.employee (e_name, ssn, employee_id, super_ssn, bdate, startdate, address, sex, salary, dno, phone_number, employee_username, employee_password) VALUES
-	(:name,:SSN,:employee,:super,:bdate,:sdate,:address,:sex,:wage,:dno,:phone,:user,:password)");//prepare($query);  
+	$STH=$dbConn->prepare($query);  
 	    # assign variables to each place holder, indexed 1-3
 	$STH->bindParam(':name', $e_name);
 	$STH->bindParam(':ssn', $SSN);
