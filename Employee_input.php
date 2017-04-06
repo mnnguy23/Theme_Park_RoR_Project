@@ -146,6 +146,8 @@ $template = $twig->load('addEmployee.html');
 	$STH->bindParam(':user', $username);
 	$STH->bindParam(':password', $password);
 	 $STH->execute();
+	 $error = pg_last_error($dbConn);
+	 echo $error
 	//$result = pg_query_params($dbConn,$query,array($e_name,$SSN, $Employee_ID, $Supervisor, $b_date, $Start_Date, $address, $sex,$Wage,$Manages,$phone,$username,$password));
 	/*if (!$result) { 
    		echo "Error with query: " . $errormessage; 
@@ -169,7 +171,6 @@ $template = $twig->load('addEmployee.html');
     }
     
 }
-echo 'Employee Added';
 $msg= '';
 echo $template->render(array('msg' => $msg, 'clear' => $clearSession));
 ?>
