@@ -8,9 +8,9 @@
 ?>
 
 <?php
-	$merchandises = merchandiseReport($dbConn); 
+	$gifts = merchandiseReport($dbConn); 
 	$template = $twig->load('merchandise.html');
-	echo $template->render(array('merchandises' => $merchandises, 'logout' => $clearSession));
+	echo $template->render(array('gifts' => $gifts, 'logout' => $clearSession));
 ?>
 
 <?php
