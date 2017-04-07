@@ -15,7 +15,8 @@ $dbConn = loadDB($isDevelopment);
   $attractionNames = array();
   foreach($data as $key => $value) {
     $attractionNames[] = $value;
-  }  
+  }
+  echo count($attractionNames);
   $params = array('user' => $user, 'name' => $name, 'attractions' => $attractionNames, 'response' => $response);
   
   $template = $twig->load('menu.html');
