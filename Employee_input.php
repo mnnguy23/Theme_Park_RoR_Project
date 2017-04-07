@@ -156,7 +156,7 @@ $template = $twig->load('addEmployee.html');
     		exit(); 
 	} 
 	    //var_dump($dbConn)
-  	 $result->$closeCursor();*/
+  	 $result->$closeCursor();
 	    
 	 
         
