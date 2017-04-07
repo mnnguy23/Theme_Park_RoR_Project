@@ -2,7 +2,7 @@
 include 'app/base.php';
 include 'app/indexFunctions.php';
 include 'attractOperational.php';
-$isDevelopment = true;
+$isDevelopment = false;
 $twig = loadEnvironment();
 $dbConn = loadDB($isDevelopment);
 ?>
