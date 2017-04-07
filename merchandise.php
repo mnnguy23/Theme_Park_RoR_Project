@@ -16,10 +16,10 @@
 <?php
 	function merchandiseReport($db) {
 		$data = array();
-		$query = "SELECT s_id, product, serial_number, inventory FROM merchandise, shop WHERE service_type = 'food' AND s_id = shop_id;";
+		$query = "SELECT M.product, M.inventory, M.serial_number, M.s_id FROM merchandise as M;";
 		$result = $db->query($query);
 		while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-			$data[] = array($row["s_id"], $row["product"], $row["serial_number"], $row["inventory"]);
+			$data[] = array($row["product"], $row["inventory"], $row["serial_number"], $row["s_id"]);
 		}
 		$result->closeCursor();
 		return $data;
