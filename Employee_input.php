@@ -93,7 +93,8 @@ $template = $twig->load('addEmployee.html');
         $data_missing[] = 'Start_Date';
     } else {
         // Trim white space from the name and store the name
-        $Start_Date = trim($_POST['Start_Date']);
+        $Start_Date= trim($_POST['Start_Date']);
+	
     }
 	if(empty($_POST['Employee_ID'])){
         // Adds name to array
