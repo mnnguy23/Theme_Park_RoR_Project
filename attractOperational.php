@@ -17,10 +17,10 @@ function getAttractions($db, $isDevelopment) {
       $attract_id = $row['attraction_id'];
       $name = trim($row['name']);
       $data[$row[$attract_id]] = $row[$name];
+      echo "$attract_id \n";
     }
     $result->closeCursor();
   }
-  echo count($data);
   return $data;
 }
 ?>
