@@ -64,7 +64,8 @@ $template = $twig->load('addEmployee.html');
         $data_missing[] = 'Birth Date';
     } else {
         // Trim white space from the name and store the name
-        $b_date = trim($_POST['birth_date']);
+        $temp = trim($_POST['birth_date']);
+	$b_date=DateTime($temp);
     }
     if(empty($_POST['sex'])){
         // Adds name to array
@@ -93,8 +94,8 @@ $template = $twig->load('addEmployee.html');
         $data_missing[] = 'Start_Date';
     } else {
         // Trim white space from the name and store the name
-        $Start_Date= trim($_POST['Start_Date']);
-	
+        $temp1= trim($_POST['Start_Date']);
+	$Start_Date=DateTime($temp1);
     }
 	if(empty($_POST['Employee_ID'])){
         // Adds name to array
