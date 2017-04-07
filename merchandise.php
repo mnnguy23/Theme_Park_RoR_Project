@@ -16,7 +16,7 @@
 <?php
 	function merchandiseReport($db) {
 		$data = array();
-		$query = "SELECT s_id, product, serial_number, inventory FROM merchandise, shop WHERE s_id = shop_id AND service_type = 'food';";
+		$query = "SELECT shop_id, product, serial_number, inventory FROM merchandise, shop WHERE shop_id = s_id AND service_type = 'food';";
 		$result = $db->query($query);
 		while($row = $result->fetch(PDO::FETCH_ASSOC)) {
 			$data[] = array($row["s_id"], $row["product"], $row["inventory"], $row["serial_number"]);
