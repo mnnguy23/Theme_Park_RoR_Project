@@ -16,8 +16,7 @@ function getAttractions($db, $isDevelopment) {
     while($row = $result->fetch(PDO::FETCH_ASSOC)) {
       $attract_id = $row['attraction_id'];
       $name = trim($row['name']);
-      $data[$attract_id] = $row[$name];
-    
+      $data[$attract_id] = $name;
     }
     $result->closeCursor();
   }
