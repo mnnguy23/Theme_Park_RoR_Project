@@ -60,7 +60,9 @@ function inputEmployee($db, $isDevelopment) {
        } else {
          $result = $db->query($query);
        }
-       $msg = "Employee: $name was successfully created.";
+       if($result) {
+         $msg = "Employee: $name was successfully created.";
+       }
      }
    }
      
