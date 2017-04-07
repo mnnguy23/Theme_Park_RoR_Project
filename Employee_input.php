@@ -127,12 +127,13 @@ $template = $twig->load('addEmployee.html');
 	$password="password";
         
         $query = "INSERT INTO employee (e_name, ssn, employee_id, super_ssn, bdate, startdate, address, sex, salary, dno, phone_number, employee_username, employee_password) VALUES
-	(:name,:SSN,:employee,:super,:bdate,:sdate,:address,:sex,:wage,:dno,:phone,:user,:password)";//bind params method
+	($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)";
+	//(:name,:SSN,:employee,:super,:bdate,:sdate,:address,:sex,:wage,:dno,:phone,:user,:password)";//bind params method
 	//($e_name,$SSN, $Employee_ID, $Supervisor, $b_date, $Start_Date, $address, $sex,$Wage,$Manages,$phone,$username,$password)"; //DIRECT METHOD
-	//($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)";// pg_query_params method
+	// pg_query_params method
        	
 	
-	$STH=$dbConn->prepare($query);  
+	/*$STH=$dbConn->prepare($query);  
 	    # assign variables to each place holder, indexed 1-3
 	$STH->bindParam(':name', $e_name);
 	$STH->bindParam(':ssn', $SSN);
@@ -147,10 +148,10 @@ $template = $twig->load('addEmployee.html');
 	$STH->bindParam(':phone', $phone);
 	$STH->bindParam(':user', $username);
 	$STH->bindParam(':password', $password);
-	 $STH->execute();
+	 $STH->execute();*/
 	
-	//$result = pg_query_params($dbConn,$query,array($e_name,$SSN, $Employee_ID, $Supervisor, $b_date, $Start_Date, $address, $sex,$Wage,$Manages,$phone,$username,$password));
-	/*if (!$result) { 
+	$result = pg_query_params($dbConn,$query,array($e_name,$SSN, $Employee_ID, $Supervisor, $b_date, $Start_Date, $address, $sex,$Wage,$Manages,$phone,$username,$password));
+	if (!$result) { 
    		echo "Error with query: " . $errormessage; 
     		exit(); 
 	} 
