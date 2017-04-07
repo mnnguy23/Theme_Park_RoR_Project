@@ -53,7 +53,7 @@ function inputEmployee($db, $isDevelopment) {
      $dno = $_SESSION['dno'];
      
      if(!checkDuplicateSsn($uniqueInfos) && !checkDuplicateUsername($uniqueInfos) && !checkDuplicatePassword($uniqueInfos) && !checkDuplicatePhoneNumber($uniqueInfos)){
-       $query = "insert into employee values ('$name', $ssn, $superSsn, $emp_id, '$dob', '$startDate', '$address', '$gender', $wage, $dno, $phoneNumber, '$username', '$password');";
+       $query = "INSERT INTO employee VALUES ('$name', $ssn, $superSsn, $emp_id, '$dob', '$startDate', '$address', '$gender', $wage, $dno, $phoneNumber, '$username', '$password');";
        
        if($isDevelopment) {
          $result = pg_query($db, $query);
