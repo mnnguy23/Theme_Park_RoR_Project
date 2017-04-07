@@ -19,7 +19,8 @@ function getAttractions($db, $isDevelopment) {
       $data[$row[$attract_id]] = $row[$name];
     }
     $result->closeCursor();
-  } 
+  }
+  echo count($data);
   return $data;
 }
 ?>

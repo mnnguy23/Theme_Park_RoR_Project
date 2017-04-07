@@ -4,7 +4,6 @@ include 'app/indexFunctions.php';
 include 'attractOperational.php';
 $isDevelopment = false;
 $twig = loadEnvironment();
-$clearSession = developmentMode($isDevelopment);
 $dbConn = loadDB($isDevelopment);
 ?>
 
