@@ -153,6 +153,8 @@ $template = $twig->load('addEmployee.html');
 	$result = pg_query_params($dbConn,$query,array($e_name,$SSN, $Employee_ID, $Supervisor, $b_date, $Start_Date, $address, $sex,$Wage,$Manages,$phone,$username,$password));
 	if (!$result) { 
    		echo "Error with query: " . $errormessage; 
+	        echo pg_last_error($dbConn);
+
     		exit(); 
 	} 
 	    //var_dump($dbConn)
