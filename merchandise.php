@@ -15,7 +15,7 @@
 ?>
 
 <?php
-	function giftReport($db) {
+	function foodReport($db) {
 		$data = array();
 		$query = "SELECT shop_id, product, serial_number, inventory FROM shop, merchandise WHERE shop_id = s_id AND service_type = 'food';";
 		$result = $db->query($query);
