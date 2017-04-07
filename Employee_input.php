@@ -43,8 +43,8 @@ function inputEmployee($db, $isDevelopment) {
      } else {
        $msg = "Duplicate Phone Number Found";
      }
-     $superSsn = getSuperSsn($db);
-     $emp_id = createEmployeeID($db);
+     $superSsn = getSuperSsn($db, $isDevelopment);
+     $emp_id = createEmployeeID($db, $isDevelopment);
      $dob = $_POST["birth_date"];
      $startDate = $_POST["startDatepicker"];
      $address = $_POST["address"];
@@ -117,10 +117,18 @@ function createEmployeeID($db, $isDevelopment) {
 function getSuperSsn($db, $isDevelopment) {
   $empId= $_SESSION['emp_id'];
   $query = "SELECT ssn from employee WHERE $empId=employee_id";
-  $result = pg_query($db, $query);
-  while($row = pg_fetch_row($result)) {
-    $superSsn = $row[0];
+  if($isDevelopment) {
+    $result = pg_query($db, $query);
+    while($row = pg_fetch_row($result)) {
+      $superSsn = $row[0];
+    }
+  } else {
+    $result = $db->query($query);
+    while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+      $superSsn = $row["ssn"];
+    }
   }
+  
   return $superSsn;
 }
 ?>
