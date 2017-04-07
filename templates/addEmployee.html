@@ -1,64 +1,86 @@
 {% extends "base.html" %}
 {% block title %} Add Employee {% endblock %}
+{% block head %}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#startDatepicker" ).datepicker({
+      dateFormat: "yy-mm-dd"
+      });
+  } );
+  </script>
+  <script>
+  $( function() {
+    $( "#birth_date" ).datepicker({
+      dateFormat: "yy-mm-dd"
+      });
+  } );
+  </script>
+{% endblock %}
 
 {% block content %}
 {% include 'baseMenu.html' %}
 <div class="container">
   <div class="page-header">
-    <h1>Add a New Employee</h1>
+    <h2>Add a New Employee</h2>
+    <h3 class="centerText">{{ msg }}</h3>
   </div>
 <div class="container">
-
 <form role = "form" action="Employee_input.php" method="post">
+  <div class ="form-group">
+    <label for="username">Username:</label>
+  <input type="text" name="username" class="form-control" placeholder="Enter your Username" required>
+  </div>
+  <div class ="form-group">
+    <label for="password">Password:</label>
+  <input type="password" name="password" class="form-control" placeholder="Enter your Password" required>
+  </div>
+<div class ="form-group">
+  <label for="name">First and Last Name:</label>
+<input type="text" name="name" class="form-control" placeholder="Enter the first and last name" required>
+</div>
 
-<p>First Name:
-<input type="text" name="first_name" size="30" value="" />
-</p>
+<div class ="form-group">
+  <label for="address">Full Address:</label>
+<input type="text" name="address" class="form-control" placeholder="Enter the full address" required>
+</div>
 
-<p>Last Name:
-<input type="text" name="last_name" size="30" value="" />
-</p>
+<div class ="form-group">
+  <label for="phone">Phone Number:</label>
+<input type="text" name="phone" class="form-control" placeholder="Enter your phone number" required>
+</div>
 
-<p>Full Address:
-<input type="text" name="address" size="60" value="" />
-</p>
+  <div class ="form-group">
+    <label for="birth_date">Birth Date (YYYY-MM-DD)</label>
+<input type="text" id="birth_date" name="birth_date" class="form-control" required>  </div> 
 
 
-<p>Phone Number:
-<input type="text" name="phone" size="10" value="" />
-</p>
+<div class="form-group">
+  <label for="sex">Sex (M or F):</label>
+<select class="form-control" name="sex">
+  <option>M</option>
+  <option>F</option>
+</select>
+</div>
 
-<p>Birth Date (YYYY-MM-DD):
-<input type="text" name="birth_date" size="30" value="" />
-</p>
+<div class ="form-group">
+  <label for="SSN">SSN:</label>
+<input type="password" name="SSN" class="form-control" placeholder="Enter the Social Security Number" required>
+</div>
 
-<p>Sex (M or F):
-<input type="text" name="sex" size="30" maxlength="1" value="" />
-</p>
+  <div class ="form-group">
+    <label for="startDatepicker">Start Date:</label>
+    <input class="form-control" type="text" id="startDatepicker" name = "startDatepicker" required>
+  </div> 
 
-<p> SSN:
-<input type="text" name="SSN" size="9" value="" />
-</p>
+<div class ="form-group">
+  <label for="Wage">Wage:</label>
+<input type="text" name="Wage" class="form-control" placeholder="Enter the wage in XXXXX.xx format" required>
+</div>
 
-<p> Start Date:
-<input type="text" name="Start_Date" size="30" value="" />
-</p>
-
-<p> Employee ID:
-<input type="text" name="Employee_ID" size="7" value="" />
-</p>
-
-<p>  Wage:
-<input type="text" name="Wage" size="30" value="" />
-</p>
-
-<p> Supervisor SSN:
-<input type="text" name="Supervisor" size="9" value="" />
-</p>
-
-<p> Department:
-<input type="text" name="Manages" size="1" value="" />
-</p>
 
 <p>
 <input type="submit" name="submit" value="Send" />

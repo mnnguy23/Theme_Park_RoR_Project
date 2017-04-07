@@ -16,7 +16,7 @@
    if($isDevelopment == true) {
 
      $data = array();
-     $results = pg_query($db, "SELECT name, employee_username, employee_password FROM public.employee");
+     $results = pg_query($db, "SELECT e_name, employee_username, employee_password, dno, employee_id FROM employee");
   
      if(!$db) {
        $msg = "An error occured.";
@@ -27,15 +27,17 @@
        $name = $row[0];
        $user = $row[1];
        $password = $row[2];
-       $data[$user] = array($password, $name); 
+       $dno = $row[3];
+       $emp_id = $row[4];
+       $data[$user] = array($password, $name, $dno, $emp_id); 
      }
 
    } else {
-     $query = "SELECT e_name, employee_username, employee_password"
+     $query = "SELECT e_name, employee_username, employee_password, dno, employee_id"
           . " FROM employee";
      $result = $db->query($query);
      while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-       $data[$row["employee_username"]] = array($row["employee_password"], $row["e_name"]);
+       $data[$row["employee_username"]] = array($row["employee_password"], $row["e_name"], $row["dno"], $row["employee_id"]);
      }
      $result->closeCursor();
    }
@@ -59,14 +61,16 @@
         $_SESSION['valid'] = true;
         $_SESSION['timeout'] = time();
         $_SESSION['user'] = $username;
-        $_SESSION['name'] = $result[1];;
+        $_SESSION['name'] = $result[1];
+        $_SESSION['dno'] = $result[2];
+        $_SESSION['emp_id'] = $result[3];
         $info = 'Valid username and password';
       } else {
         $_SESSION['valid'] = false;
         $info = 'Wrong username and/or password';
-        unset($_SESSION["username"]);
-        unset($_SESSION["password"]);
-        unset($_SESSION["login"]);
+        unset($_POST["username"]);
+        unset($_POST["password"]);
+        unset($_POST["login"]);
       }
     } else {
       $info = '';
