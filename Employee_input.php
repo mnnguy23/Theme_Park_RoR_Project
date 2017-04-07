@@ -125,9 +125,9 @@ $template = $twig->load('addEmployee.html');
 	$password="password";
         
         $query = "INSERT INTO employee (e_name, ssn, employee_id, super_ssn, bdate, startdate, address, sex, salary, dno, phone_number, employee_username, employee_password) VALUES
-	(:name,:SSN,:employee,:super,:bdate,:sdate,:address,:sex,:wage,:dno,:phone,:user,:password)";
-	//($e_name,$SSN, $Employee_ID, $Supervisor, $b_date, $Start_Date, $address, $sex,$Wage,$Manages,$phone,$username,$password)";
-	//($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)";// needs editing
+	(:name,:SSN,:employee,:super,:bdate,:sdate,:address,:sex,:wage,:dno,:phone,:user,:password)";//bind params method
+	//($e_name,$SSN, $Employee_ID, $Supervisor, $b_date, $Start_Date, $address, $sex,$Wage,$Manages,$phone,$username,$password)"; //DIRECT METHOD
+	//($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)";// pg_query_params method
        	
 	
 	$STH=$dbConn->prepare($query);  
@@ -146,8 +146,7 @@ $template = $twig->load('addEmployee.html');
 	$STH->bindParam(':user', $username);
 	$STH->bindParam(':password', $password);
 	 $STH->execute();
-	 $error = pg_last_error($dbConn);
-	 echo $error
+	
 	//$result = pg_query_params($dbConn,$query,array($e_name,$SSN, $Employee_ID, $Supervisor, $b_date, $Start_Date, $address, $sex,$Wage,$Manages,$phone,$username,$password));
 	/*if (!$result) { 
    		echo "Error with query: " . $errormessage; 
