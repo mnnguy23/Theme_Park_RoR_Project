@@ -20,9 +20,8 @@ $dbConn = loadDB($isDevelopment);
   $params = array('user' => $user, 'name' => $name, 'attractions' => $attractionNames, 'response' => $response);
   
   $template = $twig->load('menu.html');
-  
   if($_SESSION['valid']){
-    $twig->display('attractOperational.html', array('template' => $template));
+    echo $template->render($params);
   } else {
     loginRedirect();
   }
