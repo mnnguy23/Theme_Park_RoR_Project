@@ -5,5 +5,6 @@
 {% block content %}
 {% include 'baseMenu.html' %}
 <h1>Welcome {{ name }}</h1>
-{% include 'attractOperational.html' %}
+{% set vars = {'attractions': 'attractions'} %}
+{% include 'attractOperational.html' with vars%}
 {% endblock %}

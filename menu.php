@@ -19,9 +19,10 @@ $dbConn = loadDB($isDevelopment);
   echo count($attractionNames);
   $params = array('user' => $user, 'name' => $name, 'attractions' => $attractionNames, 'response' => $response);
   
-  $template = $twig->load('menu.html');
+  $template = $twig->load('attractionOperational.html');
+  
   if($_SESSION['valid']){
-    echo $template->render($params);
+    $twig->display('menu.html', array('template' => $template));
   } else {
     loginRedirect();
   }
