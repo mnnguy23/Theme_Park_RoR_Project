@@ -65,14 +65,14 @@
 			$result = pg_query($db, $query);
 			
 			while($row = pg_fetch_row($result)) {
-				$data[] = array('product' => $row[0], 'inventory' => $row[1], 'serial_number' => $row[2], 's_id' => $row[3]);
+				$data[] = array('product' => $row[0], 'serial_number' => $row[1], 'inventory' => $row[2], 's_id' => $row[3]);
 			}
 		} 
 		else {
 			$result = $db->query($query);
     
 			while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-				$data[] = array('product' => $row['product'], 'inventory' => $row['inventory'], 'serial_number' => $row["serial_number"], "s_id" => $row["s_id"]);
+				$data[] = array('product' => $row['product'], 'serial_number' => $row['serial_number'], 'inventory' => $row["inventory"], "s_id" => $row["s_id"]);
 			}
 		}
   
