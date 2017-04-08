@@ -16,6 +16,7 @@
 			<tr>
 				<th>ID</th>
 				<th>Product</th>
+				<th>Shop/Kiosk</th>
 				<th>Serial Number</th>
 				<th>Inventory</th>
 			</tr>
@@ -28,6 +29,7 @@
 				<td>{{ food[1] }}</td>
 				<td>{{ food[2] }}</td>
 				<td>{{ food[3] }}</td>
+				<td>{{ food[4] }}</td>
 			</tr>
 			{% endfor %}
 		</tbody>
@@ -39,6 +41,7 @@
 			<tr>
 				<th>ID</th>
 				<th>Product</th>
+				<th>Shop/Kiosk</th>
 				<th>Serial Number</th>
 				<th>Inventory</th>
 			</tr>
@@ -51,9 +54,16 @@
 				<td>{{ gift[1] }}</td>
 				<td>{{ gift[2] }}</td>
 				<td>{{ gift[3] }}</td>
+				<td>{{ gift[4] }}</td>
 			</tr>
 			{% endfor %}
 		</tbody>
 	</table>
 </div>
+	
+<footer>
+	<div class="logout">
+		<p><a href={{ logout }}>Log Out</a>
+	</div>
+</footer>
 {% endblock %}
