@@ -17,8 +17,8 @@
 <?php
 	function foodReport($db) {
 		$data = array();
-		$query = "SELECT shop_id, product, name, serial_number, inventory FROM shop, merchandise WHERE shop_id = s_id AND service_type = 'food';";
 		$query = "SELECT * FROM merchandise ORDER BY s_id;";
+		$query = "SELECT shop_id, product, name, serial_number, inventory FROM shop, merchandise WHERE shop_id = s_id AND service_type = 'food';";
 		$result = $db->query($query);
 		while($row = $result->fetch(PDO::FETCH_ASSOC)) {
 			$data[] = array($row["shop_id"], $row["product"], $row["name"], $row["serial_number"], $row["inventory"]);
@@ -29,8 +29,8 @@
 
 	function giftReport($db) {
 		$data = array();
-		$query = "SELECT shop_id, product, name, serial_number, inventory FROM shop, merchandise WHERE shop_id = s_id AND service_type = 'gifts';";
 		$query = "SELECT * FROM merchandise ORDER BY s_id;";
+		$query = "SELECT shop_id, product, name, serial_number, inventory FROM shop, merchandise WHERE shop_id = s_id AND service_type = 'gifts';";
 		$result = $db->query($query);
 		while($row = $result->fetch(PDO::FETCH_ASSOC)) {
 			$data[] = array($row["shop_id"], $row["product"], $row["name"], $row["serial_number"], $row["inventory"]);
