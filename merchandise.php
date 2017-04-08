@@ -7,7 +7,7 @@
 ?>
 
 <?php
-	$template = $twig->load('addMerchandise.html');
+	$template = $twig->load('merchandise.html');
 	$msg = inputMerchandise($dbConn, $isDevelopment);
 	echo $template->render(array('msg' => $msg));
 ?>
