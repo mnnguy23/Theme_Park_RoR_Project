@@ -1,43 +1,70 @@
-/*{% extends "base.html" %}
-{% block title %} Add Attraction
-<form action="http://localhost/Attraction_input.php" method="post">
+{% extends "base.html" %}
+{% block title %} Add Employee {% endblock %}
+{% block head %}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#bDatepicker" ).datepicker({
+      dateFormat: "yy-mm-dd"
+      });
+  } );
+  </script>
+  <script>
+  $( function() {
+    $( "#m_date" ).datepicker({
+      dateFormat: "yy-mm-dd"
+      });
+  } );
+  </script>
+{% endblock %}
 
-<b>Add a New Attraction</b>
+{% block content %}
+{% include 'baseMenu.html' %}
+<div class="container">
+  <div class="page-header">
+    <h2>Add a New Attraction</h2>
+    <h3 class="centerText">{{ msg }}</h3>
+  </div>
+<div class="container">
+<form role = "form" action="Attraction_input.php" method="post">
+<div class ="form-group">
+  <label for="attraction_name">Attraction Name:</label>
+<input type="text" name="attraction_name" class="form-control" placeholder="Enter the attraction name" required>
+</div>
 
-<p>Attraction Name:
-<input type="text" name="atrraction_name" size="30" value="" />
-</p>
+<div class ="form-group">
+  <label for="price">Price:</label>
+<input type="text" name="price" class="form-control" placeholder="Enter the attraction price" required>
+</div>
 
-<p>Price:
-<input type="text" name="price" size="30" value="" />
-</p>
+<div class ="form-group">
+  <label for="capacity">Phone Number:</label>
+<input type="text" name="capacity" class="form-control" placeholder="Enter attraction capacity" required>
+</div>
 
-<p>Capacity:
-<input type="text" name="capacity" size="30" value="" />
-</p>
-
-<p>Date Built:
-<input type="text" name="date_built" size="60" value="" />
-</p>
+  <div class ="form-group">
+    <label for="date_built">Date Built (YYYY-MM-DD)</label>
+<input type="text" id="bDatePicker" name="date_built" class="form-control" required>  </div> 
 
 
-<p>Maintenance Date:
-<input type="text" name="m_date" size="30" value="" />
-</p>
+<div class ="form-group">
+  <label for="op_cost">SSN:</label>
+<input type="text" name="op_cost" class="form-control" placeholder="Enter the Opertational Cost" required>
+</div>
 
-<p>Department:
-<input type="text" name="dno" size="30" maxlength="1" value="" />
-</p>
-
-<p> Operation Cost:
-<input type="text" name="op_cost" size="30" value="" />
-</p>
-
+  <div class ="form-group">
+    <label for="m_date">Start Date:</label>
+    <input class="form-control" type="text" id="m_date" name = "m_date" required>
+  </div> 
 
 <p>
 <input type="submit" name="submit" value="Send" />
 </p>
 
 </form>
+</div>
 
-{% endblock %}
+{% endblock %
