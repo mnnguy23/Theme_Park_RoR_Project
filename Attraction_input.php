@@ -22,7 +22,7 @@ function inputEmployee($db, $isDevelopment) {
      
      if(!checkDuplicateAname($uniqueInfos)) {
        $name = $_POST["attraction_name"];
-	$msg="Name Approved";     
+	//$msg="Name Approved";     
      } else {
        $msg = "Duplicate Attraction name found";
      }
@@ -38,7 +38,7 @@ function inputEmployee($db, $isDevelopment) {
 	 
      
      if(!checkDuplicateAname($uniqueInfos) ){
-       $query = "INSERT INTO employee VALUES ($att_id, $price,$capacity '$date_built', '$m_date;, '$name', $dno, $op_cost);";
+       $query = "INSERT INTO employee VALUES ($att_id, $price,$capacity, '$date_built', '$m_date;, '$name', $dno, $op_cost);";
        
        if($isDevelopment) {
          $result = pg_query($db, $query);
