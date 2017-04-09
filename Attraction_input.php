@@ -38,7 +38,7 @@ function inputEmployee($db, $isDevelopment) {
 	 $operational=true;
      
      if(!checkDuplicateAname($uniqueInfos) ){
-       $query = "INSERT INTO employee VALUES ($att_id, $price,$capacity '$date_built', '$m_date;, '$name', $dno, $op_cost, $operational);";
+       $query = "INSERT INTO employee VALUES ($att_id, $price,$capacity '$date_built', '$m_date;, '$name', $dno, $op_cost, '$operational';);";
        
        if($isDevelopment) {
          $result = pg_query($db, $query);
