@@ -33,7 +33,7 @@ function inputEmployee($db, $isDevelopment) {
      $capacity = $_POST["capacity"];
      $date_built = $_POST["date_built"];
      $m_date = $_POST["m_date"];
-     $dno = $_SESSION['dno'];
+     $dno = 1;
      $op_cost=$_SESSION['op_cost'];
 	 $operational=true;
      
