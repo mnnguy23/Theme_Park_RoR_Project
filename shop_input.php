@@ -33,7 +33,7 @@ function inputEmployee($db, $isDevelopment) {
      $dno = 2;
      //all inputs have been tested for correctnes with $msg	   
      
-     if(!checkDuplicateGname($uniqueInfos) ){//watch funtion
+     if(!checkDuplicateSname($uniqueInfos) ){//watch funtion
        $query = "INSERT INTO shop VALUES ($shop_id, '$service', $price, '$name', $dno);";
        
        if($isDevelopment) {
