@@ -59,12 +59,12 @@ function gatherInfo($db, $isDevelopment) {
   if($isDevelopment) {
     $result = pg_query($db, $query);
     while($row = pg_fetch_row($result)) {
-      $data[] = array('name' => $row[0]);
+      $data[] = array('gname' => $row[0]);
     }
   } else {
     $result = $db->query($query);
     while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-      $data[] = array('name' => $row[0]);
+      $data[] = array('gname' => $row[0]);
     }
   }
   return $data;
@@ -102,7 +102,7 @@ function createGameID($db, $isDevelopment) {
 function checkDuplicateGname($infos) {
   $result = false;
   foreach($infos as $info) {
-    $Attraction = $info['name'] ?? null;
+    $Attraction = $info['gname'] ?? null;
     if($Attraction == $_POST["g_name"]){
       $result = true;
     } 
