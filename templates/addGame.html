@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block title %} Add Employee {% endblock %}
+{% block head %}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#date_built" ).datepicker({
+      dateFormat: "yy-mm-dd"
+      });
+  } );
+  </script>
+  <script>
+  $( function() {
+    $( "#m_date" ).datepicker({
+      dateFormat: "yy-mm-dd"
+      });
+  } );
+  </script>
+{% endblock %}
+
+{% block content %}
+{% include 'baseMenu.html' %}
+<div class="container">
+  <div class="page-header">
+    <h2>Add a New Game</h2>
+    <h3 class="centerText">{{ msg }}</h3>
+  </div>
+<div class="container">
+<form role = "form" action="Game_input.php" method="post">
+<div class ="form-group">
+  <label for="game_name">Name of Game:</label>
+<input type="text" name="game_name" class="form-control" placeholder="Enter the attraction name" required>
+</div>
+
+  <div class="form-group">
+  <label for="dno">Prize type:</label>
+<select class="form-control" name="dno">
+  <option>small</option>
+  <option>medium</option>
+  <option>large</option>
+</select>
+</div>
+
+<div class ="form-group">
+  <label for="price">Price:</label>
+<input type="text" name="price" class="form-control" placeholder="Enter the attraction price" required>
+</div>
+
+<div class ="form-group">
+  <label for="capacity">Capacity:</label>
+<input type="text" name="capacity" class="form-control" placeholder="Enter attraction capacity" required>
+</div>
+
+  <div class ="form-group">
+    <label for="m_date">Maintenence Date (YYYY-MM-DD)</label>
+    <input class="form-control" type="text" id="m_date" name = "m_date" placeholder="Enter the Maintenence Date" required>
+  </div> 
+  
+  <div class="form-group">
+  <label for="dno">Department (1.Rides or 2.Sales):</label>
+<select class="form-control" name="dno">
+  <option>1</option>
+  <option>2</option>
+</select>
+</div>
+
+<p>
+<input type="submit" name="submit" value="Send" />
+</p>
+
+</form>
+</div>
