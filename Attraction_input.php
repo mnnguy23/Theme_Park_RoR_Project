@@ -18,7 +18,7 @@ function inputEmployee($db, $isDevelopment) {
   
   $msg = "All fields must be entered.";
    if(isset($_POST['submit'])) {
-     $name = $_POST["name"];
+     $name = $_POST["attraction_name"];
      
      if(!checkDuplicateAname($uniqueInfos)) {
        $name = $_POST["attraction_name"];
