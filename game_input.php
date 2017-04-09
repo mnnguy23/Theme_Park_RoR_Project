@@ -103,8 +103,7 @@ function checkDuplicateGname($infos) {
   $result = false;
   foreach($infos as $info) {
     $Game = $info['gname'] ?? null;
-	echo $Game;
-    if($Game == $_POST["g_name"]){
+    if($Game == $_POST["game_name"]){
 	    $result = true;
     } 
   }
