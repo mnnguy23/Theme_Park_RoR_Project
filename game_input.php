@@ -103,12 +103,12 @@ function checkDuplicateGname($infos) {
   $result = false;
   foreach($infos as $info) {
     $Game = $info['gname'] ?? null;
-    echo "inside check ";
 	
     if($Game == $_POST["g_name"]){
       $result = true;
     } 
   }
+	echo $result;
   return $result;
 }
 ?>
