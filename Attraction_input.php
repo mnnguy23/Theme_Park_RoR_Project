@@ -49,7 +49,7 @@ function inputEmployee($db, $isDevelopment) {
          $msg = "Attraction: $name was successfully created.";
        }
 	else{
-		$msg="Issue with Query";
+		//$msg="Issue with Query";
 	}
      }
    }
