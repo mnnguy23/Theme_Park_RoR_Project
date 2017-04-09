@@ -36,7 +36,7 @@ function inputEmployee($db, $isDevelopment) {
      //all inputs have been tested for correctnes with $msg	   
      
      if(!checkDuplicateAname($uniqueInfos) ){
-       $query = "INSERT INTO game VALUES ('$prize', $price, $game_id, '$m_date', '$gname', $capacity, $dno);";
+       $query = "INSERT INTO game VALUES ('$prize', $price, $game_id, '$m_date', '$name', $capacity, $dno);";
        
        if($isDevelopment) {
          $result = pg_query($db, $query);
