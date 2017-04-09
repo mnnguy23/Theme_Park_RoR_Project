@@ -16,8 +16,8 @@
 	$template = $twig->load('merchandise.html');
 	$query = inputFoodDateQuery($isDevelopment);
 	$query = inputGiftsDateQuery($isDevelopment);
-	$reports = foodReport($dbConn, $isDevelopment, $query);
-	$reports = giftReport($dbConn, $isDevelopment, $query);
+	$reports = foodReport($dbConn);
+	$reports = giftReport($dbConn);
 	echo $template->render(array('foods' => $foods, 'gifts' => $gifts, 'logout' => $clearSession));
 ?>
 
