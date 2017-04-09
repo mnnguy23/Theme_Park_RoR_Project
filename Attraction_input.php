@@ -35,7 +35,7 @@ function inputEmployee($db, $isDevelopment) {
      $m_date = $_POST["m_date"];
      $dno = $_SESSION['dno'];
      $op_cost=$_SESSION['op_cost'];
-	 $operational=1;
+	 $operational=true;
      
      if(!checkDuplicateAname($uniqueInfos) ){
        $query = "INSERT INTO employee VALUES ($att_id, $price,$capacity '$date_built', '$m_date;, '$name', $dno, $op_cost, $operational;);";
@@ -59,7 +59,7 @@ function inputEmployee($db, $isDevelopment) {
 ?>
 <?php
 function gatherInfo($db, $isDevelopment) {
-  $query = "SELECT name, attraction_id FROM attraction;";
+  $query = "SELECT name FROM attraction;";
   $data = array();
   if($isDevelopment) {
     $result = pg_query($db, $query);
