@@ -16,13 +16,13 @@
 	$template = $twig->load('merchandise.html');
 	$query = inputFoodDateQuery($isDevelopment);
 	$query = inputGiftsDateQuery($isDevelopment);
-	$reports = foodReport($dbConn);
-	$reports = giftReport($dbConn);
+	$reports = foodReport($dbConn, $isDevelopment, $query);
+	$reports = giftReport($dbConn, $isDevelopment, $query);
 	echo $template->render(array('foods' => $foods, 'gifts' => $gifts, 'logout' => $clearSession));
 ?>
 
 <?php
-	function foodReport($db) {
+	function foodReport($db, $isDevelopment, $query) {
 		$data = array();
 		$query = "SELECT shop_id, product, name, serial_number, inventory, units_sold, m_date FROM shop, merchandise, merchandise_sales WHERE shop_id = s_id AND service_type = 'food' AND serial_number = serial_num;";
 		$result = $db->query($query);
@@ -33,7 +33,7 @@
 		return $data;
 	}
 
-	function giftReport($db) {
+	function giftReport($db, $isDevelopment, $query) {
 		$data = array();
 		$query = "SELECT shop_id, product, name, serial_number, inventory, units_sold, m_date FROM shop, merchandise, merchandise_sales WHERE shop_id = s_id AND service_type = 'gifts' AND serial_number = serial_num;";
 		$result = $db->query($query);
