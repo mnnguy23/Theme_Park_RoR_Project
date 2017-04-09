@@ -54,7 +54,7 @@ function inputEmployee($db, $isDevelopment) {
 ?>
 <?php
 function gatherInfo($db, $isDevelopment) {
-  $query = "SELECT gname FROM game;";
+  $query = "SELECT gname FROM game;";//watch statement
   $data = array();
   if($isDevelopment) {
     $result = pg_query($db, $query);
@@ -75,7 +75,7 @@ function gatherInfo($db, $isDevelopment) {
 function createGameID($db, $isDevelopment) {
   $data = array();
   $currentId = 0;
-  $query = "SELECT game_id FROM game;";
+  $query = "SELECT game_id FROM game;";//watch statement
   if($isDevelopment) {
     $results = pg_query($db, $query);
     while($row = pg_fetch_row($results)) {
@@ -103,6 +103,8 @@ function checkDuplicateGname($infos) {
   $result = false;
   foreach($infos as $info) {
     $Game = $info['gname'] ?? null;
+    echo "inside check ";
+	
     if($Game == $_POST["g_name"]){
       $result = true;
     } 
