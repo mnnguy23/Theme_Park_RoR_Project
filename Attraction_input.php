@@ -34,8 +34,8 @@ function inputEmployee($db, $isDevelopment) {
      $date_built = $_POST["date_built"];
      $m_date = $_POST["m_date"];
      $dno = 1;
-     $op_cost=$_POST["op_cost"];
-	 
+     $op_cost=$_POST["op_cost"];			
+	$mg=$att_id;   
      
      if(!checkDuplicateAname($uniqueInfos) ){
        $query = "INSERT INTO employee VALUES ($att_id, $price,$capacity, '$date_built', '$m_date', '$name', $dno, $op_cost);";
@@ -72,7 +72,9 @@ function gatherInfo($db, $isDevelopment) {
       $data[] = array('name' => $row[0]);
     }
   }
-  
+  if(empty($data){
+	  $msg="not pulling name ";
+  }
   return $data;
 }
 ?>
