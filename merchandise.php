@@ -8,9 +8,8 @@
 
 <?php
 	$template = $twig->load('merchandise.html');
-	$shops = shopReport($dbConn);
 	$msg = inputMerchandise($dbConn, $isDevelopment);
-	echo $template->render(array('shops' => $shops, 'msg' => $msg));
+	echo $template->render(array('msg' => $msg));
 ?>
 
 <?php
