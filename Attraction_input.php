@@ -35,10 +35,10 @@ function inputEmployee($db, $isDevelopment) {
      $m_date = $_POST["m_date"];
      $dno = 1;
      $op_cost=$_POST["op_cost"];			
-	$msg=$att_id;   
+	   
      
      if(!checkDuplicateAname($uniqueInfos) ){
-       $query = "INSERT INTO employee VALUES ($att_id, $price,$capacity, '$date_built', '$m_date', '$name', $dno, $op_cost,DEFAULT);";
+       $query = "INSERT INTO employee VALUES ($att_id, $price, $capacity, '$date_built', '$m_date', '$name', $dno, $op_cost,DEFAULT);";
        
        if($isDevelopment) {
          $result = pg_query($db, $query);
@@ -48,9 +48,6 @@ function inputEmployee($db, $isDevelopment) {
        if($result) {
          $msg = "Attraction: $name was successfully created.";
        }
-	else{
-		//$msg="Issue with Query";
-	}
      }
    }
      
