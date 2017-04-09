@@ -22,13 +22,13 @@ function inputEmployee($db, $isDevelopment) {
      
      if(!checkDuplicateAname($uniqueInfos)) {
        $name = $_POST["attraction_name"];
+	$msg="Name Approved";     
      } else {
        $msg = "Duplicate Attraction name found";
      }
 
      
      $att_id = createAttractionID($db, $isDevelopment);
-	 $name = $_POST["attraction_name"];
      $price = $_POST["price"];
      $capacity = $_POST["capacity"];
      $date_built = $_POST["date_built"];
