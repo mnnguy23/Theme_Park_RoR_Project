@@ -34,7 +34,7 @@ function inputEmployee($db, $isDevelopment) {
      $date_built = $_POST["date_built"];
      $m_date = $_POST["m_date"];
      $dno = 1;
-     $op_cost=$_POST['op_cost'];
+     $op_cost=$_POST["op_cost"];
 	 $operational='true';
      
      if(!checkDuplicateAname($uniqueInfos) ){
