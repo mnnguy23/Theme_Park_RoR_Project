@@ -22,7 +22,7 @@
 ?>
 
 <?php
-	function foodReport($db, $isDevelopment, $query) {
+	function foodReport($db) {
 		$data = array();
 		$query = "SELECT shop_id, product, name, serial_number, inventory, units_sold, m_date FROM shop, merchandise, merchandise_sales WHERE shop_id = s_id AND service_type = 'food' AND serial_number = serial_num;";
 		$result = $db->query($query);
@@ -33,7 +33,7 @@
 		return $data;
 	}
 
-	function giftReport($db, $isDevelopment, $query) {
+	function giftReport($db) {
 		$data = array();
 		$query = "SELECT shop_id, product, name, serial_number, inventory, units_sold, m_date FROM shop, merchandise, merchandise_sales WHERE shop_id = s_id AND service_type = 'gifts' AND serial_number = serial_num;";
 		$result = $db->query($query);
