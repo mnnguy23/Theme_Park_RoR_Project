@@ -20,14 +20,14 @@ function inputEmployee($db, $isDevelopment) {
    if(isset($_POST['submit'])) {
      $name = $_POST["game_name"];
      
-     if(!checkDuplicateGname($uniqueInfos)) {
+     if(!checkDuplicateGname($uniqueInfos)) {//watch funtion
        $name = $_POST["game_name"];
 	//$msg="Name Approved";     
      } else {
        $msg = "Duplicate Game name found";
      }
      
-     $game_id = createGameID($db, $isDevelopment);
+     $game_id = createGameID($db, $isDevelopment);//watch all post names 
 	 $prize = $_POST["prize"];
      $price = $_POST["price"];
      $capacity = $_POST["capacity"];
@@ -35,7 +35,7 @@ function inputEmployee($db, $isDevelopment) {
      $dno = $_POST["dno"];
      //all inputs have been tested for correctnes with $msg	   
      
-     if(!checkDuplicateAname($uniqueInfos) ){
+     if(!checkDuplicateGname($uniqueInfos) ){//watch funtion
        $query = "INSERT INTO game VALUES ('$prize', $price, $game_id, '$m_date', '$name', $capacity, $dno);";
        
        if($isDevelopment) {
