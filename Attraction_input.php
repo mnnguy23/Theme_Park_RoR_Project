@@ -21,7 +21,7 @@ function inputEmployee($db, $isDevelopment) {
      $name = $_POST["name"];
      
      if(!checkDuplicateAname($uniqueInfos)) {
-       $ssn = $_POST["attraction_name"];
+       $name = $_POST["attraction_name"];
      } else {
        $msg = "Duplicate Attraction name found";
      }
