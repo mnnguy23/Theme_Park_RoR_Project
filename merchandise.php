@@ -83,14 +83,14 @@
 <?php
 	function checkDuplicateProductName($infos) {
 		$result = false;
-			
-			foreach($infos as $info) {
-				$product = $info['product'] ?? null;
-			
-				if($product == $_POST["product"]){
-					$result = true;
-				} 
-			}
+
+		foreach($infos as $info) {
+			$product = $info['product'] ?? null;
+    
+			if($product == $_POST["product"]){
+				$result = true;
+			} 
+		}
 		return $result;
 	}
 ?>
