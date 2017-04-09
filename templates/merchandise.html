@@ -1,8 +1,44 @@
 {% extends "base.html" %}
-{% block title %} Merchandises {% endblock %}
+{% block title %} Merchandise Report{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script>
+		$( function() {
+			$( "#startDatepicker" ).datepicker({
+				dateFormat: "yy-mm-dd"
+			});
+		} );
+	</script>
+	<script>
+		$( function() {
+			$( "#endDatepicker" ).datepicker({
+				dateFormat: "yy-mm-dd"
+			});
+		} );
+	</script>
+{% endblock %}
 
 {% block content %}
 {% include 'baseMenu.html' %}
+<br/>
+	<div class="container">
+		<form class = "form-inline" role ="form" method="post" action="merchandise.php">
+			<div class ="form-group">
+			<label for="startDatepicker">Start Date:</label>
+			<input type="text" id="startDatepicker" name = "startDatepicker" required>
+			<div class ="form-group"> 			
+			<div class ="form-group">
+			<label for="endDatepicker">End Date:</label>
+			<input type="text" id="endDatepicker" name="endDatepicker" required>
+			<div class ="form-group">
+			<button class="btn btn-primary" type="submit" name="submit">Submit</button> 
+		</form>
+	</div>
+<br/>
+
 <div class ="container">
 	<div class="header">
 		<div id="page-header">
@@ -19,6 +55,8 @@
 				<th>Shop/Kiosk</th>
 				<th>Serial Number</th>
 				<th>Inventory</th>
+				<th>Inventory Sold</th>
+				<th>Date</th>
 			</tr>
 		</thead>
 		
@@ -30,6 +68,8 @@
 				<td>{{ food[2] }}</td>
 				<td>{{ food[3] }}</td>
 				<td>{{ food[4] }}</td>
+				<td>{{ food[5] }}</td>
+				<td>{{ food[6] }}</td>
 			</tr>
 			{% endfor %}
 		</tbody>
@@ -44,6 +84,8 @@
 				<th>Shop/Kiosk</th>
 				<th>Serial Number</th>
 				<th>Inventory</th>
+				<th>Inventory Sold</th>
+				<th>Date</th>
 			</tr>
 		</thead>
 		
@@ -55,6 +97,8 @@
 				<td>{{ gift[2] }}</td>
 				<td>{{ gift[3] }}</td>
 				<td>{{ gift[4] }}</td>
+				<td>{{ gift[5] }}</td>
+				<td>{{ gift[6] }}</td>
 			</tr>
 			{% endfor %}
 		</tbody>
