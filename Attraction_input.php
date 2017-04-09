@@ -72,9 +72,6 @@ function gatherInfo($db, $isDevelopment) {
       $data[] = array('name' => $row[0]);
     }
   }
-  if(empty($data){
-	  $msg="not pulling name ";
-  }
   return $data;
 }
 ?>
