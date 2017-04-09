@@ -8,23 +8,16 @@
 ?>
 
 <?php
-	/*$foods = foodReport($dbConn);
+	$foods = foodReport($dbConn);
 	$gifts = giftReport($dbConn); 
 	$template = $twig->load('merchandise.html');
-	echo $template->render(array('foods' => $foods, 'gifts' => $gifts, 'logout' => $clearSession));*/
-	
-	$template = $twig->load('merchandise.html');
-	$query = inputFoodDateQuery($isDevelopment);
-	$query = inputGiftsDateQuery($isDevelopment);
-	$reports = foodReport($dbConn, $isDevelopment, $query);
-	$reports = giftReport($dbConn, $isDevelopment, $query);
 	echo $template->render(array('foods' => $foods, 'gifts' => $gifts, 'logout' => $clearSession));
 ?>
 
 <?php
 	function foodReport($db) {
 		$data = array();
-		$query = "SELECT shop_id, product, name, serial_number, inventory, units_sold, m_date FROM shop, merchandise, merchandise_sales WHERE shop_id = s_id AND service_type = 'food' AND serial_number = serial_num;";
+		$query = "SELECT shop_id, product, name, serial_number, inventory FROM shop, merchandise WHERE shop_id = s_id AND service_type = 'food';";
 		$result = $db->query($query);
 		while($row = $result->fetch(PDO::FETCH_ASSOC)) {
 			$data[] = array($row["shop_id"], $row["product"], $row["name"], $row["serial_number"], $row["inventory"]);
@@ -35,70 +28,12 @@
 
 	function giftReport($db) {
 		$data = array();
-		$query = "SELECT shop_id, product, name, serial_number, inventory, units_sold, m_date FROM shop, merchandise, merchandise_sales WHERE shop_id = s_id AND service_type = 'gifts' AND serial_number = serial_num;";
+		$query = "SELECT shop_id, product, name, serial_number, inventory FROM shop, merchandise WHERE shop_id = s_id AND service_type = 'gifts';";
 		$result = $db->query($query);
 		while($row = $result->fetch(PDO::FETCH_ASSOC)) {
 			$data[] = array($row["shop_id"], $row["product"], $row["name"], $row["serial_number"], $row["inventory"]);
 		}
 		$result->closeCursor();
 		return $data;
-	}
-	
-	function inputFoodDateQuery() {
-		if($isDevelopment) {
-			$query = "SELECT shop_id, product, name, serial_number, inventory, units_sold, m_date FROM shop, merchandise, merchandise_sales WHERE shop_id = s_id AND service_type = 'food' AND serial_number = serial_num;";
-  
-			if(isset($_POST['submit']) && !empty($_POST["startDatepicker"]) && !empty($_POST["endDatepicker"])) {
-    
-				if($_POST["startDatepicker"] < $_POST["endDatepicker"]) {
-					$startDate = $_POST["startDatepicker"];
-					$endDate = $_POST["endDatepicker"];
-					$query = "SELECT shop_id, product, name, serial_number, inventory, units_sold, m_date FROM shop, merchandise, merchandise_sales WHERE shop_id = s_id AND service_type = 'food' AND serial_number = serial_num between '$startDate' AND '$endDate';";
-				}
-			}
-		} 
-		
-		else {
-			$query = "SELECT shop_id, product, name, serial_number, inventory, units_sold, m_date FROM shop, merchandise, merchandise_sales WHERE shop_id = s_id AND service_type = 'food' AND serial_number = serial_num;";
-  
-			if(isset($_POST['submit']) && !empty($_POST["startDatepicker"]) && !empty($_POST["endDatepicker"])) {
-    
-				if($_POST["startDatepicker"] < $_POST["endDatepicker"]) {
-					$startDate = $_POST["startDatepicker"];
-					$endDate = $_POST["endDatepicker"];
-					$query = "SELECT shop_id, product, name, serial_number, inventory, units_sold, m_date FROM shop, merchandise, merchandise_sales WHERE shop_id = s_id AND service_type = 'food' AND serial_number = serial_num between '$startDate' AND '$endDate';";
-				}
-			}
-		}
-		return $query;
-	}
-	
-	function inputGiftsDateQuery() {
-		if($isDevelopment) {
-			$query = "SELECT shop_id, product, name, serial_number, inventory, units_sold, m_date FROM shop, merchandise, merchandise_sales WHERE shop_id = s_id AND service_type = 'gifts' AND serial_number = serial_num;";
-  
-			if(isset($_POST['submit']) && !empty($_POST["startDatepicker"]) && !empty($_POST["endDatepicker"])) {
-    
-				if($_POST["startDatepicker"] < $_POST["endDatepicker"]) {
-					$startDate = $_POST["startDatepicker"];
-					$endDate = $_POST["endDatepicker"];
-					$query = "SELECT shop_id, product, name, serial_number, inventory, units_sold, m_date FROM shop, merchandise, merchandise_sales WHERE shop_id = s_id AND service_type = 'gifts' AND serial_number = serial_num between '$startDate' AND '$endDate';";
-				}
-			}
-		} 
-		
-		else {
-			$query = "SELECT shop_id, product, name, serial_number, inventory, units_sold, m_date FROM shop, merchandise, merchandise_sales WHERE shop_id = s_id AND service_type = 'gifts' AND serial_number = serial_num;";
-  
-			if(isset($_POST['submit']) && !empty($_POST["startDatepicker"]) && !empty($_POST["endDatepicker"])) {
-    
-				if($_POST["startDatepicker"] < $_POST["endDatepicker"]) {
-					$startDate = $_POST["startDatepicker"];
-					$endDate = $_POST["endDatepicker"];
-					$query = "SELECT shop_id, product, name, serial_number, inventory, units_sold, m_date FROM shop, merchandise, merchandise_sales WHERE shop_id = s_id AND service_type = 'gifts' AND serial_number = serial_num between '$startDate' AND '$endDate';";
-				}
-			}
-		}
-		return $query;
 	}
 ?>
