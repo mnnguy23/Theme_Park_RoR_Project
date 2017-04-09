@@ -101,7 +101,6 @@ function createGameID($db, $isDevelopment) {
 <?php
 function checkDuplicateGname($infos) {
   $result = false;
-  echo $result;
   foreach($infos as $info) {
     $Game = $info['gname'] ?? null;
 	echo $Game;
