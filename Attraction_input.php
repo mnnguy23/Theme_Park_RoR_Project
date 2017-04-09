@@ -35,7 +35,7 @@ function inputEmployee($db, $isDevelopment) {
      $m_date = $_POST["m_date"];
      $dno = 1;
      $op_cost=$_POST["op_cost"];			
-	$mg=$att_id;   
+	$msg=$att_id;   
      
      if(!checkDuplicateAname($uniqueInfos) ){
        $query = "INSERT INTO employee VALUES ($att_id, $price,$capacity, '$date_built', '$m_date', '$name', $dno, $op_cost);";
