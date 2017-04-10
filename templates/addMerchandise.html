@@ -51,6 +51,25 @@
 			<label for="s_id">Shop/Kiosk ID:</label>
 			<input type="text" name="s_id" class="form-control" placeholder="Enter the Shop/Kiosk ID" required>
 		</div>
+		
+		<h3>Shop/Kiosk Report</h3>
+		<table class = "table table-striped">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Shop/Kiosk</th>
+				</tr>
+			</thead>
+		
+			<tbody>
+				{% for shop in shops %}
+				<tr>
+					<td>{{ shop[0] }}</td>
+					<td>{{ shop[1] }}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
 
 		<p>
 			<input type="submit" name="submit" value="Send" />
