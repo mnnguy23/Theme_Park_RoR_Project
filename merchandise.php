@@ -9,7 +9,7 @@
 <?php
 	$shops = shopReport($dbConn);
 	$template = $twig->load('merchandise.html');
-	$msg = inputEmployee($dbConn, $isDevelopment);
+	$msg = inputMerchandise($dbConn, $isDevelopment);
 	echo $template->render(array('shops' => $shops, 'msg' => $msg));
 ?>
 
