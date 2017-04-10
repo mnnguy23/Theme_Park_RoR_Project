@@ -48,7 +48,7 @@ function maintenanceReport($db, $isDevelopment, $query) {
 
 <?php
 function inputDateQuery() {
-  $query = "SELECT E.e_name, A.a_name, M.maintenance_date, M.maintenance_cost FROM employee AS E, attraction AS A, attraction_maintenance AS M WHERE M.maintenance_date IS NOT NULL AND M.am_id=A.attraction_id;";
+  $query = "SELECT E.e_name, A.a_name, M.maintenance_date, M.maintenance_cost FROM employee AS E, attraction AS A, attraction_maintenance AS M WHERE M.maintenance_date IS NOT NULL AND E.employee_id=M.e_id AND M.am_id=A.attraction_id;";
 
   if(isset($_POST['submit']) && !empty($_POST["startDatepicker"]) && !empty($_POST["endDatepicker"])) {
   
