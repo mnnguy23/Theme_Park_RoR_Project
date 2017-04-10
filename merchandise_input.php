@@ -7,9 +7,10 @@
 ?>
 
 <?php
+	$shops = shopReport($dbConn);
 	$template = $twig->load('addMerchandise.html');
-	$msg = inputEmployee($dbConn, $isDevelopment);
-	echo $template->render(array('msg' => $msg));
+	$msg = inputMerchandise($dbConn, $isDevelopment);
+	echo $template->render(array('shops' => $shops, 'msg' => $msg));
 ?>
 
 <?php
@@ -105,5 +106,18 @@
 			} 
 		}
 		return $result;
+	}
+?>
+
+<?php
+	function shopReport($db) {
+		$data = array();
+		$query = "SELECT shop_id, name FROM shop;";
+		$result = $db->query($query);
+		while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+			$data[] = array($row["shop_id"], $row["name"]);
+		}
+		$result->closeCursor();
+		return $data;
 	}
 ?>
