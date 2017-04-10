@@ -13,7 +13,7 @@
 ?>
 
 <?php
-	function inputEmployee($db, $isDevelopment) {
+	function inputMerchandise($db, $isDevelopment) {
 		$uniqueInfos = gatherInfo($db, $isDevelopment);
 		$msg = "All fields must be entered.";
 		
