@@ -15,10 +15,10 @@ function getBrokenAttractions($db) {
 <?php
 function getRideNames($db) {
   $data = array();
-  $query = "SELECT DISTINCT A.name, A.attraction_id FROM attraction AS A, attraction_maintenance AS AM WHERE A.attraction_id=AM.am_id AND AM.maintenance_date IS NULL;";
+  $query = "SELECT DISTINCT A.a_name, A.attraction_id FROM attraction AS A, attraction_maintenance AS AM WHERE A.attraction_id=AM.am_id AND AM.maintenance_date IS NULL;";
   $result = $db->query($query);
   while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-    $aName = trim($row["name"]);
+    $aName = trim($row["a_name"]);
     $aId = $row["attraction_id"];
     $data[$aId] = $aName;
   }

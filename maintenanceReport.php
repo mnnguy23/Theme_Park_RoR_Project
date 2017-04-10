@@ -48,27 +48,14 @@ function maintenanceReport($db, $isDevelopment, $query) {
 
 <?php
 function inputDateQuery() {
-  if($isDevelopment) {
-    $query = "SELECT E.e_name, A.name, M.maintenance_date, M.maintenance_cost FROM public.employee AS E, public.attraction AS A, public.attraction_maintenance AS M WHERE M.e_id=E.employee_id AND M.am_id=A.attraction_id;";
+  $query = "SELECT E.e_name, A.a_name, M.maintenance_date, M.maintenance_cost FROM employee AS E, attraction AS A, attraction_maintenance AS M WHERE M.e_id=E.employee_id AND M.am_id=A.attraction_id;";
+
+  if(isset($_POST['submit']) && !empty($_POST["startDatepicker"]) && !empty($_POST["endDatepicker"])) {
   
-    if(isset($_POST['submit']) && !empty($_POST["startDatepicker"]) && !empty($_POST["endDatepicker"])) {
-    
-      if($_POST["startDatepicker"] < $_POST["endDatepicker"]) {
-        $startDate = $_POST["startDatepicker"];
-        $endDate = $_POST["endDatepicker"];
-        $query = "SELECT E.e_name, A.name, M.maintenance_date, M.maintenance_cost FROM public.employee AS E, public.attraction AS A, public.attraction_maintenance AS M WHERE M.e_id=E.employee_id AND M.am_id=A.attraction_id AND M.maintenance_date between '$startDate' AND '$endDate';";
-      }
-    }
-  } else {
-    $query = "SELECT E.e_name, A.name, M.maintenance_date, M.maintenance_cost FROM employee AS E, attraction AS A, attraction_maintenance AS M WHERE M.e_id=E.employee_id AND M.am_id=A.attraction_id;";
-  
-    if(isset($_POST['submit']) && !empty($_POST["startDatepicker"]) && !empty($_POST["endDatepicker"])) {
-    
-      if($_POST["startDatepicker"] < $_POST["endDatepicker"]) {
-        $startDate = $_POST["startDatepicker"];
-        $endDate = $_POST["endDatepicker"];
-        $query = "SELECT E.e_name, A.name, M.maintenance_date, M.maintenance_cost FROM employee AS E, attraction AS A, attraction_maintenance AS M WHERE M.e_id=E.employee_id AND M.am_id=A.attraction_id AND M.maintenance_date between '$startDate' AND '$endDate';";
-      }
+    if($_POST["startDatepicker"] < $_POST["endDatepicker"]) {
+      $startDate = $_POST["startDatepicker"];
+      $endDate = $_POST["endDatepicker"];
+      $query = "SELECT E.e_name, A.a_name, M.maintenance_date, M.maintenance_cost FROM employee AS E, attraction AS A, attraction_maintenance AS M WHERE M.e_id=E.employee_id AND M.am_id=A.attraction_id AND M.maintenance_date between '$startDate' AND '$endDate';";
     }
   }
   return $query;

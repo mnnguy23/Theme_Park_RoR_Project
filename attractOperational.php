@@ -6,7 +6,7 @@ function getAttractions($db) {
     $result = $db->query($query);
     while($row = $result->fetch(PDO::FETCH_ASSOC)) {
       $attract_id = $row['attraction_id'];
-      $name = trim($row['name']);
+      $name = trim($row['a_name']);
       $data[$attract_id] = $name;
     }
     $result->closeCursor();
