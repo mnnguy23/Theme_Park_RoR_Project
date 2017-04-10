@@ -56,17 +56,17 @@ function inputEmployee($db, $isDevelopment) {
 ?>
 <?php
 function gatherInfo($db, $isDevelopment) {
-  $query = "SELECT name FROM attraction;";
+  $query = "SELECT a_name FROM attraction;";
   $data = array();
   if($isDevelopment) {
     $result = pg_query($db, $query);
     while($row = pg_fetch_row($result)) {
-      $data[] = array('name' => $row[0]);
+      $data[] = array('a_name' => $row[0]);
     }
   } else {
     $result = $db->query($query);
     while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-      $data[] = array('name' => $row[0]);
+      $data[] = array('a_name' => $row[0]);
     }
   }
   return $data;
@@ -104,7 +104,7 @@ function createAttractionID($db, $isDevelopment) {
 function checkDuplicateAname($infos) {
   $result = false;
   foreach($infos as $info) {
-    $Attraction = $info['name'] ?? null;
+    $Attraction = $info['a_name'] ?? null;
     if($Attraction == $_POST["attraction_name"]){
       $result = true;
     } 
