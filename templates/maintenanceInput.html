@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block head %}
+{% endblock %}
+{% block content %}
+<hr/>
+<div class="header">
+	<div id="page-header">
+		<h2>{{ maintenanceResponse }}</h2>
+  </div>
+</div>
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Attraction Name</th>
+        <th>Broken on</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for broken in brokeRides %}
+      <tr>
+        <td>{{ broken[0] }}</td>
+        <td>{{ broken[1] }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<form role ="form" class = "form-inline"
+  method="post" action="menu.php">
+<div class="container">
+  <div class="form-group">
+    <label for="attractionName">Attractions</label>
+  <select class="form-control" name="brokenAttraction">
+    {% for broken in brokeRides %}
+    <option>{{ broken[0] }}</option>
+    {% endfor %}
+  </select>
+  </div>
+  <div class ="form-group">
+    <label for="cost">|  Cost:</label>
+  <input type="text" name="cost" class="form-control" placeholder="XXX000.00" required>
+  </div>
+  <div class ="form-group">
+    <button class="btn btn-success" type="submit"
+      name="fixed">Ride is Fixed</button>
+  </div>
+</div>
+</form>
+{% endblock %}
