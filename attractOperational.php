@@ -1,17 +1,8 @@
 
 <?php
-function getAttractions($db, $isDevelopment) {
+function getAttractions($db) {
   $data = array();
-  if($isDevelopment) {
-    $query = "SELECT attraction_id, name FROM public.attraction;";
-    $results = pg_query($db, $query);
-    while($row = pg_fetch_row($results)) {
-      $attract_id = $row[0];
-      $name = trim($row[1]);
-      $data[$attract_id] = $name;
-    }
-  } else {
-    $query = "SELECT attraction_id, name FROM attraction;";
+    $query = "SELECT attraction_id, name FROM attraction WHERE operational= true;";
     $result = $db->query($query);
     while($row = $result->fetch(PDO::FETCH_ASSOC)) {
       $attract_id = $row['attraction_id'];
@@ -19,13 +10,12 @@ function getAttractions($db, $isDevelopment) {
       $data[$attract_id] = $name;
     }
     $result->closeCursor();
-  }
   return $data;
 }
 ?>
 
 <?php
-function setRideInoperable($db, $rides, $isDevelopment) {
+function setRideInoperable($db, $rides) {
   $response = "Set a ride inoperable.";
   if(isset($_POST['notOperational']) && !empty($_POST["attractionName"])) {
     $rideName = $_POST["attractionName"];
@@ -40,11 +30,7 @@ function setRideInoperable($db, $rides, $isDevelopment) {
     
       $currentTime = (new \DateTime())->format('Y-m-d H:i:s');
       $query = "UPDATE attraction SET operational = FALSE WHERE attraction_id = $attraction_id;";
-      if($isDevelopment) {
-        $result = pg_query($db, $query); 
-      } else {
         $result = $db->query($query);
-      }
   }
   return $response;
 }
