@@ -10,7 +10,7 @@
 	$shops = shopReport($dbConn);
 	$template = $twig->load('merchandise.html');
 	$msg = inputEmployee($dbConn, $isDevelopment);
-	echo $template->render(array('msg' => $msg));
+	echo $template->render(array('shops' => $shops, 'msg' => $msg));
 ?>
 
 <?php
