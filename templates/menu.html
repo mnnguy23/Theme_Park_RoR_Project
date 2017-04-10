@@ -15,7 +15,9 @@
 <h4 class ="centerText">{{ departmentMsg }} </h4>
 </div>
 {% include 'attractOperational.html' %}
-{% if brokeRides|length > 0 %}
-{% include 'maintenanceInput.html' %}
+{% if dno == 3 %}
+  {% if brokeRides|length > 0 %}
+    {% include 'maintenanceInput.html' %}
+  {% endif %}
 {% endif %}
 {% endblock %}

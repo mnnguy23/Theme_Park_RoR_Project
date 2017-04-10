@@ -38,12 +38,12 @@ $dbConn = loadDB($isDevelopment);
   }
   
   $departmentMsg = "You are part of $dname";
-  
+  $dno = $_SESSION['dno'];
   $attractionNames = array();
   foreach($data as $key => $value) {
     $attractionNames[] = $value;
   }
-  $params = array('user' => $user, 'name' => $name, 'attractions' => $attractionNames, 'response' => $response, 'managerMessage' => $mgrMessage, 'managerMenu' => $isManager, 'departmentMsg' => $departmentMsg, 'brokeRides' => $brokenList, 'maintenanceResponse' => $maintResponse);
+  $params = array('user' => $user, 'name' => $name, 'attractions' => $attractionNames, 'response' => $response, 'managerMessage' => $mgrMessage, 'managerMenu' => $isManager, 'departmentMsg' => $departmentMsg, 'brokeRides' => $brokenList, 'maintenanceResponse' => $maintResponse, 'dno' => $dno);
   
   $template = $twig->load('menu.html');
   if($_SESSION['valid']){
