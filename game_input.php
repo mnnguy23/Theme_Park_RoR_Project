@@ -31,12 +31,11 @@ function inputEmployee($db, $isDevelopment) {
 	 $prize = $_POST["prize"];
      $price = $_POST["price"];
      $capacity = $_POST["capacity"];
-     $m_date = $_POST["m_date"];
      $dno = $_POST["dno"];
      //all inputs have been tested for correctnes with $msg	   
      
      if(!checkDuplicateGname($uniqueInfos) ){//watch funtion
-       $query = "INSERT INTO game VALUES ('$prize', $price, $game_id, '$m_date', '$name', $capacity, $dno);";
+       $query = "INSERT INTO game VALUES ('$prize', $price, $game_id, CURENT_TIME, '$name', $capacity, $dno);";
        
        if($isDevelopment) {
          $result = pg_query($db, $query);
