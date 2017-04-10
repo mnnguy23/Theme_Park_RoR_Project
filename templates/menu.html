@@ -14,7 +14,9 @@
 <h3 class="centerText">{{ managerMessage }} </h3>
 <h4 class ="centerText">{{ departmentMsg }} </h4>
 </div>
+{% if dno == 1%}
 {% include 'attractOperational.html' %}
+{% endif %}
 {% if dno == 3 %}
   {% if brokeRides|length > 0 %}
     {% include 'maintenanceInput.html' %}
