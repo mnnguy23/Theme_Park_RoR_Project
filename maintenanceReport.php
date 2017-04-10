@@ -37,7 +37,7 @@ function maintenanceReport($db, $isDevelopment, $query) {
   } else {
     $result = $db->query($query);
     while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-      $data[] = array($row["e_name"], $row["name"], $row["maintenance_date"],$row["maintenance_cost"],  $isOperational);
+      $data[] = array($row["e_name"], $row["a_name"], $row["maintenance_date"],$row["maintenance_cost"],  $isOperational);
     }
     $result->closeCursor();
   } 
