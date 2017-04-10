@@ -2,7 +2,7 @@
 <?php
 function getAttractions($db) {
   $data = array();
-    $query = "SELECT attraction_id, name FROM attraction WHERE operational= true;";
+    $query = "SELECT attraction_id, a_name FROM attraction WHERE operational= true;";
     $result = $db->query($query);
     while($row = $result->fetch(PDO::FETCH_ASSOC)) {
       $attract_id = $row['attraction_id'];
