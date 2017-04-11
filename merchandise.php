@@ -8,7 +8,7 @@
 
 <?php
 	$shops = getShops($dbConn);
-	$template = $twig->load('merchandise.html');
+	$template = $twig->load('addMerchandise.html');
 	$msg = inputMerchandise($dbConn, $isDevelopment);
 	echo $template->render(array('shops' => $shops, 'msg' => $msg));
 ?>
@@ -35,10 +35,10 @@
 				$msg = "Duplicate Serial Number Found";
 			}
 			
-			$s_id = $_POST["s_id"];
+			$s_id = $_POST[$getID];
      
 			if(!checkDuplicateProduct($uniqueInfos) && !checkDuplicateSerialNumber($uniqueInfos)){
-				$query = "INSERT INTO merchandise VALUES ('$product', $inventory, $serial_number, '$s_id');";
+				$query = "INSERT INTO merchandise VALUES ('$product', $inventory, $serial_number, $s_id);";
        
 				if($isDevelopment) {
 					$result = pg_query($db, $query);
@@ -110,19 +110,6 @@
 ?>
 
 <?php
-	function shopReport($db) {
-		$data = array();
-		$query = "SELECT shop_id, name FROM shop;";
-		$result = $db->query($query);
-		while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-			$data[] = array($row["shop_id"], $row["name"]);
-		}
-		$result->closeCursor();
-		return $data;
-	}
-?>
-
-<?php
 	function getShops($db) {
 		$data = array();
 		$query = "SELECT s_id, name FROM merchandise, shop WHERE s_id = shop_id;";
@@ -130,8 +117,24 @@
 		
 		while($row = $result->fetch(PDO::FETCH_ASSOC)) {
 			$s_id = $row['s_id'];
-			
-			$data[$s_id] = $s_id;
+			$name = trim($row['name']);
+			$data[$s_id] = $name;
+		}
+		$result->closeCursor();
+		return $data;
+	}
+?>
+
+<?php
+	function getID($shops) {
+		$data = array();
+		$query = "SELECT s_id, name FROM merchandise, shop WHERE s_id = shop_id;";
+		$result = $db->query($query);
+		
+		while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+			$name = $row[$shops];
+			$s_id = trim($row['s_id']);
+			$data[$name] = $s_id;
 		}
 		$result->closeCursor();
 		return $data;
