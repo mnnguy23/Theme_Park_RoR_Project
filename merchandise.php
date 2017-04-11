@@ -8,7 +8,7 @@
 
 <?php
 	$shops = getShops($dbConn);
-	$template = $twig->load('merchandise.html');
+	$template = $twig->load('addMerchandise.html');
 	$msg = inputMerchandise($dbConn, $isDevelopment);
 	echo $template->render(array('shops' => $shops, 'msg' => $msg));
 ?>
@@ -35,9 +35,8 @@
 				$msg = "Duplicate Serial Number Found";
 			}
 			
-						$s_id = $_POST[$shops["s_id"]];
-
-			
+			$s_id = $_POST["s_id"];
+     
 			if(!checkDuplicateProduct($uniqueInfos) && !checkDuplicateSerialNumber($uniqueInfos)){
 				$query = "INSERT INTO merchandise VALUES ('$product', $inventory, $serial_number, $s_id);";
        
@@ -107,6 +106,19 @@
 			} 
 		}
 		return $result;
+	}
+?>
+
+<?php
+	function shopReport($db) {
+		$data = array();
+		$query = "SELECT shop_id, name FROM shop;";
+		$result = $db->query($query);
+		while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+			$data[] = array($row["shop_id"], $row["name"]);
+		}
+		$result->closeCursor();
+		return $data;
 	}
 ?>
 
