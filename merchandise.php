@@ -35,10 +35,8 @@
 				$msg = "Duplicate Serial Number Found";
 			}
 			
-			$s_id = $_POST["s_id"];
-     
-			if(!checkDuplicateProduct($uniqueInfos) && !checkDuplicateSerialNumber($uniqueInfos) && getShops($db)){
-				$query = "INSERT INTO merchandise VALUES ('$product', $inventory, $serial_number, $s_id);";
+			if(!checkDuplicateProduct($uniqueInfos) && !checkDuplicateSerialNumber($uniqueInfos)){
+				$query = "INSERT INTO merchandise VALUES ('$product', $inventory, $serial_number, $shops);";
        
 				if($isDevelopment) {
 					$result = pg_query($db, $query);
