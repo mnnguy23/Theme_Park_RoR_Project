@@ -1,141 +1,37 @@
 <?php
 	include 'app/base.php';
 	include 'app/indexFunctions.php';
-	$twig = loadEnvironment();
 	$isDevelopment = false;
+	$twig = loadEnvironment();
+	$clearSession = developmentMode($isDevelopment);
 	$dbConn = loadDB($isDevelopment);
 ?>
 
 <?php
-	$shops = getShops($dbConn);
-	$ID = getID($shops);
-	$template = $twig->load('addMerchandise.html');
-	$msg = inputMerchandise($dbConn, $isDevelopment);
-	echo $template->render(array('shops' => $shops, 'ID' => $ID, 'msg' => $msg));
+	$foods = foodReport($dbConn);
+	$gifts = giftReport($dbConn); 
+	$template = $twig->load('merchandise.html');
+	echo $template->render(array('foods' => $foods, 'gifts' => $gifts, 'logout' => $clearSession));
 ?>
 
 <?php
-	function inputMerchandise($db, $isDevelopment) {
-		$uniqueInfos = gatherInfo($db, $isDevelopment);
-		$msg = "All fields must be entered.";
-		
-		if(isset($_POST['submit'])) {
-			if(!checkDuplicateProduct($uniqueInfos)) {
-				$product = $_POST["product"];
-			} 
-			else {
-				$msg = "Duplicate Product Name found";
-			}
-     
-			$inventory = $_POST["inventory"];
-			
-			if(!checkDuplicateSerialNumber($uniqueInfos)) {
-				$serial_number = $_POST["serial_number"];
-			} 
-			else {
-				$msg = "Duplicate Serial Number Found";
-			}
-			
-			$s_id = $_POST[$ID];
-     
-			if(!checkDuplicateProduct($uniqueInfos) && !checkDuplicateSerialNumber($uniqueInfos)){
-				$query = "INSERT INTO merchandise VALUES ('$product', $inventory, $serial_number, $s_id);";
-       
-				if($isDevelopment) {
-					$result = pg_query($db, $query);
-				} 
-				else {
-					$result = $db->query($query);
-				}
-		
-				if($result) {
-					$msg = "Merchandise: $product was successfully created.";
-				}
-			}
-		} 
-		return $msg;
-	}
-?>
-
-<?php
-	function gatherInfo($db, $isDevelopment) {
-		$query = "SELECT * FROM merchandise;";
+	function foodReport($db) {
 		$data = array();
-  
-		if($isDevelopment) {
-			$result = pg_query($db, $query);
-    
-			while($row = pg_fetch_row($result)) {
-				$data[] = array('product' => $row[0], 'inventory' => $row[1], 'serial_number' => $row[2], 's_id' => $row[3]);
-			}
-		} 
-		else {
-			$result = $db->query($query);
-    
-			while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-				$data[] = array('product' => $row['product'], 'inventory' => $row['inventory'], 'serial_number' => $row["serial_number"], "s_id" => $row["s_id"]);
-			}
-		}
-		return $data;
-	}
-?>
-
-<?php
-	function checkDuplicateProduct($infos) {
-		$result = false;
-
-		foreach($infos as $info) {
-			$product = $info['product'] ?? null;
-    
-			if($product == $_POST["product"]){
-				$result = true;
-			} 
-		}
-		return $result;
-	}
-?>
-
-<?php
-	function checkDuplicateSerialNumber($infos) {
-		$result = false;
-
-		foreach($infos as $info) {
-			$serial_number = $info['serial_number'] ?? null;
-    
-			if($serial_number == $_POST["serial_number"]){
-				$result = true;
-			} 
-		}
-		return $result;
-	}
-?>
-
-<?php
-	function getShops($db) {
-		$data = array();
-		$query = "SELECT s_id, name FROM merchandise, shop WHERE s_id = shop_id;";
+		$query = "SELECT shop_id, product, name, serial_number, inventory FROM shop, merchandise WHERE shop_id = s_id AND service_type = 'food';";
 		$result = $db->query($query);
-		
 		while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-			$s_id = $row['s_id'];
-			$name = trim($row['name']);
-			$data[$s_id] = $name;
+			$data[] = array($row["shop_id"], $row["product"], $row["name"], $row["serial_number"], $row["inventory"]);
 		}
 		$result->closeCursor();
 		return $data;
 	}
-?>
 
-<?php
-	function getID($shops) {
+	function giftReport($db) {
 		$data = array();
-		$query = "SELECT s_id, name FROM merchandise, shop WHERE s_id = shop_id;";
+		$query = "SELECT shop_id, product, name, serial_number, inventory FROM shop, merchandise WHERE shop_id = s_id AND service_type = 'gifts';";
 		$result = $db->query($query);
-		
 		while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-			$name = $row[$shops];
-			$s_id = trim($row['s_id']);
-			$data[$name] = $s_id;
+			$data[] = array($row["shop_id"], $row["product"], $row["name"], $row["serial_number"], $row["inventory"]);
 		}
 		$result->closeCursor();
 		return $data;
