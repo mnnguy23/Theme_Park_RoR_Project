@@ -18,7 +18,7 @@ function loadDB($isDevelopment) {
     $dbname = "theme_park";
     $user = "tester";
     $password = "1234";
-    $db = pg_connect("host=$host port=$port dbname=$dbname user=$user password=$password");
+    $db = new PDO("pgsql: host=$host port=$port dbname=$dbname user=$user password=$password");
   } else {
     $dsn = "pgsql:"
         . "host=ec2-50-17-236-15.compute-1.amazonaws.com;"

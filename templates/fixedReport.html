@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Employee Name</th>
+          <th>Attraction Name</th>
+          <th>Maintenance Date</th>
+          <th>Maintenance Cost</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for report in reports %}
+        <tr>
+          <td>{{ report[0] }}</td>
+          <td>{{ report[1] }}</td>
+          <td>{{ report[2] }}</td>
+          <td>{{ report[3] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+{% endblock %}

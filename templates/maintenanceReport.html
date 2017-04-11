@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %} Maintenance Report{% endblock %}
+
 {% block head %}
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">
@@ -20,49 +20,45 @@
   } );
   </script>
 {% endblock %}
+{% block title %} Maintenance Report {% endblock %}
 
 {% block content %}
 {% include 'baseMenu.html' %}
 <br/>
 <div class="container">
-<form class = "form-inline" role ="form"
-  method="post" action="maintenanceReport.php">
-  <div class ="form-group">
-    <label for="startDatepicker">Start Date:</label>
-    <input type="text" id="startDatepicker" name = "startDatepicker" required>
-    <div class ="form-group"> 
-      <div class ="form-group">
-        <label for="endDatepicker">End Date:</label>
-        <input type="text" id="endDatepicker" name="endDatepicker" required>
-        <div class ="form-group">
-    <button class="btn btn-primary" type="submit"
-      name="submit">Submit</button> 
-</form>
-</div>
-<br/>
-<div class="container">
   <div class="page-header">
     <h1>Attractions</h1>
+  
+  <form class="form-inline" role="form" method="post" action="maintenanceReport.php">
+    <div class="form-group">
+    <select class="form-control" name="report">
+      <option>Fixed</option>
+      <option>Ongoing</option>
+    </select>
   </div>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Employee Name</th>
-          <th>Attraction Name</th>
-          <th>Maintenance Date</th>
-          <th>Maintenance Cost</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for report in reports %}
-        <tr>
-          <td>{{ report[0] }}</td>
-          <td>{{ report[1] }}</td>
-          <td>{{ report[2] }}</td>
-          <td>{{ report[3] }}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+  <div class ="form-group">
+    <button class="btn btn-primary" type="submit" name="select">Select</button> 
+  </div>
+  </form>
+  </div>
+  {% if selectedReport == "Fixed"%}
+    {% include 'fixedReport.html' %}
+  {% elseif selectedReport == "Ongoing" %}
+    {% include 'ongoingReport.html' %}
+  {% endif %}
+    <hr/>
+    <form class = "form-inline" role ="form" method="post" action="maintenanceReport.php"> 
+      <div class ="form-group">
+        <label for="startDatepicker">Start Date:</label>
+        <input type="text" id="startDatepicker" name = "startDatepicker" required>
+      </div>
+      <div class ="form-group">
+        <label for="endDatepicker">| End Date:</label>
+        <input type="text" id="endDatepicker" name="endDatepicker" required>
+      </div>
+      <div class ="form-group">
+        <button class="btn btn-primary" type="submit" name="submit">Submit</button> 
+      </div>
+    </form>
 </div>
 {% endblock %}

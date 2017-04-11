@@ -12,8 +12,17 @@ $dbConn = loadDB($isDevelopment);
 $template = $twig->load('maintenanceReport.html');
 $query = inputDateQuery($isDevelopment);
 
-$reports = maintenanceReport($dbConn, $isDevelopment, $query);
-$params = array('reports' => $reports);
+$reports = '';
+$selectReport = '';
+if (isset($_POST['select'])) {
+  $selectReport = $_POST['report'];
+  if($_POST['report'] == "Fixed") {
+    $reports = maintenanceReport($dbConn, $query);
+  } elseif ($_POST['report'] == "Ongoing") {
+    $reports = ongoingReport($dbConn);
+  }
+}
+$params = array('reports' => $reports, 'selectedReport'=>$selectReport);
 
 if($_SESSION['valid']){
   echo $template->render($params);
@@ -23,24 +32,13 @@ if($_SESSION['valid']){
 ?>
 
 <?php
-function maintenanceReport($db, $isDevelopment, $query) {
+function maintenanceReport($db, $query) {
   $data = array();
-  if($isDevelopment) {
-    $results = pg_query($db ,$query);
-    while($row = pg_fetch_row($results)) {
-      $empName = $row[0];
-      $attractName = $row[1];
-      $maintDate = $row[2];
-      $cost = $row[3];
-      $data[] = array($empName, $attractName, $maintDate, $cost);
-    }
-  } else {
     $result = $db->query($query);
     while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-      $data[] = array($row["e_name"], $row["a_name"], $row["maintenance_date"],$row["maintenance_cost"],  $isOperational);
+      $data[] = array($row["e_name"], $row["a_name"], $row["maintenance_date"],$row["maintenance_cost"]);
     }
     $result->closeCursor();
-  } 
   return $data;
 }
 ?>
@@ -59,5 +57,17 @@ function inputDateQuery() {
     }
   }
   return $query;
+}
+?>
+
+<?php
+function ongoingReport($db) {
+  $data = array();
+  $query = "SELECT A.a_name,M.breakdown_date, M.am_id FROM attraction AS A, (SELECT DISTINCT breakdown_date, am_id FROM attraction_maintenance where maintenance_date is null) AS M WHERE M.am_id=A.attraction_id;";
+  $result = $db->query($query);
+  while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+    $data[] = array($row['a_name'], $row['breakdown_date']);
+  }
+  return $data;
 }
 ?>

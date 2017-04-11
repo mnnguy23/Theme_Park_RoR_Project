@@ -1,0 +1,18 @@
+{% block content %}
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Breakdown Date</th>
+          <th>Attraction Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for report in reports %}
+        <tr>
+          <td>{{ report[0] }}</td>
+          <td>{{ report[1] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+{% endblock %}
