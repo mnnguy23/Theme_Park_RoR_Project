@@ -130,8 +130,8 @@
 		
 		while($row = $result->fetch(PDO::FETCH_ASSOC)) {
 			$s_id = $row['s_id'];
-			$name = trim($row['name']);
-			$data[$s_id] = $name;
+			
+			$data[$s_id] = $s_id;
 		}
 		$result->closeCursor();
 		return $data;
