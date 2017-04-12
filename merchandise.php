@@ -110,30 +110,14 @@
 ?>
 
 <?php
-	function shopReport($db) {
-		$data = array();
-		$query = "SELECT shop_id, name FROM shop;";
-		$result = $db->query($query);
-		while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-			$data[] = array($row["shop_id"], $row["name"]);
-		}
-		$result->closeCursor();
-		return $data;
-	}
-?>
-
-<?php
 	function getShops($db) {
-		$dataName = array();
-		$dataID = array();
+		$data = array();
 		$query = "SELECT s_id, name FROM merchandise, shop WHERE s_id = shop_id;";
 		$result = $db->query($query);
 		
 		while($row = $result->fetch(PDO::FETCH_ASSOC)) {
 			$s_id = $row['s_id'];
-			$name = trim($row['name']);
-			$dataName[$s_id] = $name;
-			$dataID[$name] = $s_id;
+			$data[$s_id] = $s_id;
 		}
 		$result = array_intersect($arrayName, $arrayID);
 		$result->closeCursor();
