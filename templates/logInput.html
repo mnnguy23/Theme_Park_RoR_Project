@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %} logInput {% endblock %}
+
+{% block content %}
+
+{% include 'baseMenu.html' %}
+
+<hr/>
+<div class="container">
+  <div class="page-header">
+    <h2>Input the end of day logs</h2>
+    <h3 class="centerText">{{ duplicateAlert }}</h3>
+  </div>
+  <form class="form-horizontal" role="form" method="post" action="logInput.php">
+    {% for location in locationsNames %}
+    <div class="form-group row">
+      <div class="col-xs-2">
+      <label>{{ location}}:</label>
+    </div>
+    <div class="col-xs-8">
+      <input type="text" class = "form-control" name = "location{{ loop.index0 }}" placeholder="Enter the amount for {{location}} here" required autofocus>
+    </div>
+  </div>
+    {% endfor %}
+    <div class ="form-group">
+      <button class="btn btn-primary" type="submit" name="create">Create Log</button> 
+    </div>
+  </form>
+</div>
+{% endblock %}
