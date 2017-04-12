@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<hr/>
+<div class="container">
+  <div class="page-header">
+    <h2>Station Employee at locations</h2>
+    <h3 class="centerText">{{ duplicateAlert }}</h3>
+  <form class="form-inline" role="form" method="post" action="menu.php">
+    {% for location in locations %}
+    <div class="form-group">
+      <h4>{{ location[1]}}:</h4>
+  
+      <select class="form-control" name="employee{{ loop.index0 }}" required>
+        {% for employee in employees %}
+        <option>{{employee}}</option>
+        {% endfor %}
+      </select>
+  </div>
+    <hr/>
+    {% endfor %}
+    <div class ="form-group">
+      <button class="btn btn-primary" type="submit" name="assign">Assign workers</button> 
+    </div>
+  </form>
+  </div>
+</div>
+{% endblock %}
