@@ -10,7 +10,6 @@
 	$shops = getShops($dbConn);
 	$template = $twig->load('addMerchandise.html');
 	$msg = inputMerchandise($dbConn, $isDevelopment);
-	$shop_id = array_search($_POST["s_id"], $shops);
 	echo $template->render(array('shops' => $shops, 'msg' => $msg));
 ?>
 
@@ -37,6 +36,8 @@
 			}
 			
 			$s_id = $_POST["s_id"];
+			
+			$shop_id = array_search($s_id, $shops);
      
 			if(!checkDuplicateProduct($uniqueInfos) && !checkDuplicateSerialNumber($uniqueInfos)){
 				$query = "INSERT INTO merchandise VALUES ('$product', $inventory, $serial_number, $shop_id);";
