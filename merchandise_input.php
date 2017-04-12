@@ -27,17 +27,12 @@
 			}
      
 			$inventory = $_POST["inventory"];
-			
-			if(!checkDuplicateSerialNumber($uniqueInfos)) {
-				$serial_number = $_POST["serial_number"];
-			} 
-			else {
-				$msg = "Duplicate Serial Number Found";
-			}
+
+			$serial_number = createSerialNumber($db, $isDevelopment);
 
 			$s_id = array_search($_POST["s_id"], getShops($db));
      
-			if(!checkDuplicateProduct($uniqueInfos) && !checkDuplicateSerialNumber($uniqueInfos)){
+			if(!checkDuplicateProduct($uniqueInfos)){
 				$query = "INSERT INTO merchandise VALUES ('$product', $inventory, $serial_number, $s_id);";
        
 				if($isDevelopment) {
@@ -95,17 +90,33 @@
 ?>
 
 <?php
-	function checkDuplicateSerialNumber($infos) {
-		$result = false;
-
-		foreach($infos as $info) {
-			$serial_number = $info['serial_number'] ?? null;
+	function createSerialNumber($db, $isDevelopment) {
+		$data = array();
+		$currentSerialNumber = 0;
+		$query = "SELECT serial_number FROM merchandise;";
+		
+		if($isDevelopment) {
+			$results = pg_query($db, $query);
     
-			if($serial_number == $_POST["serial_number"]){
-				$result = true;
-			} 
+			while($row = pg_fetch_row($results)) {
+    
+				if($row[0] > $currentSerialNumber) {
+					$currentSerialNumber = $row[0];
+				}
+			}
+		} 
+		else {
+			$result = $db->query($query);
+    
+			while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+		
+				if($row["serial_number"] > $currentSerialNumber) {
+					$currentSerialNumber = $row["serial_number"];
+				}
+			}
 		}
-		return $result;
+		$newSerialNumber = $currentSerialNumber + 1;
+		return $newSerialNumber;
 	}
 ?>
 
