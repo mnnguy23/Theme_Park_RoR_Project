@@ -10,7 +10,7 @@
 	$shops = getShops($dbConn);
 	$template = $twig->load('addMerchandise.html');
 	$msg = inputMerchandise($dbConn, $isDevelopment);
-	$msg = array_search($_POST["s_id"], $shops);
+	$shop_id = array_search($_POST["s_id"], $shops);
 	echo $template->render(array('shops' => $shops, 'msg' => $msg));
 ?>
 
@@ -36,7 +36,7 @@
 				$msg = "Duplicate Serial Number Found";
 			}
 			
-			$s_id = $_POST["s_id"];
+			$s_id = $_POST[$shop_id];
      
 			if(!checkDuplicateProduct($uniqueInfos) && !checkDuplicateSerialNumber($uniqueInfos)){
 				$query = "INSERT INTO merchandise VALUES ('$product', $inventory, $serial_number, $s_id);";
