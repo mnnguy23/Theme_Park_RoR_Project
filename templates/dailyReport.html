@@ -27,12 +27,6 @@
     <h1>Attractions</h1>
   </div>
   <form class="form-inline" role="form" method="post" action="report.php">
-    <div class="form-group">
-    <select class="form-control" name="report">
-      <option>Fixed</option>
-      <option>Ongoing</option>
-    </select>
-  </div>
     <div class ="form-group">
       <label for="startDatepicker">Start Date:</label>
       <input type="text" id="startDatepicker" name = "startDatepicker">
@@ -45,12 +39,25 @@
       <button class="btn btn-primary" type="submit" name="submit">Submit</button> 
     </div>
   </form>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Date</th>
+        {% for location in locations %}
+        <th>{{ location }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for id, date in dates %}
+      <tr>
+        <td>{{ date }}</td>
+        {% for amount in amountLogs[id] %}
+          <td>{{ amount }}</td>
+          {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
   </div>
-  {% if selectedReport == "Fixed"%}
-    {% include 'fixedReport.html' %}
-  {% elseif selectedReport == "Ongoing" %}
-    {% include 'ongoingReport.html' %}
-  {% endif %}
-    
-</div>
 {% endblock %}

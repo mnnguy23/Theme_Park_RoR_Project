@@ -1,37 +1,4 @@
 <?php
-include 'app/base.php';
-include 'app/indexFunctions.php';
-$isDevelopment = false;
-$twig = loadEnvironment();
-$dbConn = loadDB($isDevelopment);
-?>
-
-
-<?php
-
-$template = $twig->load('maintenanceReport.html');
-$query = inputDateQuery($isDevelopment);
-
-$reports = '';
-$selectReport = '';
-if (isset($_POST['select'])) {
-  $selectReport = $_POST['report'];
-  if($_POST['report'] == "Fixed") {
-    $reports = maintenanceReport($dbConn, $query);
-  } elseif ($_POST['report'] == "Ongoing") {
-    $reports = ongoingReport($dbConn);
-  }
-}
-$params = array('reports' => $reports, 'selectedReport'=>$selectReport);
-
-if($_SESSION['valid']){
-  echo $template->render($params);
-} else {
-  loginRedirect();
-}
-?>
-
-<?php
 function maintenanceReport($db, $query) {
   $data = array();
     $result = $db->query($query);
@@ -46,14 +13,14 @@ function maintenanceReport($db, $query) {
 
 <?php
 function inputDateQuery() {
-  $query = "SELECT E.e_name, A.a_name, M.maintenance_date, M.maintenance_cost FROM employee AS E, attraction AS A, attraction_maintenance AS M WHERE M.maintenance_date IS NOT NULL AND E.employee_id=M.e_id AND M.am_id=A.attraction_id;";
+  $query = "SELECT E.e_name, A.a_name, M.maintenance_date, M.maintenance_cost FROM employee AS E, attraction AS A, attraction_maintenance AS M WHERE M.maintenance_date IS NOT NULL AND E.employee_id=M.e_id AND M.am_id=A.attraction_id ORDER BY M.maintenance_date DESC;";
 
   if(isset($_POST['submit']) && !empty($_POST["startDatepicker"]) && !empty($_POST["endDatepicker"])) {
   
     if($_POST["startDatepicker"] < $_POST["endDatepicker"]) {
       $startDate = $_POST["startDatepicker"];
       $endDate = $_POST["endDatepicker"];
-      $query = "SELECT E.e_name, A.a_name, M.maintenance_date, M.maintenance_cost FROM employee AS E, attraction AS A, attraction_maintenance AS M WHERE M.am_id=A.attraction_id AND M.breakdown_date between '$startDate' AND '$endDate';";
+      $query = "SELECT E.e_name, A.a_name, M.maintenance_date, M.maintenance_cost FROM employee AS E, attraction AS A, attraction_maintenance AS M WHERE M.am_id=A.attraction_id AND M.maintenance_date IS NOT NULL AND E.employee_id=M.e_id AND M.am_id=A.attraction_id AND M.breakdown_date between '$startDate' AND '$endDate' ORDER BY M.maintenance_date DESC;";
     }
   }
   return $query;

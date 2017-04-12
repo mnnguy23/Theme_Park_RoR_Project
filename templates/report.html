@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Report {% endblock %}
+
+{% block content %}
+{% include 'baseMenu.html' %}
+{% if dno == 3%}
+{% include 'maintenanceReport.html' %}
+{% else %}
+{% include 'dailyReport.html' %}
+{% endif %}
+{% endblock %}
