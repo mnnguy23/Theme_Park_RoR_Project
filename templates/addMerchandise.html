@@ -5,21 +5,6 @@
 	<link rel="stylesheet" href="/resources/demos/style.css">
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	<script>
-		$(function() {
-				$("#startDatepicker").datepicker( {
-					dateFormat: "yy-mm-dd"
-				});
-		});
-	</script>
-  
-	<script>
-		$(function() {
-			$("#birth_date").datepicker( {
-				dateFormat: "yy-mm-dd"
-			});
-		});
-	</script>
 {% endblock %}
 
 {% block content %}
@@ -47,30 +32,15 @@
 			<input type="text" name="inventory" class="form-control" placeholder="Enter the number of products available" required>
 		</div>
 
-		<div class ="form-group">
-			<label for="s_id">Shop/Kiosk ID:</label>
-			<input type="text" name="s_id" class="form-control" placeholder="Enter the Shop/Kiosk ID" required>
+		<div class="form-group">
+			<label for="shop">Shop</label>
+			<select class="form-control" name="s_id">
+				{% for shop in shops %}
+				<option>{{ shop }}</option>
+				{% endfor %}
+			</select>
 		</div>
 		
-		<h3>Shop/Kiosk Report</h3>
-		<table class = "table table-striped">
-			<thead>
-				<tr>
-					<th>ID</th>
-					<th>Shop/Kiosk</th>
-				</tr>
-			</thead>
-		
-			<tbody>
-				{% for shop in shops %}
-				<tr>
-					<td>{{ shop[0] }}</td>
-					<td>{{ shop[1] }}</td>
-				</tr>
-				{% endfor %}
-			</tbody>
-		</table>
-
 		<p>
 			<input type="submit" name="submit" value="Send" />
 		</p>
