@@ -38,7 +38,7 @@
 			$s_id = $_POST["s_id"];
      
 			if(!checkDuplicateProduct($uniqueInfos) && !checkDuplicateSerialNumber($uniqueInfos)){
-				$query = "INSERT INTO merchandise VALUES ('$product', $inventory, $serial_number, $s_id);";
+				$query = "INSERT INTO merchandise SELECT '$product', $inventory, $serial_number, $s_id FROM merchandise, shop WHERE $s_id = shop_id;";
        
 				if($isDevelopment) {
 					$result = pg_query($db, $query);
@@ -116,9 +116,9 @@
 		$result = $db->query($query);
 		
 		while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-			$name = $row['s_id'];
-			$s_id = trim($row['name']);
-			$data[$name] = $s_id;
+			$s_id = $row['s_id'];
+			$name = trim($row['name']);
+			$data[$s_id] = $name;
 		}
 		$result->closeCursor();
 		return $data;
