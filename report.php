@@ -15,28 +15,32 @@ $dno = $_SESSION['dno'];
 
 $reports = '';
 $selectReport = '';
+$locNames = '';
+$dateLogs = '';
+$amountLogs = '';
 
-
-
-if (isset($_POST['submit']) and $dno == 3) {
-  // Maintenance Department //
-  $selectReport = $_POST['report'];
-  if($_POST['report'] == "Fixed") {
-    $query = inputDateQuery($isDevelopment);
-    $reports = maintenanceReport($dbConn, $query);
-  } elseif ($_POST['report'] == "Ongoing") {
-    $reports = ongoingReport($dbConn);
+if(isset($_POST['submit'])){
+  if ($dno == 3) {
+    // Maintenance Department //
+    $selectReport = $_POST['report'];
+    if($_POST['report'] == "Fixed") {
+      $query = inputDateQuery($isDevelopment);
+      $reports = maintenanceReport($dbConn, $query);
+    } elseif ($_POST['report'] == "Ongoing") {
+      $reports = ongoingReport($dbConn);
+    }
+    // End of Maintenance //
+  } else {
+    // All the the department //
+    $locations = listLocations($dbConn, $dno);
+    $locNames = array_map('getLocationNames', $locations);
+    $logs = queryReport($dbConn, $dno);
+    $dateLogs = array_map('getTimeLogs', $logs);
+    $amountLogs = array_map('getAmountLogs', $logs);
+    // End of the rest //
   }
-  // End of Maintenance //
-} else {
-  // All the the department //
-  $locations = listLocations($dbConn, $dno);
-  $locNames = array_map('getLocationNames', $locations);
-  $logs = queryReport($dbConn, $dno);
-  $dateLogs = array_map('getTimeLogs', $logs);
-  $amountLogs = array_map('getAmountLogs', $logs);
-  // End of the rest //
 }
+
 
 $params = array('reports' => $reports, 'selectedReport'=>$selectReport, 'dno'=> $dno, 'locations' => $locNames, 'dates' => $dateLogs, 'amountLogs' => $amountLogs);
 if($_SESSION['valid']){
