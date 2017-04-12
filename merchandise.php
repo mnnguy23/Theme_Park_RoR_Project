@@ -8,7 +8,7 @@
 
 <?php
 	$shops = getShops($dbConn);
-	$template = $twig->load('addMerchandise.html');
+	$template = $twig->load('merchandise.html');
 	$msg = inputMerchandise($dbConn, $isDevelopment);
 	echo $template->render(array('shops' => $shops, 'msg' => $msg));
 ?>
