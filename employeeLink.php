@@ -107,17 +107,19 @@ function listEmployeeNames($employees) {
 function getLocationIds($locations) {
   return $locations[0];
 }
-  
+?>
+
+<?php
+function getLocationNames($locations) {
+  return $locations[1];
+}
 ?>
 <?php
 function assignEmployeeToLocation($db, $dno, $employeeIds, $locationIds) {
+  echo "Count: " + count($employeeIds);
   foreach($locationIds as $key=>$location) {
     $id = $employeeIds[$key];
     assign($db, $dno, $id, $location);
   }
 }
-?>
-
-<?php
-function createLog($db, $dno){}
 ?>
