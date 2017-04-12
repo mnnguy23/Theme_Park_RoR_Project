@@ -112,7 +112,7 @@
 <?php
 	function getShops($db) {
 		$data = array();
-		$query = "SELECT s_id, name FROM merchandise, shop JOIN shop_id ON s_id = name WHERE s_id = shop_id;";
+		$query = "SELECT s_id, name FROM merchandise LEFT OUTER JOIN shop ON s_id = shop_id;";
 		$result = $db->query($query);
 		
 		while($row = $result->fetch(PDO::FETCH_ASSOC)) {
