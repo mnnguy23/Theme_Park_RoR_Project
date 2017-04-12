@@ -12,6 +12,7 @@ $dbConn = loadDB($isDevelopment);
 <?php
 $template = $twig->load('report.html');
 $dno = $_SESSION['dno'];
+$department = $_SESSION["department"];
 
 $reports = '';
 $selectReport = '';
@@ -42,7 +43,7 @@ if(isset($_POST['submit'])){
 }
 
 
-$params = array('reports' => $reports, 'selectedReport'=>$selectReport, 'dno'=> $dno, 'locations' => $locNames, 'dates' => $dateLogs, 'amountLogs' => $amountLogs);
+$params = array('reports' => $reports, 'selectedReport'=>$selectReport, 'dno'=> $dno, 'locations' => $locNames, 'dates' => $dateLogs, 'amountLogs' => $amountLogs, "department" => $department);
 if($_SESSION['valid']){
   echo $template->render($params);
 } else {
