@@ -22,8 +22,8 @@ body {
 /* Customize the nav-justified links to be fill the entire space of the .navbar */
 
 .nav-justified {
-  background-color: #eee;
-  border: 1px solid #ccc;
+  background-color: #07488e;
+  border: 1px solid #2c5cf9;
   border-radius: 5px;
 }
 .nav-justified > li > a {
