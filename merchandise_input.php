@@ -10,6 +10,7 @@
 	$shops = getShops($dbConn);
 	$template = $twig->load('addMerchandise.html');
 	$msg = inputMerchandise($dbConn, $isDevelopment);
+	$msg = array_search($_POST["s_id"], $shops);
 	echo $template->render(array('shops' => $shops, 'msg' => $msg));
 ?>
 
