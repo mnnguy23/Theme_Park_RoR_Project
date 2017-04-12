@@ -8,7 +8,7 @@
 
 <?php
 	$shops = getShops($dbConn);
-	$template = $twig->load('merchandise.html');
+	$template = $twig->load('addMerchandise.html');
 	$msg = inputMerchandise($dbConn, $isDevelopment);
 	echo $template->render(array('shops' => $shops, 'msg' => $msg));
 ?>
@@ -112,7 +112,7 @@
 <?php
 	function getShops($db) {
 		$data = array();
-		$query = "SELECT s_id, name FROM merchandise, shop WHERE s_id = shop_id;";
+		$query = "SELECT s_id, name FROM merchandise, shop WHERE s_id = shop_id AND ('idkey' || s_id = name) ORDER BY s_id;";
 		$result = $db->query($query);
 		
 		while($row = $result->fetch(PDO::FETCH_ASSOC)) {
