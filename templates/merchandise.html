@@ -1,63 +1,50 @@
 {% extends "base.html" %}
-{% block title %} Merchandises {% endblock %}
+{% block title %} Add Merchandise {% endblock %}
+{% block head %}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="/resources/demos/style.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+{% endblock %}
 
 {% block content %}
 {% include 'baseMenu.html' %}
-<div class ="container">
-	<div class="header">
-		<div id="page-header">
-			<h2>A list of all merchandise that was sold for the day.</h2>
-		</div>
+<div class="container">
+	<div class="page-header">
+		<h2>Add a New Merchandise</h2>
+		<h3 class="centerText">{{ msg }}</h3>
 	</div>
-
-	<h3>Food Report</h3>
-	<table class = "table table-striped">
-		<thead>
-			<tr>
-				<th>ID</th>
-				<th>Product</th>
-				<th>Shop/Kiosk</th>
-				<th>Serial Number</th>
-				<th>Inventory</th>
-			</tr>
-		</thead>
-		
-		<tbody>
-			{% for food in foods %}
-			<tr>
-				<td>{{ food[0] }}</td>
-				<td>{{ food[1] }}</td>
-				<td>{{ food[2] }}</td>
-				<td>{{ food[3] }}</td>
-				<td>{{ food[4] }}</td>
-			</tr>
-			{% endfor %}
-		</tbody>
-	</table>
 	
-	<h3>Gifts Report</h3>
-	<table class = "table table-striped">
-		<thead>
-			<tr>
-				<th>ID</th>
-				<th>Product</th>
-				<th>Shop/Kiosk</th>
-				<th>Serial Number</th>
-				<th>Inventory</th>
-			</tr>
-		</thead>
+	<div class="container">
+		<form role = "form" action="merchandise.php" method="post">
+		<div class ="form-group">
+			<label for="product">Product Name:</label>
+			<input type="text" name="product" class="form-control" placeholder="Enter the Product Name" required>
+		</div>
+	
+		<div class ="form-group">
+			<label for="serial_number">Serial Number:</label>
+			<input type="text" name="serial_number" class="form-control" placeholder="Enter a Serial Number for product" required>
+		</div>
+
+		<div class ="form-group">
+			<label for="inventory">Inventory:</label>
+			<input type="text" name="inventory" class="form-control" placeholder="Enter the number of products available" required>
+		</div>
+
+		<div class="form-group">
+			<label for="shop">Shop</label>
+			<select class="form-control" name="s_id">
+				{% for shop in shops %}
+				<option>{{ shop }}</option>
+				{% endfor %}
+			</select>
+		</div>
 		
-		<tbody>
-			{% for gift in gifts %}
-			<tr>
-				<td>{{ gift[0] }}</td>
-				<td>{{ gift[1] }}</td>
-				<td>{{ gift[2] }}</td>
-				<td>{{ gift[3] }}</td>
-				<td>{{ gift[4] }}</td>
-			</tr>
-			{% endfor %}
-		</tbody>
-	</table>
+		<p>
+			<input type="submit" name="submit" value="Send" />
+		</p>
+
+	</form>
 </div>
 {% endblock %}
