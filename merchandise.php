@@ -117,10 +117,10 @@
 		
 		while($row = $result->fetch(PDO::FETCH_ASSOC)) {
 			$s_id = $row['s_id'];
-			$data[$s_id] = $s_id;
+			$name = trim($row['name']);
+			$data[$s_id] = $name;
 		}
-		$result = array_intersect($arrayName, $arrayID);
 		$result->closeCursor();
-		return $dataName;
+		return $data;
 	}
 ?>
