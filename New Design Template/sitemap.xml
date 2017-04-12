@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://ThemeparkMainPage.com/index.html</loc>
-    <lastmod>2017-04-10</lastmod>
+    <lastmod>2017-04-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
     <image:image>
@@ -10,51 +10,75 @@
     </image:image>
   </url>
   <url>
-    <loc>http://ThemeparkMainPage.com/addattraction.html</loc>
-    <lastmod>2017-04-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>http://ThemeparkMainPage.com/addemployee.html</loc>
-    <lastmod>2017-04-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>http://ThemeparkMainPage.com/addgame.html</loc>
-    <lastmod>2017-04-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>http://ThemeparkMainPage.com/addmerch.html</loc>
-    <lastmod>2017-04-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>http://ThemeparkMainPage.com/addshop.html</loc>
-    <lastmod>2017-04-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>http://ThemeparkMainPage.com/baseempmenu.html</loc>
-    <lastmod>2017-04-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
     <loc>http://ThemeparkMainPage.com/logout.html</loc>
-    <lastmod>2017-04-10</lastmod>
+    <lastmod>2017-04-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>http://ThemeparkMainPage.com/images/balloons.png</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://ThemeparkMainPage.com/maintenance.html</loc>
-    <lastmod>2017-04-10</lastmod>
+    <lastmod>2017-04-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>http://ThemeparkMainPage.com/images/balloons.png</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://ThemeparkMainPage.com/home.html</loc>
+    <lastmod>2017-04-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+    <image:image>
+      <image:loc>http://ThemeparkMainPage.com/images/balloons.png</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://ThemeparkMainPage.com/attractions.html</loc>
+    <lastmod>2017-04-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+    <image:image>
+      <image:loc>http://ThemeparkMainPage.com/images/balloons.png</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://ThemeparkMainPage.com/employees.html</loc>
+    <lastmod>2017-04-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+    <image:image>
+      <image:loc>http://ThemeparkMainPage.com/images/balloons.png</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://ThemeparkMainPage.com/games.html</loc>
+    <lastmod>2017-04-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+    <image:image>
+      <image:loc>http://ThemeparkMainPage.com/images/balloons.png</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://ThemeparkMainPage.com/merchandise.html</loc>
+    <lastmod>2017-04-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+    <image:image>
+      <image:loc>http://ThemeparkMainPage.com/images/balloons.png</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://ThemeparkMainPage.com/shops.html</loc>
+    <lastmod>2017-04-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+    <image:image>
+      <image:loc>http://ThemeparkMainPage.com/images/balloons.png</image:loc>
+    </image:image>
   </url>
 </urlset>
