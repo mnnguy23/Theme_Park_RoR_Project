@@ -1,0 +1,55 @@
+<manifest alg="2" build="2017.0.2.363" opt="true" iceEnabled="true" iceMarkupVersion="2" iceEnabledOptions="link,responsive,cachebuster,textStyling" exportTarget="other" domain="ThemeparkMainPage.com" resolutions="1x" timestamp="1491967823554">
+  <folder name="images">
+    <file name="balloons.png" crc="4264992514" seo="true" ref="index:logout:maintenance:home:attractions:employees:games:merchandise:shops">
+      <caption webpage="home" alt=""/>
+      <caption webpage="addattraction" alt=""/>
+      <caption webpage="games" alt=""/>
+      <caption webpage="index" alt=""/>
+      <caption webpage="baseempmenu" alt=""/>
+      <caption webpage="addgame" alt=""/>
+      <caption webpage="merchandise" alt=""/>
+      <caption webpage="attractions" alt=""/>
+      <caption webpage="maintenance" alt=""/>
+      <caption webpage="addshop" alt=""/>
+      <caption webpage="logout" alt=""/>
+      <caption webpage="shops" alt=""/>
+      <caption webpage="employees" alt=""/>
+      <caption webpage="addmerch" alt=""/>
+      <caption webpage="addemployee" alt=""/>
+    </file>
+    <file name="u752-4.png" crc="3850239834" ref="logout:maintenance:home:attractions:employees:games:merchandise:shops"/>
+  </folder>
+  <folder name="css">
+    <file name="site_global.css" crc="443350757"/>
+    <file name="index.css" crc="4158628594" ref="index"/>
+    <file name="master_a-master.css" crc="3997008737" ref="maintenance:logout:home:employees:merchandise:shops:games:attractions"/>
+    <file name="maintenance.css" crc="4258075786" ref="maintenance"/>
+    <file name="logout.css" crc="4258075786" ref="logout"/>
+    <file name="master_pre-login-intro-page.css" crc="368688208" ref="index"/>
+    <file name="home.css" crc="4258075786" ref="home"/>
+    <file name="employees.css" crc="4258075786" ref="employees"/>
+    <file name="merchandise.css" crc="4258075786" ref="merchandise"/>
+    <file name="shops.css" crc="4258075786" ref="shops"/>
+    <file name="games.css" crc="4258075786" ref="games"/>
+    <file name="attractions.css" crc="4258075786" ref="attractions"/>
+  </folder>
+  <folder name="scripts">
+    <file name="jquery-1.8.3.min.js" crc="209076791" ref="index:logout:maintenance:home:attractions:employees:games:merchandise:shops"/>
+    <file name="museutils.js" crc="4232573551" ref="index:logout:maintenance:home:attractions:employees:games:merchandise:shops"/>
+    <file name="whatinput.js" crc="86476730" ref="index:logout:maintenance:home:attractions:employees:games:merchandise:shops"/>
+    <file name="museconfig.js" crc="4152223963" ref="index:logout:maintenance:home:attractions:employees:games:merchandise:shops"/>
+    <file name="jquery.watch.js" crc="3844535323" ref="index:logout:maintenance:home:attractions:employees:games:merchandise:shops"/>
+    <file name="require.js" crc="4234670167" ref="index:logout:maintenance:home:attractions:employees:games:merchandise:shops"/>
+    <file name="jquery.musemenu.js" crc="38860304" ref="logout:maintenance:home:attractions:employees:games:merchandise:shops"/>
+    <file name="html5shiv.js" crc="4241844378" ref="logout:maintenance:home:attractions:employees:games:merchandise:shops"/>
+  </folder>
+  <file name="index.html" crc="4155865795" seo="true" mt="1491966311847" redirect="true"/>
+  <file name="logout.html" crc="333920338" seo="true" mt="1491967805232" redirect="true"/>
+  <file name="maintenance.html" crc="170017203" seo="true" mt="1491967805232" redirect="true"/>
+  <file name="home.html" crc="307061575" seo="true" mt="1491967805232" redirect="true"/>
+  <file name="attractions.html" crc="280495042" seo="true" mt="1491967805232" redirect="true"/>
+  <file name="employees.html" crc="4065312628" seo="true" mt="1491967805232" redirect="true"/>
+  <file name="games.html" crc="502336195" seo="true" mt="1491967805232" redirect="true"/>
+  <file name="merchandise.html" crc="4080564800" seo="true" mt="1491967805232" redirect="true"/>
+  <file name="shops.html" crc="362155628" seo="true" mt="1491967805232" redirect="true"/>
+</manifest>
