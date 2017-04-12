@@ -7,7 +7,7 @@
 ?>
 
 <?php
-	$shops = shopReport($dbConn);
+	$shops = getShops($dbConn);
 	$template = $twig->load('addMerchandise.html');
 	$msg = inputMerchandise($dbConn, $isDevelopment);
 	echo $template->render(array('shops' => $shops, 'msg' => $msg));
@@ -110,12 +110,15 @@
 ?>
 
 <?php
-	function shopReport($db) {
+	function getShops($db) {
 		$data = array();
-		$query = "SELECT shop_id, name FROM shop;";
+		$query = "SELECT s_id, name FROM merchandise, shop WHERE s_id = shop_id;";
 		$result = $db->query($query);
+		
 		while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-			$data[] = array($row["shop_id"], $row["name"]);
+			$s_id = $row['s_id'];
+			$name = trim($row['name']);
+			$data[$s_id] = $name;
 		}
 		$result->closeCursor();
 		return $data;
