@@ -23,7 +23,7 @@
   {% endif %}
 {% endif %}
 
-{% if (manager == true) and (dno != 3) %}
+{% if (manager == true) and (dno != 3 and (locations|length > 0)) %}
   {% include 'employeeLink.html' %}
 {% endif %}
 {% endblock %}

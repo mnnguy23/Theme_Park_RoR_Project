@@ -45,16 +45,19 @@ function listLocations($db, $dno) {
     $table = "attraction";
     $name = "a_name";
     $id = "attraction_id";
+    $empColumn = "employee_a_id";
   } elseif($dno == 2) {
     $table = "shop";
     $name = "name";
     $id = "shop_id";
+    $empColumn = "employee_s_id";
   } elseif($dno == 4) {
     $table = "game";
     $name = "gname";
     $id = "game_id";
+    $empColumn = "employee_g_id";
   }
-  $query = "SELECT $name, $id FROM $table ORDER BY $id ASC;";
+  $query = "SELECT $name, $id FROM $table WHERE $empColumn IS NULL ORDER BY $id ASC;";
   
   $result = $db->query($query);
   while($row = $result->fetch(PDO::FETCH_ASSOC)) {
@@ -64,6 +67,7 @@ function listLocations($db, $dno) {
   return $data;
 }
 ?>
+
 <?php
 function checkDuplicateEmployees($employees, $locations){
   $msg = "One employee per location.";
@@ -107,7 +111,6 @@ function getLocationIds($locations) {
 ?>
 <?php
 function assignEmployeeToLocation($db, $dno, $employeeIds, $locationIds) {
-  echo "Count: " + count($employeeIds);
   foreach($locationIds as $key=>$location) {
     $id = $employeeIds[$key];
     assign($db, $dno, $id, $location);
