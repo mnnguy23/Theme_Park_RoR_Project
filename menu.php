@@ -37,8 +37,8 @@ $dbConn = loadDB($isDevelopment);
   $isDuplicate = true;
   $locations = "";
   $employees = "";
-  if($isManager) {
-    $mgrMessage = "You are the manager of: $dname";
+  $dupeAlert = "";
+  if($isManager and ($dno != 3)) {
     $locations = listLocations($dbConn, $dno);
     $employeeList = listEmployees($dbConn, $dno);
     $employees = listEmployeeNames($employeeList);
@@ -48,8 +48,6 @@ $dbConn = loadDB($isDevelopment);
       $locationIds = array_map("getLocationIds", $locations);
       assignEmployeeToLocation($dbConn, $dno, $employeeIds, $locationIds);
     }
-  } else {
-    $mgrMessage = "You are not a manager";
   }
   // end of employee assignment
   $departmentMsg = "You are part of $dname";
@@ -58,7 +56,7 @@ $dbConn = loadDB($isDevelopment);
   foreach($data as $key => $value) {
     $attractionNames[] = $value;
   }
-  $params = array('user' => $user, 'name' => $name, 'attractions' => $attractionNames, 'response' => $response, 'managerMessage' => $mgrMessage, 'manager' => $isManager, 'departmentMsg' => $departmentMsg, 'brokeRides' => $brokenList, 'maintenanceResponse' => $maintResponse, 'dno' => $dno, 'locations' => $locations, 'employees'=>$employees, 'duplicateAlert'=> $dupeAlert);
+  $params = array('user' => $user, 'name' => $name, 'attractions' => $attractionNames, 'response' => $response, 'manager' => $isManager, 'departmentMsg' => $departmentMsg, 'brokeRides' => $brokenList, 'maintenanceResponse' => $maintResponse, 'dno' => $dno, 'locations' => $locations, 'employees'=>$employees, 'duplicateAlert'=> $dupeAlert);
   
   $template = $twig->load('menu.html');
   if($_SESSION['valid']){
