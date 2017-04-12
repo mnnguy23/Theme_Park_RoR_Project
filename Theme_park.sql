@@ -219,7 +219,27 @@ BEGIN
    RETURN NEW;
 END;
 $$ language 'plpgsql';
+-----------------------------------------------------------------------
+CREATE FUNCTION update_inventory()
+    RETURNS trigger AS 
+$BODY$
 
+BEGIN
+ IF NEW.m_sales is not null THEN
+ FOR counter IN 1..5 LOOP
+ update merchandise
+ set inventory = inventory-m_sales[counter]
+ where serial_number = counter;
+ 	END LOOP;
+ END IF;
+ 
+ RETURN NEW;
+END;
+
+$BODY$
+
+LANGUAGE plpgsql VOLATILE
+COST 100;
 /*-------------------------------Triggers-------------------------------*/
 CREATE TRIGGER maintenance
   BEFORE UPDATE
