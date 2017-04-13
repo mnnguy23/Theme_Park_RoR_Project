@@ -32,7 +32,7 @@
 			$newPassword = $_POST["new_password"];
 			$confirmPassword = $_POST["confirm_password"];*/
 			
-			if(!checkOriginalPassword($uniqueInfos)) {
+			if(checkOriginalPassword($uniqueInfos)) {
 				$oldPassword = $_POST["old_password"];  
 			} 
 			else {
@@ -53,7 +53,7 @@
 				$msg = "New and Confirm passwords are not the same.";
 			}
      
-			if(!checkOriginalPassword($uniqueInfos) && !checkDuplicatePassword() && checkNewPassword()){
+			if(checkOriginalPassword($uniqueInfos) && !checkDuplicatePassword() && checkNewPassword()){
 				$query = "UPDATE employee SET password = $newPassword WHERE employee_password = $oldPassword;";
        
 				if($isDevelopment) {
