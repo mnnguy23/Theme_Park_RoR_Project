@@ -54,7 +54,7 @@
 			}
      
 			if(checkOriginalPassword($uniqueInfos) && !checkDuplicatePassword() && checkNewPassword()){
-				$query = "UPDATE employee SET employee_password = $newPassword WHERE employee_password = $oldPassword;";
+				$query = "UPDATE employee SET employee_password = '$newPassword' WHERE employee_password = '$oldPassword';";
        
 				if($isDevelopment) {
 					$result = pg_query($db, $query);
