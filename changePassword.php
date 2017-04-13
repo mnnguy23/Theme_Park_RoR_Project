@@ -28,9 +28,6 @@
 		$msg = "All fields must be entered.";
 
 		if(isset($_POST['submit'])) {
-			/*$oldPassword = $_POST["old_password"];
-			$newPassword = $_POST["new_password"];
-			$confirmPassword = $_POST["confirm_password"];*/
 			
 			if(checkOriginalPassword($uniqueInfos)) {
 				$oldPassword = $_POST["old_password"];  
@@ -54,7 +51,7 @@
 			}
      
 			if(checkOriginalPassword($uniqueInfos) && !checkDuplicatePassword() && checkNewPassword()){
-				$query = "UPDATE employee SET employee_password = '$newPassword' WHERE employee_password = '$oldPassword';";
+				$query = "UPDATE employee SET employee_password = '$newPassword' WHERE employee_username = '$_SESSION['user']';";
        
 				if($isDevelopment) {
 					$result = pg_query($db, $query);
@@ -74,7 +71,7 @@
 
 <?php
 	function gatherInfo($db, $isDevelopment) {
-		$query = "SELECT employee_password FROM employee;";
+		$query = "SELECT employee_password FROM employee WHERE employee_username = $_SESSION['user'];";
 		$data = array();
   
 		if($isDevelopment) {
