@@ -175,8 +175,43 @@ $BODY$
 
 LANGUAGE plpgsql VOLATILE
 COST 100;
+-----------------------------------------------------------------------
+CREATE FUNCTION clear_game_employee()
+    RETURNS trigger AS 
+$BODY$
 
+BEGIN
+ IF NEW.player_counts is not null THEN
+ update game
+ set employee_g_id = null;
+ END IF;
+ 
+ RETURN NEW;
+END;
 
+$BODY$
+
+LANGUAGE plpgsql VOLATILE
+COST 100;
+-----------------------------------------------------------------------
+CREATE FUNCTION clear_shop_employee()
+    RETURNS trigger AS 
+$BODY$
+
+BEGIN
+ IF NEW.m_sales is not null THEN
+ update shop
+ set employee_s_id = null;
+ END IF;
+ 
+ RETURN NEW;
+END;
+
+$BODY$
+
+LANGUAGE plpgsql VOLATILE
+COST 100;
+-----------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION update_changetimestamp_column()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -184,10 +219,45 @@ BEGIN
    RETURN NEW;
 END;
 $$ language 'plpgsql';
+-----------------------------------------------------------------------
+CREATE FUNCTION update_inventory()
+    RETURNS trigger AS 
+$BODY$
 
+BEGIN
+ IF NEW.m_sales is not null THEN
+ FOR counter IN 1..5 LOOP
+ update merchandise
+ set inventory = inventory-m_sales[counter]
+ where serial_number = counter;
+ 	END LOOP;
+ END IF;
+ 
+ RETURN NEW;
+END;
+
+$BODY$
+
+LANGUAGE plpgsql VOLATILE
+COST 100;
 /*-------------------------------Triggers-------------------------------*/
 CREATE TRIGGER maintenance
   BEFORE UPDATE
   ON attraction
   FOR EACH ROW
   EXECUTE PROCEDURE schedule_new_maintenance();
+CREATE TRIGGER clear_a
+  BEFORE UPDATE
+  ON attraction_attendance
+  FOR EACH ROW
+  EXECUTE PROCEDURE clear_attraction_employee();  
+CREATE TRIGGER clear_g
+  BEFORE UPDATE
+  ON game_sales
+  FOR EACH ROW
+  EXECUTE PROCEDURE clear_game_employee();
+CREATE TRIGGER clear_s
+  BEFORE UPDATE
+  ON merchandise_sales
+  FOR EACH ROW
+  EXECUTE PROCEDURE clear_shop_employee();
