@@ -27,6 +27,7 @@
 	function changePassword($db, $isDevelopment) {
 		$uniqueInfos = gatherInfo($db, $isDevelopment);
 		$msg = "All fields must be entered.";
+		$empId = $_SESSION['emp_id'];
 
 		if(isset($_POST['submit'])) {
 			
@@ -72,6 +73,7 @@
 
 <?php
 	function gatherInfo($db, $isDevelopment) {
+		$empId = $_SESSION['emp_id'];
 		$query = "SELECT employee_password FROM employee WHERE employee_id = $empID;";
 		$data = array();
   
