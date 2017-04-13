@@ -11,7 +11,7 @@
 	$foods = foodReport($dbConn);
 	$gifts = giftReport($dbConn); 
 	$template = $twig->load('merchandise.html');
-	echo $template->render(array('foods' => $foods, 'gifts' => $gifts, 'dno'=>$_SESSION['dno']));
+	echo $template->render(array('foods' => $foods, 'gifts' => $gifts, 'logout' => $clearSession));
 ?>
 
 <?php
@@ -20,7 +20,7 @@
 		$query = "SELECT shop_id, product, name, serial_number, inventory FROM shop, merchandise WHERE shop_id = s_id AND service_type = 'food';";
 		$result = $db->query($query);
 		while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-			$data[] = array($row["shop_id"], $row["product"], $row["name"], $row["serial_number"], $row["inventory"]);
+			$data[] = array($row["serial_number"], $row["product"], $row["name"], $row["inventory"]);
 		}
 		$result->closeCursor();
 		return $data;
@@ -31,7 +31,7 @@
 		$query = "SELECT shop_id, product, name, serial_number, inventory FROM shop, merchandise WHERE shop_id = s_id AND service_type = 'gifts';";
 		$result = $db->query($query);
 		while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-			$data[] = array($row["shop_id"], $row["product"], $row["name"], $row["serial_number"], $row["inventory"]);
+			$data[] = array($row["serial_number"], $row["product"], $row["name"], $row["inventory"]);
 		}
 		$result->closeCursor();
 		return $data;
