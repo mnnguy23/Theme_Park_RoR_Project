@@ -24,22 +24,36 @@
 
 <?php
 	function changePassword($db, $isDevelopment) {
-		$oldPassword = $_POST["old_password"];
-		$newPassword = $_POST["new_password"];
-		$confirmPassword = $_POST["confirm_password"];
+		$uniqueInfos = gatherInfo($db, $isDevelopment);
 		$msg = "All fields must be entered.";
 
 		if(isset($_POST['submit'])) {
-			$name = $_POST["attraction_name"];
-     
-			if(!checkDuplicatePassword($newPassword, $confirmPassword)) {
-				$name = $_POST["old_password"];  
+			/*$oldPassword = $_POST["old_password"];
+			$newPassword = $_POST["new_password"];
+			$confirmPassword = $_POST["confirm_password"];*/
+			
+			if(!checkOriginalPassword($uniqueInfos)) {
+				$oldPassword = $_POST["old_password"];  
 			} 
 			else {
-				$msg = "Wrong password";
+				$msg = "Wrong original password entered.";
 			}  
      
-			if(!checkDuplicateAname($uniqueInfos) ){
+			if(!checkDuplicatePassword($_POST["old_password"], $_POST["new_password"])) {
+				$newPassword = $_POST["new_password"];  
+			} 
+			else {
+				$msg = "Can't create same password.";
+			}  
+			
+			if(checkNewPassword($_POST["new_password"], $_POST["confirm_password"])) {
+				$confirmPassword = $_POST["confirm_password"];  
+			} 
+			else {
+				$msg = "New and Confirm passwords are not the same.";
+			}
+     
+			if(!checkOriginalPassword($uniqueInfos) && !checkDuplicatePassword($_POST["old_password"], $_POST["new_password"]) && checkNewPassword($_POST["new_password"], $_POST["confirm_password"])){
 				$query = "UPDATE employee SET password = $newPassword WHERE employee_password = $oldPassword;";
        
 				if($isDevelopment) {
@@ -50,7 +64,7 @@
 				}
 		
 				if($result) {
-					$msg = "Change Password: $Your passord was changed.";
+					$msg = "Password had been changed.";
 				}
 			}
 		}
@@ -59,10 +73,58 @@
 ?>
 
 <?php
-	function checkDuplicatePassword($newPassword, $confirmPassword) {
+	function gatherInfo($db, $isDevelopment) {
+		$query = "SELECT employee_password FROM employee;";
+		$data = array();
+  
+		if($isDevelopment) {
+			$result = pg_query($db, $query);
+    
+			while($row = pg_fetch_row($result)) {
+				$data[] = array('employee_password' => $row[0]);
+			}
+		} 
+		else {
+			$result = $db->query($query);
+    
+			while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+				$data[] = array('employee_password' => $row['employee_password']);
+			}
+		}
+		return $data;
+	}
+?>
+
+<?php
+	function checkOriginalPassword($infos) {
+		$result = false;
+		foreach($infos as $info) {
+			$password = $info['employee_password'] ?? null;
+    
+			if($password == $_POST["old_password"]){
+				$result = true;
+			} 
+		}
+		return $result;
+	}
+?>
+
+<?php
+	function checkDuplicatePassword($_POST["old_password"], $_POST["new_password"]) {
 		$result = false;
     
-		if($newPassword == $confirmPassword){
+		if($_POST["old_password"] == $_POST["new_password"]){
+			$result = true;
+		} 
+		return $result;
+	}
+?>
+
+<?php
+	function checkNewPassword($_POST["new_password"], $_POST["confirm_password"]) {
+		$result = false;
+    
+		if($_POST["new_password"] == $_POST["confirm_password"]){
 			$result = true;
 		} 
 		return $result;
