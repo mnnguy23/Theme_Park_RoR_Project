@@ -37,6 +37,9 @@ $dbConn = loadDB($isDevelopment);
   
   $params = array('locationsNames' => $product, 'department'=> $department, 'logAlert'=> $logAlert, 'dno'=>$dno);
   $template = $twig->load("logInput.html");
+  if(!$_SESSION['isManager']) {
+    menuRedirect();
+  }
   if($_SESSION["valid"]) {
     echo $template->render($params);
   } else {

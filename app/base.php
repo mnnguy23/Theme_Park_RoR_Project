@@ -56,3 +56,9 @@ function loginRedirect() {
   header('Location: index.php');
 }
 ?>
+
+<?php
+function menuRedirect() {
+  header('Location: menu.php');
+}
+?>

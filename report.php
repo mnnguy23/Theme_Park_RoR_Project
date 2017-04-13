@@ -55,6 +55,9 @@ if ($dno == 3) {
 
 
 $params = array('reports' => $reports, 'selectedReport'=>$selectReport, 'dno'=> $dno, 'locations' => $productNames, 'dates' => $dateLogs, 'amountLogs' => $amountLogs, 'averageLogs' => $averageLogs, 'sumLogs'=>$sumLogs, "department" => $department);
+if(!$_SESSION['isManager']) {
+  menuRedirect();
+}
 if($_SESSION['valid']){
   echo $template->render($params);
 } else {

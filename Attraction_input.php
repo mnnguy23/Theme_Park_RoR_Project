@@ -9,7 +9,14 @@
 <?php
 $template = $twig->load('addAttraction.html');
 $msg = inputEmployee($dbConn, $isDevelopment);
-echo $template->render(array('msg' => $msg, 'dno' => $_SESSION['dno']));
+if(!$_SESSION['isManager']) {
+  menuRedirect();
+}
+if($_SESSION['valid']){
+  echo $template->render(array('msg' => $msg, 'dno' => $_SESSION['dno']));
+} else {
+  loginRedirect();
+}
 ?>
 
 <?php

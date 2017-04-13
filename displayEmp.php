@@ -13,7 +13,14 @@ $dbConn = loadDB($isDevelopment);
   
   $template = $twig->load('displayEmp.html');
   $params = array('logout' => $clearSession, 'user' => $user, 'name' => $name, 'employees' => $employee, 'dno'=>$dno);
-  echo $template->render($params);
+  if(!$_SESSION['isManager']) {
+    menuRedirect();
+  }
+  if($_SESSION['valid']){
+    echo $template->render($params);
+  } else {
+    loginRedirect();
+  }
 ?>
 
 <?php
