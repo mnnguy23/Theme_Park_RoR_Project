@@ -32,12 +32,11 @@ function inputEmployee($db, $isDevelopment) {
      $price = $_POST["price"];
      $capacity = $_POST["capacity"];
      $date_built = $_POST["date_built"];
-     $m_date = $_POST["m_date"];
-     $dno = 1;
+     $m_date = $_POST["m_date"];;
      //all inputs have been tested for correctnes with $msg	   
      
      if(!checkDuplicateAname($uniqueInfos) ){
-       $query = "INSERT INTO attraction VALUES ($att_id, $price, $capacity, '$date_built', '$m_date', '$name', $dno, TRUE);";
+       $query = "INSERT INTO attraction VALUES ($att_id, $price, $capacity, '$date_built', '$m_date', '$name',  TRUE);";
        
        if($isDevelopment) {
          $result = pg_query($db, $query);
