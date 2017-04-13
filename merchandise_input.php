@@ -10,7 +10,14 @@
 	$shops = getShops($dbConn);
 	$template = $twig->load('addMerchandise.html');
 	$msg = inputMerchandise($dbConn, $isDevelopment);
-	echo $template->render(array('shops' => $shops, 'msg' => $msg, 'dno'=>$_SESSION['dno']));
+  if(!$_SESSION['isManager']) {
+    menuRedirect();
+  }
+  if($_SESSION['valid']){
+    echo $template->render(array('shops' => $shops, 'msg' => $msg, 'dno'=>$_SESSION['dno']));  } else {
+    loginRedirect();
+  }
+	
 ?>
 
 <?php

@@ -10,7 +10,15 @@
 	$foods = foodReport($dbConn);
 	$gifts = giftReport($dbConn); 
 	$template = $twig->load('merchandise.html');
-	echo $template->render(array('foods' => $foods, 'gifts' => $gifts, 'dno' => $_SESSION['dno']));
+	
+  if(!$_SESSION['isManager']) {
+    menuRedirect();
+  }
+  if($_SESSION['valid']){
+    echo $template->render(array('foods' => $foods, 'gifts' => $gifts, 'dno' => $_SESSION['dno']));
+  } else {
+    loginRedirect();
+  }
 ?>
 
 <?php

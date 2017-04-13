@@ -57,9 +57,7 @@ $dbConn = loadDB($isDevelopment);
   $params = array('user' => $user, 'name' => $name, 'attractions' => $attractionNames, 'response' => $response, 'manager' => $isManager, 'departmentMsg' => $departmentMsg, 'brokeRides' => $brokenRides, 'dates'=> $dates, 'maintenanceResponse' => $maintResponse, 'dno' => $dno, 'locations' => $locations, 'employees'=>$employees, 'duplicateAlert'=> $dupeAlert);
   
   $template = $twig->load('menu.html');
-  if(!$_SESSION['isManager']) {
-    menuRedirect();
-  }
+
   if($_SESSION['valid']){
     echo $template->render($params);
   } else {
