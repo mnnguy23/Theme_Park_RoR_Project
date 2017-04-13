@@ -57,7 +57,7 @@ function listLocations($db, $dno) {
     $id = "game_id";
     $empColumn = "employee_g_id";
   }
-  $query = "SELECT $name, $id FROM $table WHERE $empColumn IS NULL ORDER BY $id ASC;";
+  $query = "SELECT $name, $id FROM $table ORDER BY $id ASC;";
   
   $result = $db->query($query);
   while($row = $result->fetch(PDO::FETCH_ASSOC)) {
