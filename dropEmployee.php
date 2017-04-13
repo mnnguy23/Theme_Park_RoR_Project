@@ -53,12 +53,12 @@
 <?php
 	function getShops($db,$dno) {
 		$data = array();
-$query = "SELECT e.employee_id, e.e_name,e.dno FROM employee AS e AND department AS d WHERE dno=$dno;";		
+		$query = "SELECT e.employee_id, e.e_name, e.dno FROM employee AS e AND department AS d WHERE dno=$dno;";		
 		$result = $db->query($query);
 		
 		while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-			$s_id = $row['employee_id'];
-			$name = trim($row['e_name']);
+			$s_id = $row['e.employee_id'];
+			$name = trim($row['e.e_name']);
 			$data[$s_id] = $name;
 		}
 		$result->closeCursor();
