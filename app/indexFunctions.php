@@ -78,9 +78,3 @@
     return array($_SESSION['valid'], $info);
   }
 ?>
-
-<?php
-function menuRedirect() {
-  header('Location: menu.php');
-}
-?>
