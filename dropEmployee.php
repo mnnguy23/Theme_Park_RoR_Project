@@ -7,9 +7,10 @@
 ?>
 
 <?php
-	$shops = getShops($dbConn);
+	$dno= $_SESSION['dno'];
+	$shops = getShops($dbConn,$dno);
 	$template = $twig->load('deleteEmployee.html');
-	$msg = inputMerchandise($dbConn, $isDevelopment);
+	$msg = inputMerchandise($dbConn, $isDevelopment,$dno);
   if(!$_SESSION['isManager']) {
     menuRedirect();
   }
@@ -21,14 +22,14 @@
 ?>
 
 <?php
-	function inputMerchandise($db, $isDevelopment) {
+	function inputMerchandise($db, $isDevelopment,$dno) {
 		$msg = "Please select employee";
 		
 		if(isset($_POST['submit'])){
      
 			
 			$s_id = array_search($_POST["e_name"], getShops($db));
-      $dno= $_SESSION['dno'];
+      			
      
 			
 				$query = "DELETE FROM employee WHERE employee_id=$s_id AND dno=$dno;";
@@ -50,9 +51,9 @@
 ?>
 
 <?php
-	function getShops($db) {
+	function getShops($db,$dno) {
 		$data = array();
-		$query = "SELECT employee_id, e_name,dno FROM employee;";
+		$query = "SELECT e.employee_id, e.e_name,e.dno FROM employee as e, FROM department as d WHERE e.employee<>d.mgr_id AND e.dno=$dno ";
 		$result = $db->query($query);
 		
 		while($row = $result->fetch(PDO::FETCH_ASSOC)) {
