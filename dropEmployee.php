@@ -57,8 +57,8 @@
 		$result = $db->query($query);
 		
 		while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-			$s_id = $row['e.employee_id'];
-			$name = trim($row['e.e_name']);
+			$s_id = $row['employee_id'];
+			$name = trim($row['e_name']);
 			$data[$s_id] = $name;
 		}
 		$result->closeCursor();
