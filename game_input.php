@@ -33,7 +33,7 @@ function inputEmployee($db, $isDevelopment) {
      //all inputs have been tested for correctnes with $msg	   
      
      if(!checkDuplicateGname($uniqueInfos) ){//watch funtion
-       $query = "INSERT INTO game VALUES ('$prize', $price, $game_id, CURENT_TIME, '$name');";
+       $query = "INSERT INTO game VALUES ('$prize', $price, $game_id, CURENT_TIME, '$name',NULL);";
        
        if($isDevelopment) {
          $result = pg_query($db, $query);
