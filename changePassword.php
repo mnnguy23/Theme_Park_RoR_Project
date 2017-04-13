@@ -9,7 +9,17 @@
 <?php
 	$template = $twig->load('changePassword.html');
 	$msg = changePassword($dbConn, $isDevelopment);
-	echo $template->render(array('msg' => $msg, 'dno'=>$_SESSION['dno']));
+
+	if(!$_SESSION['isManager']) {
+		menuRedirect();
+	}
+	
+	if($_SESSION['valid']){
+		echo $template->render(array('msg' => $msg, 'dno' => $_SESSION['dno']));
+	} 
+	else {
+		loginRedirect();
+	}
 ?>
 
 <?php
@@ -29,21 +39,21 @@
 				$msg = "Wrong original password entered.";
 			}  
      
-			if(!checkDuplicatePassword($_POST["old_password"], $_POST["new_password"])) {
+			if(!checkDuplicatePassword()) {
 				$newPassword = $_POST["new_password"];  
 			} 
 			else {
 				$msg = "Can't create same password.";
 			}  
 			
-			if(checkNewPassword($_POST["new_password"], $_POST["confirm_password"])) {
+			if(checkNewPassword()) {
 				$confirmPassword = $_POST["confirm_password"];  
 			} 
 			else {
 				$msg = "New and Confirm passwords are not the same.";
 			}
      
-			if(!checkOriginalPassword($uniqueInfos) && !checkDuplicatePassword($_POST["old_password"], $_POST["new_password"]) && checkNewPassword($_POST["new_password"], $_POST["confirm_password"])){
+			if(!checkOriginalPassword($uniqueInfos) && !checkDuplicatePassword() && checkNewPassword()){
 				$query = "UPDATE employee SET password = $newPassword WHERE employee_password = $oldPassword;";
        
 				if($isDevelopment) {
@@ -100,7 +110,7 @@
 ?>
 
 <?php
-	function checkDuplicatePassword($_POST["old_password"], $_POST["new_password"]) {
+	function checkDuplicatePassword() {
 		$result = false;
     
 		if($_POST["old_password"] == $_POST["new_password"]){
@@ -111,7 +121,7 @@
 ?>
 
 <?php
-	function checkNewPassword($_POST["new_password"], $_POST["confirm_password"]) {
+	function checkNewPassword() {
 		$result = false;
     
 		if($_POST["new_password"] == $_POST["confirm_password"]){
