@@ -1,7 +1,6 @@
 <?php
 	include 'app/base.php';
 	include 'app/indexFunctions.php';
-	include 'menu.php';
 	$twig = loadEnvironment();
 	$isDevelopment = false;
 	$dbConn = loadDB($isDevelopment);
@@ -10,6 +9,7 @@
 <?php
 	$template = $twig->load('changePassword.html');
 	$msg = changePassword($dbConn, $isDevelopment);
+	$name = $_SESSION['name'];
 
 	if(!$_SESSION['isManager']) {
 		menuRedirect();
