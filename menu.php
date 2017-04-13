@@ -19,18 +19,15 @@ $dbConn = loadDB($isDevelopment);
   list($isManager, $dname) = checkIfManager($dbConn);
   $_SESSION["department"] = $dname;
   
-  // for the maintenance Input
-  $brokenRides = getBrokenAttractions($dbConn);
-  $rideNames = getRideNames($dbConn);
-  $brokenList = array();
+  $brokenRides = '';
+  $maintResponse = '';
+  $dates = '';
   
-  if(count($brokenRides) > 0) {
-    foreach($brokenRides as $ride) {
-      $aName = $rideNames[$ride[1]] ?? null;
-      $brokenList[] = array($aName, $ride[0]);      
-    } 
+  // for the maintenance Input
+  if($dno == 3) {
+    list($dates,$brokenRides) = getBrokenAttractions($dbConn);
+    $maintResponse = setRideFixed($dbConn, $brokenRides);
   }
-  $maintResponse = setRideFixed($dbConn, $rideNames);
   // end of maintenance input
   
   // assigning employees to their work location.
@@ -56,7 +53,7 @@ $dbConn = loadDB($isDevelopment);
   foreach($data as $key => $value) {
     $attractionNames[] = $value;
   }
-  $params = array('user' => $user, 'name' => $name, 'attractions' => $attractionNames, 'response' => $response, 'manager' => $isManager, 'departmentMsg' => $departmentMsg, 'brokeRides' => $brokenList, 'maintenanceResponse' => $maintResponse, 'dno' => $dno, 'locations' => $locations, 'employees'=>$employees, 'duplicateAlert'=> $dupeAlert);
+  $params = array('user' => $user, 'name' => $name, 'attractions' => $attractionNames, 'response' => $response, 'manager' => $isManager, 'departmentMsg' => $departmentMsg, 'brokeRides' => $brokenRides, 'dates'=> $dates, 'maintenanceResponse' => $maintResponse, 'dno' => $dno, 'locations' => $locations, 'employees'=>$employees, 'duplicateAlert'=> $dupeAlert);
   
   $template = $twig->load('menu.html');
   if($_SESSION['valid']){

@@ -1,29 +1,17 @@
 <?php
 function getBrokenAttractions($db) {
   $data = array();
-  $query = "SELECT DISTINCT breakdown_date, am_id FROM attraction_maintenance WHERE maintenance_date IS NULL;";
+  $dates = array();
+  $query = "SELECT DISTINCT M.breakdown_date, M.am_id, A.a_name FROM attraction_maintenance AS M, attraction AS A WHERE M.maintenance_date IS NULL AND A.attraction_id = M.am_id ORDER BY M.breakdown_date DESC;";
     $result = $db->query($query);
     while($row = $result->fetch(PDO::FETCH_ASSOC)) {
       $bd_date = $row["breakdown_date"];
       $a_id = $row["am_id"];
-      $data[] = array($bd_date, $a_id);
+      $aName = trim($row['a_name']);
+      $dates[] = $bd_date;
+      $data[$a_id] = $aName;
   }
-  return $data;
-}
-?>
-
-<?php
-function getRideNames($db) {
-  $data = array();
-  $query = "SELECT DISTINCT A.a_name, A.attraction_id FROM attraction AS A, attraction_maintenance AS AM WHERE A.attraction_id=AM.am_id AND AM.maintenance_date IS NULL;";
-  $result = $db->query($query);
-  while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-    $aName = trim($row["a_name"]);
-    $aId = $row["attraction_id"];
-    $data[$aId] = $aName;
-  }
-  $result->closeCursor();
-  return $data;
+  return array($dates,$data);
 }
 ?>
 
@@ -36,16 +24,12 @@ function setRideFixed($db, $rides) {
     $cost = $_POST["cost"];
     $empId = $_SESSION['emp_id'];
     $rideName = $_POST["brokenAttraction"];
-    $attraction_id = '';
-    foreach($rides as $key => $value) {
-      if(strcmp($rideName, $value) == 0 ) {
-        $attraction_id = $key;
-        $response = "this ride: $rideName is now set to operational.";
-      }
-    }
+    $attraction_id = array_search($rideName, $rides);
+    echo $attraction_id;
     $query = "UPDATE attraction_maintenance set maintenance_date = CURRENT_DATE, maintenance_cost=$cost, e_id=$empId where am_id = $attraction_id;";
     
     $result = $db->query($query);
+    $response = "$rideName has been fixed.";
   }
   return $response;
 }
