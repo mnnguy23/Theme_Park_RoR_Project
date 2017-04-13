@@ -1,7 +1,7 @@
 <?php
 include 'app/base.php';
 include 'employeeLink.php';
-$isDevelopment = false;
+$isDevelopment = true;
 $twig = loadEnvironment();
 $dbConn = loadDB($isDevelopment);
 ?>
