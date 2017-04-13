@@ -11,7 +11,7 @@
 	$foods = foodReport($dbConn);
 	$gifts = giftReport($dbConn); 
 	$template = $twig->load('merchandise.html');
-	echo $template->render(array('foods' => $foods, 'gifts' => $gifts, 'logout' => $clearSession));
+	echo $template->render(array('foods' => $foods, 'gifts' => $gifts, 'dno'=>$_SESSION['dno']));
 ?>
 
 <?php

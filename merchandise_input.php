@@ -10,7 +10,7 @@
 	$shops = getShops($dbConn);
 	$template = $twig->load('addMerchandise.html');
 	$msg = inputMerchandise($dbConn, $isDevelopment);
-	echo $template->render(array('shops' => $shops, 'msg' => $msg));
+	echo $template->render(array('shops' => $shops, 'msg' => $msg, 'dno'=>$_SESSION['dno']));
 ?>
 
 <?php

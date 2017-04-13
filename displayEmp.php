@@ -12,7 +12,7 @@ $dbConn = loadDB($isDevelopment);
   $employee = displayEmployees($dbConn,$dno);
   
   $template = $twig->load('displayEmp.html');
-  $params = array('logout' => $clearSession, 'user' => $user, 'name' => $name, 'employees' => $employee);
+  $params = array('logout' => $clearSession, 'user' => $user, 'name' => $name, 'employees' => $employee, 'dno'=>$dno);
   echo $template->render($params);
 ?>
 
