@@ -9,17 +9,7 @@
 <?php
 	$template = $twig->load('changePassword.html');
 	$msg = changePassword($dbConn, $isDevelopment);
-
-	if(!$_SESSION['isManager']) {
-		menuRedirect();
-	}
-	
-	if($_SESSION['valid']){
-		echo $template->render(array('msg' => $msg, 'dno' => $_SESSION['dno']));
-	} 
-	else {
-		loginRedirect();
-	}
+	echo $template->render(array('msg' => $msg, 'dno'=>$_SESSION['dno']));
 ?>
 
 <?php
