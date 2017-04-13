@@ -27,10 +27,8 @@
 			}
      
 			$inventory = $_POST["inventory"];
-
 			$serial_number = createSerialNumber($db, $isDevelopment);
-
-			$s_id = array_search($_POST["s_id"], getShops($db));
+			$s_id = array_search($_POST["s_id"], $shops);
      
 			if(!checkDuplicateProduct($uniqueInfos)){
 				$query = "INSERT INTO merchandise VALUES ('$product', $inventory, $serial_number, $s_id);";
@@ -77,7 +75,6 @@
 <?php
 	function checkDuplicateProduct($infos) {
 		$result = false;
-
 		foreach($infos as $info) {
 			$product = $info['product'] ?? null;
     
