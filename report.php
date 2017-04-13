@@ -16,9 +16,11 @@ $department = $_SESSION["department"];
 
 $reports = '';
 $selectReport = '';
-$locNames = '';
+$productNames = '';
 $dateLogs = '';
 $amountLogs = '';
+$sumLogs = "";
+$averageLogs ="";
 
 if(isset($_POST['submit'])){
   if ($dno == 3) {
@@ -32,18 +34,28 @@ if(isset($_POST['submit'])){
     }
     // End of Maintenance //
   } else {
-    // All the the department //
-    $locations = listLocations($dbConn, $dno);
-    $locNames = array_map('getLocationNames', $locations);
+    if($dno == 2) {
+      // Sales Department
+      $merchandises = getMerchandises($dbConn);
+      $productNames = array_map('getMerchNames', $merchandises);
+      // End of Sales //
+    } else {
+      // Rest of the department //
+      $locations = listLocations($dbConn, $dno);
+      $productNames = array_map('getLocationNames', $locations);
+      // End of the rest //
+    }
+   
     $logs = queryReport($dbConn, $dno);
     $dateLogs = array_map('getTimeLogs', $logs);
     $amountLogs = array_map('getAmountLogs', $logs);
-    // End of the rest //
+    $averageLogs = array_map('getAverageLogs', $logs);
+    $sumLogs = array_map('getSumLogs', $logs);
   }
 }
 
 
-$params = array('reports' => $reports, 'selectedReport'=>$selectReport, 'dno'=> $dno, 'locations' => $locNames, 'dates' => $dateLogs, 'amountLogs' => $amountLogs, "department" => $department);
+$params = array('reports' => $reports, 'selectedReport'=>$selectReport, 'dno'=> $dno, 'locations' => $productNames, 'dates' => $dateLogs, 'amountLogs' => $amountLogs, 'averageLogs' => $averageLogs, 'sumLogs'=>$sumLogs, "department" => $department);
 if($_SESSION['valid']){
   echo $template->render($params);
 } else {

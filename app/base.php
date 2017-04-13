@@ -32,6 +32,25 @@ function loadDB($isDevelopment) {
   return $db;
 }
 ?>
+
+<?php
+function getMerchandises($db) {
+  $data = array();
+  $query = "SELECT serial_number, product FROM merchandise ORDER BY serial_number ASC;";
+  $result = $db->query($query);
+  while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+    $data[] = array($row['serial_number'],trim($row["product"]));
+  }
+  return $data;
+}
+?>
+
+<?php
+function getMerchNames($merchandises) {
+  return $merchandises[1];
+}
+?>
+
 <?php
 function loginRedirect() {
   header('Location: index.php');

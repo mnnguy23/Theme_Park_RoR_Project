@@ -40,6 +40,8 @@
     <thead>
       <tr>
         <th>Date</th>
+        <th>Average</th>
+        <th>Total Sales</th>
         {% for location in locations %}
         <th>{{ location }}</th>
         {% endfor %}
@@ -49,6 +51,8 @@
       {% for id, date in dates %}
       <tr>
         <td>{{ date }}</td>
+        <td> {{ averageLogs[id] }}</td>
+        <td> {{ sumLogs[id] }}</td>
         {% for amount in amountLogs[id] %}
           <td>{{ amount }}</td>
           {% endfor %}

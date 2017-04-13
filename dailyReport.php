@@ -20,8 +20,8 @@ function queryReport($db, $dno) {
   $query = reportQuery($table, $date, $info);
   $result = $db->query($query);
   while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-    $newArray = postgres_to_phpArray($row[$info]);
-    $data[] = array($row[$date], $newArray);
+    list($newArray, $average, $sum) = postgres_to_phpArray($row[$info]);
+    $data[] = array($row[$date], $newArray, $average, $sum);
   }
   $result->closeCursor();
   return $data;
@@ -29,7 +29,7 @@ function queryReport($db, $dno) {
 ?>
 <?php
 function reportQuery($table, $date, $info){
-  $query = "SELECT $date, $info from $table;";
+  $query = "SELECT $date, $info from $table ORDER BY $date DESC;";
   if(isset($_POST["submit"]) && !empty($_POST["startDatepicker"]) && !empty($_POST["endDatepicker"])) {
     if($_POST["startDatepicker"] < $_POST["endDatepicker"]) {
       $startDate = $_POST["startDatepicker"];
@@ -45,11 +45,14 @@ function postgres_to_phpArray($postgresArray) {
   $postgresStr = trim($postgresArray,"{}");
   $elmts =  explode(",",$postgresStr);
   $data = array();
+  $sum = 0;
   foreach($elmts as $element)
   {
     $data[] = (int)$element;
+    $sum = $sum + (int)$element;
   }
-  return $data;
+  $average = round($sum/count($data));
+  return array($data, $average, $sum);
 }
 ?>
 
@@ -62,5 +65,15 @@ function getTimeLogs($logs) {
 <?php
 function getAmountLogs($logs) {
   return $logs[1];
+}
+?>
+<?php
+function getAverageLogs($logs) {
+  return $logs[2];
+}
+?>
+<?php
+function getSumLogs($logs){
+  return $logs[3];
 }
 ?>
