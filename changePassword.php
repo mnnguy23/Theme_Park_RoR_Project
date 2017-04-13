@@ -32,30 +32,6 @@ function inputEmployee($db, $isDevelopment) {
      } else {
        $msg = "The passwords don't match name found";
      }
-     
-     $att_id = createAttractionID($db, $isDevelopment);
-     
-     //all inputs have been tested for correctnes with $msg	   
-     
-     if(!checkDuplicateAname($uniqueInfos) ){
-       $query = "Update employee 
-       set password $newpass 
-       where employee_password = $oldpass;";
-       
-       if($isDevelopment) {
-         $result = pg_query($db, $query);
-       } else {
-         $result = $db->query($query);
-       }
-       if($result) {
-         $msg = "Change Password: $Your passord was changed.";
-       }
-     }
-   }
-     
-   return $msg;
-}
-?>
 
 <?php
 function checkDuplicatePassword($newpass, $cpass) {
