@@ -19,12 +19,12 @@ $selectReport = '';
 $productNames = '';
 $dateLogs = '';
 $amountLogs = '';
-$sumLogs = "";
-$averageLogs ="";
+$averageLogs = '';
+$sumLogs = '';
 
-if(isset($_POST['submit'])){
-  if ($dno == 3) {
-    // Maintenance Department //
+if ($dno == 3) {
+  // Maintenance Department //
+  if(isset($_POST["submit"])){
     $selectReport = $_POST['report'];
     if($_POST['report'] == "Fixed") {
       $query = inputDateQuery($isDevelopment);
@@ -32,26 +32,25 @@ if(isset($_POST['submit'])){
     } elseif ($_POST['report'] == "Ongoing") {
       $reports = ongoingReport($dbConn);
     }
-    // End of Maintenance //
-  } else {
-    if($dno == 2) {
-      // Sales Department
-      $merchandises = getMerchandises($dbConn);
-      $productNames = array_map('getMerchNames', $merchandises);
-      // End of Sales //
-    } else {
-      // Rest of the department //
-      $locations = listLocations($dbConn, $dno);
-      $productNames = array_map('getLocationNames', $locations);
-      // End of the rest //
-    }
-   
-    $logs = queryReport($dbConn, $dno);
-    $dateLogs = array_map('getTimeLogs', $logs);
-    $amountLogs = array_map('getAmountLogs', $logs);
-    $averageLogs = array_map('getAverageLogs', $logs);
-    $sumLogs = array_map('getSumLogs', $logs);
   }
+  // End of Maintenance //
+} else {
+  if($dno == 2) {
+    // Sales Department
+    $merchandises = getMerchandises($dbConn);
+    $productNames = array_map('getMerchNames', $merchandises);
+    // End of Sales //
+  } else {
+    // Rest of the department //
+    $locations = listLocations($dbConn, $dno);
+    $productNames = array_map('getLocationNames', $locations);
+    // End of the rest //
+  }
+  $logs = queryReport($dbConn, $dno);
+  $dateLogs = array_map('getTimeLogs', $logs);
+  $amountLogs = array_map('getAmountLogs', $logs);
+  $averageLogs = array_map('getAverageLogs', $logs);
+  $sumLogs = array_map('getSumLogs', $logs);
 }
 
 
