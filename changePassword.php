@@ -9,6 +9,7 @@
 <?php
 	$template = $twig->load('changePassword.html');
 	$msg = changePassword($dbConn, $isDevelopment);
+	$name = $_SESSION['name'];
 
 	if(!$_SESSION['isManager']) {
 		menuRedirect();
@@ -54,7 +55,7 @@
 			}
      
 			if(checkOriginalPassword($uniqueInfos) && !checkDuplicatePassword() && checkNewPassword()){
-				$query = "UPDATE employee SET employee_password = '$newPassword' WHERE employee_password = '$oldPassword';";
+				$query = "UPDATE employee SET employee_password = '$newPassword' WHERE e_name = '$name';";
        
 				if($isDevelopment) {
 					$result = pg_query($db, $query);
@@ -74,21 +75,21 @@
 
 <?php
 	function gatherInfo($db, $isDevelopment) {
-		$query = "SELECT employee_password FROM employee;";
+		$query = "SELECT e_name, employee_password FROM employee;";
 		$data = array();
   
 		if($isDevelopment) {
 			$result = pg_query($db, $query);
     
 			while($row = pg_fetch_row($result)) {
-				$data[] = array('employee_password' => $row[0]);
+				$data[] = array('e_name' => $row[0], 'employee_password' => $row[1]);
 			}
 		} 
 		else {
 			$result = $db->query($query);
     
 			while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-				$data[] = array('employee_password' => $row['employee_password']);
+				$data[] = array('e_name' => $row['e_name'], 'employee_password' => $row['employee_password']);
 			}
 		}
 		return $data;
