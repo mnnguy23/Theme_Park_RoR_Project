@@ -17,7 +17,7 @@ $dbConn = loadDB($isDevelopment);
   $data = getAttractions($dbConn);
   $response = setRideInoperable($dbConn, $data);
   list($isManager, $dname) = checkIfManager($dbConn);
-  
+  $_SESSION["department"] = $dname;
   
   // for the maintenance Input
   $brokenRides = getBrokenAttractions($dbConn);
