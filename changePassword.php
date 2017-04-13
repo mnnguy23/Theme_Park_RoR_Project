@@ -9,7 +9,6 @@
 <?php
 	$template = $twig->load('changePassword.html');
 	$msg = changePassword($dbConn, $isDevelopment);
-	$name = $_SESSION['name'];
 
 	if(!$_SESSION['isManager']) {
 		menuRedirect();
@@ -55,7 +54,7 @@
 			}
      
 			if(!checkOriginalPassword($uniqueInfos) && !checkDuplicatePassword() && checkNewPassword()){
-				$query = "UPDATE employee SET password = $newPassword WHERE employee_password = $oldPassword AND e_name = $name;";
+				$query = "UPDATE employee SET password = $newPassword WHERE employee_password = $oldPassword;";
        
 				if($isDevelopment) {
 					$result = pg_query($db, $query);
@@ -75,7 +74,7 @@
 
 <?php
 	function gatherInfo($db, $isDevelopment) {
-		$query = "SELECT employee_password FROM employee WHERE e_name = $name;";
+		$query = "SELECT employee_password FROM employee;";
 		$data = array();
   
 		if($isDevelopment) {
