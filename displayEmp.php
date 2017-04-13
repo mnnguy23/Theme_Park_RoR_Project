@@ -8,7 +8,8 @@ $dbConn = loadDB($isDevelopment);
 ?>
 
 <?php
-  $employee = displayEmployees($dbConn);
+  $dno = $_SESSION['dno'];
+  $employee = displayEmployees($dbConn,$dno);
   
   $template = $twig->load('displayEmp.html');
   $params = array('logout' => $clearSession, 'user' => $user, 'name' => $name, 'employees' => $employee);
@@ -16,10 +17,10 @@ $dbConn = loadDB($isDevelopment);
 ?>
 
 <?php
-function displayEmployees($db) {
+function displayEmployees($db,$dno) {
   $data = array();
     $query = "SELECT e_name, employee_id, bdate, address, phone_number, salary, dno"
-         . " FROM employee";
+         . " FROM employee WHERE $dno=dno";
     $result = $db->query($query);
     while($row = $result->fetch(PDO::FETCH_ASSOC)) {
       $data[] = array($row["e_name"], $row["employee_id"], $row["bdate"], $row["address"], $row["phone_number"], $row["salary"], $row["dno"]);
