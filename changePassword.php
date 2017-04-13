@@ -9,9 +9,6 @@
 <?php
 $template = $twig->load('changePassword.html');
 $msg = inputEmployee($dbConn, $isDevelopment);
-if(!$_SESSION['isManager']) {
-  menuRedirect();
-}
 if($_SESSION['valid']){
   echo $template->render(array('msg' => $msg, 'dno' => $_SESSION['dno']));
 } else {
