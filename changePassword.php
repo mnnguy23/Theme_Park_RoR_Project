@@ -15,7 +15,7 @@
 	}
 	
 	if($_SESSION['valid']){
-		echo $template->render(array('msg') => $msg, 'dno' => $_SESSION['dno']));
+		echo $template->render(array('msg' => $msg, 'dno' => $_SESSION['dno']));
 	} 
 	else {
 		loginRedirect();
