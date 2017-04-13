@@ -28,7 +28,7 @@
 		if(isset($_POST['submit'])){
      
 			
-			$s_id = array_search($_POST["e_name"], getShops($db));
+			$s_id = array_search($_POST["e_name"], getShops($db,$dno));
       			
      
 			
