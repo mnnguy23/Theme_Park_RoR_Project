@@ -53,7 +53,7 @@
 <?php
 	function getShops($db,$dno) {
 		$data = array();
-		$query = "SELECT e.employee_id, e.e_name,e.dno FROM employee AS e, department AS d WHERE e.employee<>d.mgr_id;";
+$query = "SELECT e.employee_id, e.e_name,e.dno FROM employee AS e AND department AS d WHERE dno=$dno;";		
 		$result = $db->query($query);
 		
 		while($row = $result->fetch(PDO::FETCH_ASSOC)) {
