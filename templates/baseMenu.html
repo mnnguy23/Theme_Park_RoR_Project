@@ -16,7 +16,9 @@
     <nav>
       <ul class="nav nav-justified">
         <li id="home"><a href="menu.php">Home</a></li>
+        {% if dno == 2 %}
         <li id="reports"><a href="merchandise.php">Merchandise</a></li>
+        {% endif %}
         <li id="maintenance"><a href="report.php">Reports</a></li>
         <li id="maintenance"><a href="logInput.php">End of Day Input</a></li>
         <li id="employees"><a href="displayEmp.php">Employees</a></li>

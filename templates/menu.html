@@ -4,15 +4,14 @@
 
 {% block content %}
 {% if manager == true %}
-{% include 'baseMenu.html' %}
+{% include 'baseMenu.html' with {'dno':'dno'} %}
 {% else %}
 {% include 'baseEmpMenu.html' %}
 {% endif %}
 
 <div class ="container">
 <h1>Welcome {{ name }}</h1>
-<h3 class="centerText">{{ managerMessage }} </h3>
-<h4 class ="centerText">{{ departmentMsg }} </h4>
+<h3 class="centerText">{{ departmentMsg }} </h3>
 </div>
 {% if dno == 1%}
 {% include 'attractOperational.html' %}
