@@ -22,7 +22,6 @@
 
 <?php
 	function inputMerchandise($db, $isDevelopment) {
-		$uniqueInfos = gatherInfo($db, $isDevelopment);
 		$msg = "Please select employee";
 		
 		if(isset($_POST['submit'])){
