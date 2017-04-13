@@ -9,7 +9,7 @@
 <?php
 $template = $twig->load('addAttraction.html');
 $msg = inputEmployee($dbConn, $isDevelopment);
-echo $template->render(array('msg' => $msg));
+echo $template->render(array('msg' => $msg, 'dno' => $_SESSION['dno']));
 ?>
 
 <?php

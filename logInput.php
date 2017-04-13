@@ -35,7 +35,7 @@ $dbConn = loadDB($isDevelopment);
     $logAlert = createLog($dbConn, $dno, $productValues);
   }
   
-  $params = array('locationsNames' => $product, 'department'=> $department, 'logAlert'=> $logAlert);
+  $params = array('locationsNames' => $product, 'department'=> $department, 'logAlert'=> $logAlert, 'dno'=>$dno);
   $template = $twig->load("logInput.html");
   if($_SESSION["valid"]) {
     echo $template->render($params);
