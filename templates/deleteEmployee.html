@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %} Delete Employee {% endblock %}
+{% block head %}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="/resources/demos/style.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+	<div class="page-header">
+		<h2>Choose an Employee to Delete</h2>
+		<h3 class="centerText">{{ msg }}</h3>
+	</div>
+	
+	<div class="container">
+		<form role = "form" action="dropEmployee.php" method="post">
+		<div class="form-group">
+			<label for="deletion">Employee List</label>
+			<select class="form-control" name="e_name">
+				{% for employee in employees %}
+				<option>{{ employee }}</option>
+				{% endfor %}
+			</select>
+		</div>
+		
+		<p>
+			<input type="submit" name="submit" value="Delete" />
+		</p>
+
+	</form>
+</div>
+{% endblock %}
