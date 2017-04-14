@@ -1,16 +1,14 @@
 <?php
 	include 'app/base.php';
 	include 'app/indexFunctions.php';
-	include 'menu.php';
 	$twig = loadEnvironment();
 	$isDevelopment = false;
 	$dbConn = loadDB($isDevelopment);
-	$empId = $_SESSION['emp_id'];
 ?>
 
 <?php
 	$template = $twig->load('changePassword.html');
-	$msg = changePassword($dbConn, $isDevelopment, $empId);
+	$msg = changePassword($dbConn, $isDevelopment);
 
 	if(!$_SESSION['isManager']) {
 		menuRedirect();
@@ -25,7 +23,7 @@
 ?>
 
 <?php
-	function changePassword($db, $isDevelopment, $empId) {
+	function changePassword($db, $isDevelopment) {
 		$uniqueInfos = gatherInfo($db, $isDevelopment);
 		$msg = "All fields must be entered.";
 
@@ -53,7 +51,7 @@
 			}
      
 			if(checkOriginalPassword($uniqueInfos) && !checkDuplicatePassword() && checkNewPassword()){
-				$query = "UPDATE employee SET employee_password = '$newPassword' WHERE employee_id = $empId;";
+				$query = "UPDATE employee SET employee_password = '$newPassword' WHERE employee_password = '$oldPassword';";
        
 				if($isDevelopment) {
 					$result = pg_query($db, $query);
