@@ -5,6 +5,7 @@
 	$twig = loadEnvironment();
 	$isDevelopment = false;
 	$dbConn = loadDB($isDevelopment);
+	$empId = $_SESSION['emp_id'];
 ?>
 
 <?php
