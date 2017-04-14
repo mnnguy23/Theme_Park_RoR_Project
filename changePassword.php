@@ -12,8 +12,9 @@
   $original = getPassword($dbConn);
 	$msg = changePassword($dbConn, $original);
   $isManager = $_SESSION["isManager"];
+  $params = array('msg' => $msg, 'dno' => $_SESSION['dno'], 'isManager' => $isManager);
 	if($_SESSION['valid']){
-		echo $template->render(array('msg' => $msg, 'dno' => $_SESSION['dno']), 'isManager'=>$isManager);
+		echo $template->render($params);
 	} 
 	else {
 		loginRedirect();
