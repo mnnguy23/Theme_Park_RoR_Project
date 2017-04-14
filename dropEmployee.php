@@ -2,10 +2,10 @@
 	function deleteEmployee($db,$dno, $shops) {
 		$msg = "Please select employee";
 		
-		if(isset($_POST['submit'])){
+		if(isset($_POST['submit']) && isset($_POST['checkBox'])){
      
-			
-			$s_id = array_search($_POST["e_name"], $shops);
+			$empName = $_POST["e_name"];
+			$s_id = array_search($empName, $shops);
       			
      
 			
@@ -14,9 +14,10 @@
 					$result = $db->query($query);
 		
 				if($result) {
-					$msg = "Employee: $s_id was successfully removed.";
+					$msg = "Employee: $empName was successfully removed.";
 				}
-			
+		} else {
+		  $msg = "Checkbox must also be selected to delete the Employee.";
 		} 
 		return $msg;
 	}
@@ -25,13 +26,13 @@
 <?php
 	function getEmployees($db,$dno) {
 		$data = array();
-		$query = "SELECT e.employee_id, e.e_name,e.dno FROM employee AS e, department AS d WHERE e.employee_id<>d.mgr_id AND e.dno=$dno;";		
+		$query = "SELECT e.employee_id, e.e_name FROM employee AS e, department AS d WHERE e.employee_id != d.mgr_id AND e.dno=$dno AND d.dnumber=$dno;";		
 		$result = $db->query($query);
 		
 		while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-			$s_id = $row['employee_id'];
+			$empId = $row['employee_id'];
 			$name = trim($row['e_name']);
-			$data[$s_id] = $name;
+			$data[$empId] = $name;
 		}
 		$result->closeCursor();
 		return $data;

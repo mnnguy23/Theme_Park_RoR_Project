@@ -7,27 +7,31 @@
 {% endblock %}
 
 {% block content %}
-<div class="container">
+<hr/>
 	<div class="page-header">
 		<h2>Choose an Employee to Delete</h2>
 		<h3 class="centerText">{{ msg }}</h3>
 	</div>
-	
-	<div class="container">
-		<form role = "form" action="dropEmployee.php" method="post">
+
+		<form role = "form" class="form-signin" action="displayEmp.php" method="post">
 		<div class="form-group">
 			<label for="deletion">Employee List</label>
 			<select class="form-control" name="e_name">
-				{% for employee in employees %}
+				{% for employee in deleteEmps %}
 				<option>{{ employee }}</option>
 				{% endfor %}
 			</select>
 		</div>
 		
-		<p>
-			<input type="submit" name="submit" value="Delete" />
-		</p>
-
+    <div class="form-group has-danger mb-0">
+      <label class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" name="checkBox">
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">Check this to confirm deletion</span>
+      </label>
+    </div>
+    <button class="btn btn-danger" type="submit" name="submit">
+			Delete
+    </button>
 	</form>
-</div>
 {% endblock %}
