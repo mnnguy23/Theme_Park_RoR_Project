@@ -55,11 +55,21 @@ h1{
   text-align: center;
   color: #4C72E6;
 }
+
 h2{
    text-align: center;
    color: #7E97E5;
 }
 
+h3 {
+  text-align: center;
+  color: #4C72E6;
+}
+
+h4 {
+  text-align: center;
+  color: #7E97E5;
+}
 p {
   text-align: center;
 }

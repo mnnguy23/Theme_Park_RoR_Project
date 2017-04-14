@@ -25,4 +25,9 @@
 {% if (manager == true) and (dno != 3 and (locations|length > 0)) %}
   {% include 'employeeLink.html' %}
 {% endif %}
+<script>
+  $(document).ready(function () {
+      $('#home').addClass('active');
+  });
+</script>
 {% endblock %}
