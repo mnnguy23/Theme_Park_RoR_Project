@@ -7,12 +7,12 @@
   <div class="page-header">
     <h1>{{department}}</h1>
   </div>
-</div>
 {% if dno == 3%}
 {% include 'maintenanceReport.html' %}
 {% else %}
 {% include 'dailyReport.html' %}
 {% endif %}
+</div>
 <script>
   $(document).ready(function () {
       $('#reports').addClass('active');
