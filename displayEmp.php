@@ -18,7 +18,10 @@ $dbConn = loadDB($isDevelopment);
   // End of Deletion
   
   $params = array('employees' => $displayEmps, 'dno'=>$dno, 'deleteEmps'=>$deletEmps, 'msg'=>$msg);
-  
+
+  if(!$_SESSION['isManager']) {
+    menuRedirect();
+  }
   if($_SESSION['valid']){
     echo $template->render($params);
   } else {

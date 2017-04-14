@@ -11,9 +11,9 @@
 	$template = $twig->load('changePassword.html');
   $original = getPassword($dbConn);
 	$msg = changePassword($dbConn, $original);
-
+  $isManager = $_SESSION["isManager"];
 	if($_SESSION['valid']){
-		echo $template->render(array('msg' => $msg, 'dno' => $_SESSION['dno']));
+		echo $template->render(array('msg' => $msg, 'dno' => $_SESSION['dno']), 'isManager'=>$isManager);
 	} 
 	else {
 		loginRedirect();
