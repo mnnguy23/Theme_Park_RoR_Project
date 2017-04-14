@@ -4,12 +4,10 @@
 {% endblock %}
 {% block content %}
 <hr/>
-<div class="header">
+<div class="container">
 	<div id="page-header">
 		<h2>{{ maintenanceResponse }}</h2>
   </div>
-</div>
-<div class="container">
   <table class="table table-striped">
     <thead>
       <tr>
@@ -26,10 +24,7 @@
       {% endfor %}
     </tbody>
   </table>
-</div>
-<form role ="form" class = "form-inline"
-  method="post" action="menu.php">
-<div class="container">
+<form role ="form" class = "form-inline" method="post" action="menu.php">
   <div class="form-group">
     <label for="attractionName">Attractions</label>
   <select class="form-control" name="brokenAttraction">
@@ -46,6 +41,7 @@
     <button class="btn btn-success" type="submit"
       name="fixed">Ride is Fixed</button>
   </div>
+  </form>
 </div>
-</form>
+
 {% endblock %}

@@ -5,6 +5,7 @@
   <div class="nav navbar-nav navbar-right">
     <p class="navbar-btn">
       <a href="logout.php" class ="btn btn-primary">Log Out</a>
+      <a href="changePassword.php" class ="btn btn-danger">Change Password</a>
     </p>
   </div>
   <div class="masthead">
@@ -34,7 +35,9 @@
 				    <li id="addMerchandise"><a href="merchandise_input.php">AddMerchandise</a>
             {% endif %}
             <li id="reports"><a href="report.php">Reports</a></li>
+            {% if dno != 3 %}
             <li id="logInput"><a href="logInput.php">EOD Input</a></li>
+            {% endif %}
             <li id="employees"><a href="displayEmp.php">Employees</a></li>
             <li id="addEmployee"><a href="Employee_input.php">Add Employee</a></li>
           </ul>
