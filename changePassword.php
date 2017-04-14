@@ -10,6 +10,7 @@
 <?php
 	$template = $twig->load('changePassword.html');
 	$msg = changePassword($dbConn, $isDevelopment);
+	$emp_Id = _SESSION['employee_id'];
 
 	if(!$_SESSION['isManager']) {
 		menuRedirect();
