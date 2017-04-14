@@ -2,7 +2,7 @@
 	include 'app/base.php';
 	include 'app/indexFunctions.php';
 	$twig = loadEnvironment();
-	$isDevelopment = false;
+	$isDevelopment = true;
 	$dbConn = loadDB($isDevelopment);
 ?>
 
@@ -10,10 +10,6 @@
 	$template = $twig->load('changePassword.html');
 	$msg = changePassword($dbConn, $isDevelopment);
 
-	if(!$_SESSION['isManager']) {
-		menuRedirect();
-	}
-	
 	if($_SESSION['valid']){
 		echo $template->render(array('msg' => $msg, 'dno' => $_SESSION['dno']));
 	} 
@@ -75,21 +71,11 @@
 		$empId = $_SESSION['emp_id'];
 		$query = "SELECT employee_password FROM employee WHERE employee_id = $empId;";
 		$data = array();
-  
-		if($isDevelopment) {
-			$result = pg_query($db, $query);
-    
-			while($row = pg_fetch_row($result)) {
-				$data[] = array('employee_password' => $row[0]);
-			}
-		} 
-		else {
-			$result = $db->query($query);
+		$result = $db->query($query);
     
 			while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-				$data[] = array('employee_password' => $row['employee_password']);
+				$data[] = array($row['employee_password']);
 			}
-		}
 		return $data;
 	}
 ?>
