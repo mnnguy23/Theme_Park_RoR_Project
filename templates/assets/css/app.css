@@ -2,15 +2,13 @@ html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
-      
 }
 body {
    padding-top: 40px;
    padding-bottom: 40px;
-   background-image: url("../assets/images/bgImage.jpg");
-   background-attachment: fixed;
+   background-image: url("../images/bgImage.jpg");
    background-position: center center;
-   background-size: cover;
+   background-color: #000;
 }
 article,
 aside,
