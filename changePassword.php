@@ -8,7 +8,8 @@
 
 <?php
 	$template = $twig->load('changePassword.html');
-	$msg = changePassword($dbConn, $isDevelopment);
+  $original = getPassword($dbConn);
+	$msg = changePassword($dbConn, $original);
 
 	if($_SESSION['valid']){
 		echo $template->render(array('msg' => $msg, 'dno' => $_SESSION['dno']));
@@ -19,47 +20,31 @@
 ?>
 
 <?php
-	function changePassword($db, $isDevelopment) {
-		$uniqueInfos = gatherInfo($db, $isDevelopment);
+	function changePassword($db, $originalPassword) {
 		$msg = "All fields must be entered.";
 		$empId = $_SESSION['emp_id'];
 
 		if(isset($_POST['submit'])) {
-			
-			if(checkOriginalPassword($uniqueInfos)) {
-				$oldPassword = $_POST["old_password"];  
-			} 
-			else {
-				$msg = "Wrong original password entered.";
-			}  
      
-			if(!checkDuplicatePassword()) {
-				$newPassword = $_POST["new_password"];  
-			} 
-			else {
-				$msg = "Can't create same password.";
-			}  
-			
-			if(checkNewPassword()) {
-				$confirmPassword = $_POST["confirm_password"];  
-			} 
-			else {
-				$msg = "New and Confirm passwords are not the same.";
-			}
-     
-			if(checkOriginalPassword($uniqueInfos) && !checkDuplicatePassword() && checkNewPassword()){
+      if(!checkOriginalPassword($originalPassword)) {
+        $msg = "Type the old password correctly";
+      }
+      if(checkDuplicatePassword()) {
+        $msg = "Your new password cannot be the new one.";
+      }
+      if(!checkNewPassword()) {
+        $msg = "The passwords don't match.";
+      }
+      
+			if(checkOriginalPassword($originalPassword) && !checkDuplicatePassword() && checkNewPassword()){
 				$query = "UPDATE employee SET employee_password = '$newPassword' WHERE employee_id = $empId;";
        
-				if($isDevelopment) {
-					$result = pg_query($db, $query);
-				} 
-				else {
-					$result = $db->query($query);
-				}
-		
+				$result = $db->query($query);
+          		
 				if($result) {
 					$msg = "Password had been changed.";
 				}
+        $result->closeCursor();
 			}
 		}
 		return $msg;
@@ -67,29 +52,24 @@
 ?>
 
 <?php
-	function gatherInfo($db, $isDevelopment) {
+	function getPassword($db) {
 		$empId = $_SESSION['emp_id'];
 		$query = "SELECT employee_password FROM employee WHERE employee_id = $empId;";
-		$data = array();
+		$data = null;
 		$result = $db->query($query);
-    
 			while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-				$data[] = array($row['employee_password']);
+				$data = trim($row['employee_password']);
 			}
 		return $data;
 	}
 ?>
 
 <?php
-	function checkOriginalPassword($infos) {
+	function checkOriginalPassword($originalPassword) {
 		$result = false;
-		foreach($infos as $info) {
-			$password = $info['employee_password'] ?? null;
-    
-			if($password == $_POST["old_password"]){
-				$result = true;
-			} 
-		}
+		if($originalPassword == $_POST["old_password"]){
+			$result = true;
+		} 
 		return $result;
 	}
 ?>
