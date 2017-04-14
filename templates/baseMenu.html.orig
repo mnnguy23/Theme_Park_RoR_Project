@@ -33,10 +33,20 @@
             <li id="merchandise"><a href="merchandise.php">Merchandise</a></li>
 				    <li id="addMerchandise"><a href="merchandise_input.php">AddMerchandise</a>
             {% endif %}
+<<<<<<< HEAD
             <li id="reports"><a href="report.php">Reports</a></li>
             <li id="logInput"><a href="logInput.php">EOD Input</a></li>
             <li id="employees"><a href="displayEmp.php">Employees</a></li>
             <li id="addEmployee"><a href="Employee_input.php">Add Employee</a></li>
+=======
+            <li id="maintenance"><a href="report.php">Reports</a></li>
+            <li id="maintenance"><a href="logInput.php">EOD Input</a></li>
+            <li id="employees"><a href="displayEmp.php">Employees</a><ul>
+				<li><a href = Employee_input.php>Add Employee</a>
+				</ul>
+				</li>
+           <!-- <li id="addEmployee"><a href="Employee_input.php">Add Employee</a></li> -->
+>>>>>>> 1a07d6e2b02f7dababfe908e812b456404f6efce
           </ul>
         </div>
     </nav>
