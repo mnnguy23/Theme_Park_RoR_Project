@@ -2,13 +2,16 @@ html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
-      background-image: url("../images/bgImage.jpg") no-repeat top right;
-      background-attachment: fixed;
+      
 }
-.bgContent, body {
+body {
    padding-top: 40px;
    padding-bottom: 40px;
    background-color: #000;
+   background-image: url("../images/bgImage.jpg") no-repeat top right;
+   background-attachment: fixed;
+   background-position: center center;
+   background-size: cover;
 }
 article,
 aside,
