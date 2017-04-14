@@ -18,19 +18,26 @@ function getAttractions($db) {
 function setRideInoperable($db, $rides) {
   $response = "Set a ride inoperable.";
   if(isset($_POST['notOperational']) && !empty($_POST["attractionName"])) {
-    $rideName = $_POST["attractionName"];
-    $attraction_id = '';
+    if(isset($_POST['checkBox'])){
+      $rideName = $_POST["attractionName"];
+      $attraction_id = '';
     
-    foreach($rides as $key => $value) {
-      if(strcmp($rideName, $value) == 0 ) {
-        $attraction_id = $key;
-        $response = "this ride: $rideName is now set to not operational.";
+      foreach($rides as $key => $value) {
+        if(strcmp($rideName, $value) == 0 ) {
+          $attraction_id = $key;
+        }
       }
-    }
     
-      $currentTime = (new \DateTime())->format('Y-m-d H:i:s');
-      $query = "UPDATE attraction SET operational = FALSE WHERE attraction_id = $attraction_id;";
-        $result = $db->query($query);
+        $currentTime = (new \DateTime())->format('Y-m-d H:i:s');
+        $query = "UPDATE attraction SET operational = FALSE WHERE attraction_id = $attraction_id;";
+          $result = $db->query($query);
+          if($result) {
+            $response = "this ride: $rideName is now set to not operational.";
+          }
+          $result->closeCursor();
+    } else {
+      $response = "Check the box to confirm the ride.";
+    }
   }
   return $response;
 }
