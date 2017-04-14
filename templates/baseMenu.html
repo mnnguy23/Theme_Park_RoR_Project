@@ -2,36 +2,42 @@
 
 {% block content %}
 <div class="container">
-
-  <!-- The justified navigation menu is meant for single line per list item.
-       Multiple lines will require custom code not provided by Bootstrap. -->
   <div class="nav navbar-nav navbar-right">
     <p class="navbar-btn">
       <a href="logout.php" class ="btn btn-primary">Log Out</a>
     </p>
   </div>
   <div class="masthead">
-    <h1 class="text-muted">Disaster Land Management</h1>
+    <h1>Disaster Land Management</h1>
     
-    <nav>
-      <ul class="nav nav-justified">
-        <li id="home"><a href="menu.php">Home</a></li>
-        {% if dno == 1 %}
-          <li id="addAttraction"><a href="Attraction_input.php">Add Attraction</a></li>
-        {% elseif dno == 2 %}
-          <li id="addMerchandise"><a href="merchandise_input.php">Add Merchandise</a></li>
-          <li id="addShop"><a href="shop_input.php">Add Shop</a></li>
-          <li id="merchandise"><a href="merchandise.php">Merchandise</a></li>      
-        {% elseif dno == 4 %}
-          <li id="addGame"><a href="game_input.php">Add Game</a></li>
-        {% endif %}
-          <li id="reports"><a href="report.php">Reports</a></li>
-        {% if dno != 3 %}
-          <li id="maintenance"><a href="logInput.php">End of Day Input</a></li>
-        {% endif %}
-        <li id="employees"><a href="displayEmp.php">Employees</a></li>
-        <li id="addEmployee"><a href="Employee_input.php">Add Employee</a></li>
-      </ul>
+    <nav class="navbar-default" role="navigation">
+      <div class ="nav-header">
+        <button type="button" class ="navbar-toggle" data-toggle="collapse" data-target="mainNavBar">
+          <span class="sr-only">Toggle Navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+        <div class="navbar-collapse collapse" id="mainNavBar">
+          <ul class="nav nav-justified">
+            <li id="home"><a href="menu.php">Home</a></li>
+            {% if dno == 1 %}
+            <li id="addAttraction"><a href="Attraction_input.php">Add Attraction</a></li>      
+            {% elseif dno == 4 %}
+            <li id="addGame"><a href="game_input.php">Add Game</a></li>
+            {% endif %}
+            {% if dno == 2 %}
+            <li id="addMerchandise"><a href="merchandise_input.php">Add Merchandise</a></li>
+            <li id="addShop"><a href="shop_input.php">Add Shop</a></li>
+            <li id="reports"><a href="merchandise.php">Merchandise</a></li>
+            {% endif %}
+            <li id="maintenance"><a href="report.php">Reports</a></li>
+            <li id="maintenance"><a href="logInput.php">End of Day Input</a></li>
+            <li id="employees"><a href="displayEmp.php">Employees</a></li>
+            <li id="addEmployee"><a href="Employee_input.php">Add Employee</a></li>
+          </ul>
+        </div>
     </nav>
     
   </div>
