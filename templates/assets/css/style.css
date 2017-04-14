@@ -74,6 +74,9 @@ p {
   text-align: center;
 }
 
+table {
+  table-layout: fixed;
+}
 td {
   word-wrap:break-word;
   word-break:break-all;
