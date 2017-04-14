@@ -1,8 +1,4 @@
-body {
-   padding-top: 40px;
-   padding-bottom: 40px;
-   background-color: #DCDCDC;
-}
+
 
 .form-signin {
    max-width: 330px;
@@ -48,10 +44,6 @@ body {
    border-color:#017572;
 }
 
-h1{
-   text-align: center;
-   color: #017534;
-}
 h2{
    text-align: center;
    color: #017572;
