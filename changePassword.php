@@ -13,6 +13,7 @@
 	$msg = changePassword($dbConn, $original);
   $isManager = $_SESSION["isManager"];
   $params = array('msg' => $msg, 'dno' => $_SESSION['dno'], 'isManager' => $isManager);
+  
 	if($_SESSION['valid']){
 		echo $template->render($params);
 	} 
