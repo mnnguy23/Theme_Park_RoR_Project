@@ -24,7 +24,7 @@
 ?>
 
 <?php
-	function changePassword($db, $isDevelopment) {
+	function changePassword($db, $isDevelopment, $empId) {
 		$uniqueInfos = gatherInfo($db, $isDevelopment);
 		$msg = "All fields must be entered.";
 
@@ -52,7 +52,7 @@
 			}
      
 			if(checkOriginalPassword($uniqueInfos) && !checkDuplicatePassword() && checkNewPassword()){
-				$query = "UPDATE employee SET employee_password = '$newPassword' WHERE employee_username = '$user';";
+				$query = "UPDATE employee SET employee_password = '$newPassword' WHERE employee_id = $empId;";
        
 				if($isDevelopment) {
 					$result = pg_query($db, $query);
