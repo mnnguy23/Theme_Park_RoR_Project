@@ -61,9 +61,8 @@ nav_wrapper{
 .nav-justified ul li:hover ul{
 	display: block;
 }
-.nav-justified ul ul{
-	display: none;
-	position: aboslute;
+ul{
+	list-style-type: none;
 }
 
 @media (min-width: 768px) {
