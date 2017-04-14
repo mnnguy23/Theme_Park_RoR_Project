@@ -42,6 +42,7 @@
       }
       
 			if(checkOriginalPassword($originalPassword) && !checkDuplicatePassword() && checkNewPassword()){
+        $newPassword = $_POST["new_password"];
 				$query = "UPDATE employee SET employee_password = '$newPassword' WHERE employee_id = $empId;";
        
 				$result = $db->query($query);
