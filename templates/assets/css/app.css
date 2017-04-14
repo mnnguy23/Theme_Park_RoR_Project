@@ -184,7 +184,9 @@ table {
 }
 td,
 th {
-  padding: 0;
+  padding: 10;
+  word-wrap:break-word;
+  word-break:break-all;
 }
 /*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
 @media print {
