@@ -61,7 +61,7 @@ nav_wrapper{
 .nav-justified ul li:hover ul{
 	display: block;
 }
-.nav-justified ul ul{
+ul{
 	list-style-type: none;
 }
 
