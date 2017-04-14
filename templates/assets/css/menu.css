@@ -53,6 +53,13 @@
   border-bottom: 0;
   border-radius: 0 0 5px 5px;
 }
+.nav-justified ul li:hover ul{
+	display: block;
+}
+.nav-justified ul ul{
+	displat: none;
+	position: aboslute;
+}
 
 @media (min-width: 768px) {
   .nav-justified {
