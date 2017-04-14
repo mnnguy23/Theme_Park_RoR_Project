@@ -22,7 +22,6 @@
 {% endblock %}
 {% block content %}
 <br/>
-<div class="container">
   <form class="form-inline" role="form" method="post" action="report.php">
     <div class="form-group">
     <select class="form-control" name="report">
@@ -42,7 +41,6 @@
       <button class="btn btn-primary" type="submit" name="submit">Generate Report</button> 
     </div>
   </form>
-  </div>
   {% if selectedReport == "Fixed"%}
     {% include 'fixedReport.html' %}
   {% elseif selectedReport == "Ongoing" %}

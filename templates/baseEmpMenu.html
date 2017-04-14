@@ -1,25 +1,26 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container">
-
-  <!-- The justified navigation menu is meant for single line per list item.
-       Multiple lines will require custom code not provided by Bootstrap. -->
-  <div class="nav navbar-nav navbar-right">
-    <p class="navbar-btn">
-      <a href="logout.php" class ="btn btn-primary">Log Out</a>
-      <a href="changePassword.php" class ="btn btn-warning">Change Password</a>
-    </p>
-  </div>
-  <div class="masthead">
-    <h1 class="text-muted">Disaster Land Management</h1>
-    
-    <nav>
-      <ul class="nav nav-justified">
-        <li id="home"><a href="menu.php">Home</a></li>
-      </ul>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Disaster Land</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li id="home"><a href="menu.php">Home</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="changePassword.php">Change Password</a></li>
+            <li><a href="logout.php">Log Out</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
     </nav>
-    
-  </div>
-</div>
 {% endblock %}
