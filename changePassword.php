@@ -65,7 +65,6 @@
 			while($row = $result->fetch(PDO::FETCH_ASSOC)) {
 				$data = trim($row['employee_password']);
 			}
-		}
 		return $data;
 	}
 ?>
