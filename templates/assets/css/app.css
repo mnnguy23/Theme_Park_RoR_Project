@@ -2,12 +2,14 @@ html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
+      background-image: url("../images/bgImage.jpg") no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
 }
 .bgContent, body {
    padding-top: 40px;
    padding-bottom: 40px;
-   background-image: url("../images/bgImage.jpg");
-   background-position: center center;
    background-color: #000;
 }
 article,
