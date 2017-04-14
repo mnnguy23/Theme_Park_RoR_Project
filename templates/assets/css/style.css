@@ -47,9 +47,13 @@
   color: #008080;
 }
 
+.secondaryText{
+  color: #F132EB;
+}
+
 h2{
    text-align: center;
-   color: #017572;
+   color: #F132EB;
 }
 
 p {
