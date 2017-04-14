@@ -1,7 +1,6 @@
 <?php
 	include 'app/base.php';
 	include 'app/indexFunctions.php';
-	include 'employeeLink.php';
 	$twig = loadEnvironment();
 	$isDevelopment = false;
 	$dbConn = loadDB($isDevelopment);
