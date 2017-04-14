@@ -7,7 +7,7 @@ html {
 body {
    padding-top: 40px;
    padding-bottom: 40px;
-   background-image: url("templates/assets/images/bgImage.jpg");
+   background-image: url("../assets/images/bgImage.jpg");
    background-attachment: fixed;
    background-position: center center;
    background-size: cover;
