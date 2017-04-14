@@ -16,7 +16,7 @@
 	}
 	
 	if($_SESSION['valid']){
-		echo $template->render(array('msg' => $msg, 'emp_id' => $_SESSION['emp_id'], 'dno' => $_SESSION['dno']));
+		echo $template->render(array('msg' => $msg, 'dno' => $_SESSION['dno']));
 	} 
 	else {
 		loginRedirect();
@@ -52,7 +52,7 @@
 			}
      
 			if(checkOriginalPassword($uniqueInfos) && !checkDuplicatePassword() && checkNewPassword()){
-				$query = "UPDATE employee SET employee_password = '$newPassword' WHERE employee_id = $_SESSION['emp_id'];";
+				$query = "UPDATE employee SET employee_password = '$newPassword' WHERE employee_username = '$user';";
        
 				if($isDevelopment) {
 					$result = pg_query($db, $query);
