@@ -43,6 +43,9 @@
    border-top-right-radius: 0;
    border-color:#017572;
 }
+.headerText{
+  color: #008080;
+}
 
 h2{
    text-align: center;
