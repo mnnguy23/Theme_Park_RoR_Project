@@ -7,33 +7,36 @@
   <div class="page-header">
     <h1>Employees Info</h1>
   </div>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-      <th>Name</th>
-	  <th>Employee ID</th>
-      <th>Birth Date</th>
-	  <th>Address</th>
-	  <th>Phone Number</th>
-      <th>Salary</th>
-	  <th>Department Number</th>
-        </tr>
-      </thead>
-      
-      <tbody>
-        {% for employee in employees %}
-        <tr>
-          <td>{{ employee[0] }}</td>
-          <td>{{ employee[1] }}</td>
-          <td>{{ employee[2] }}</td>
-      	  <td>{{ employee[3] }}</td>
-      	  <td>{{ employee[4] }}</td>
-      	  <td>{{ employee[5] }}</td>
-        	<td>{{ employee[6] }}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+    <th>Name</th>
+  <th>Employee ID</th>
+    <th>Birth Date</th>
+  <th>Address</th>
+  <th>Phone Number</th>
+    <th>Salary</th>
+  <th>Department Number</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      {% for employee in employees %}
+      <tr>
+        <td>{{ employee[0] }}</td>
+        <td>{{ employee[1] }}</td>
+        <td>{{ employee[2] }}</td>
+    	  <td>{{ employee[3] }}</td>
+    	  <td>{{ employee[4] }}</td>
+    	  <td>{{ employee[5] }}</td>
+      	<td>{{ employee[6] }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <div class="row">
+    {% include 'deleteEmployee.html' %}
+  </div> 
 </div>
 <script>
   $(document).ready(function () {

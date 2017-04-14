@@ -1,6 +1,7 @@
 <?php
 include 'app/base.php';
 include 'app/indexFunctions.php';
+include 'dropEmployee.php';
 $isDevelopment = false;
 $twig = loadEnvironment();
 $clearSession = developmentMode($isDevelopment);
@@ -10,8 +11,13 @@ $dbConn = loadDB($isDevelopment);
 <?php
   $dno = $_SESSION['dno'];
   $employee = displayEmployees($dbConn,$dno);
-  
   $template = $twig->load('displayEmp.html');
+  
+  // Deleting Employees
+  $shops = getEmployees($dbConn,$dno);
+  $msg = deleteEmployee($dbConn,$dno, $shops);
+  // End of Deletion
+  
   $params = array('logout' => $clearSession, 'user' => $user, 'name' => $name, 'employees' => $employee, 'dno'=>$dno);
   if(!$_SESSION['isManager']) {
     menuRedirect();
