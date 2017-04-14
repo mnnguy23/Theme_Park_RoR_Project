@@ -74,6 +74,7 @@ p {
   text-align: center;
 }
 
-.centerText {
-  text-align: center;
+td {
+  word-wrap:break-word;
+  word-break:break-all;
 }
