@@ -1,6 +1,7 @@
 <?php
 	include 'app/base.php';
 	include 'app/indexFunctions.php';
+	include 'employeeLink.php';
 	$twig = loadEnvironment();
 	$isDevelopment = false;
 	$dbConn = loadDB($isDevelopment);
@@ -11,6 +12,10 @@
   $original = getPassword($dbConn);
 	$msg = changePassword($dbConn, $original);
 
+	if(!$_SESSION['isManager']) {
+		menuRedirect();
+	}
+	
 	if($_SESSION['valid']){
 		echo $template->render(array('msg' => $msg, 'dno' => $_SESSION['dno']));
 	} 
@@ -60,6 +65,7 @@
 			while($row = $result->fetch(PDO::FETCH_ASSOC)) {
 				$data = trim($row['employee_password']);
 			}
+		}
 		return $data;
 	}
 ?>
