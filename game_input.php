@@ -41,6 +41,7 @@ function inputEmployee($db, $isDevelopment) {
      //all inputs have been tested for correctnes with $msg	   
      
      if(!checkDuplicateGname($uniqueInfos) ){//watch funtion
+
        $query = "INSERT INTO game VALUES ('$prize', $price, $game_id, CURENT_TIME, '$name');";
        
        if($isDevelopment) {
@@ -52,6 +53,13 @@ function inputEmployee($db, $isDevelopment) {
          $msg = "Game: $name was successfully created.";
        }
      }
+	 	$prize = $_POST["gamePrize"];
+    $price = $_POST["gamePrice"];
+    $game_id = $_POST["gameID"];
+    $maint_date = $_POST["gameMaintenance"];
+    $gname = $_POST["gameName"];
+    $capacity = $_POST["gameCapacity"];
+    $dno = $_POST["gameDepartment"];
    }
      
    return $msg;

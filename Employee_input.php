@@ -46,7 +46,7 @@ function inputEmployee($db, $isDevelopment) {
        $msg = "Duplicate Password Found";
      }
      
-     if(!checkDuplicatePhoneNumber($uniqueInfos)) {
+	 if(!checkDuplicatePhoneNumber($uniqueInfos)) {
        $phoneNumber = $_POST["phone"];
      } else {
        $msg = "Duplicate Phone Number Found";

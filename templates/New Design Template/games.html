@@ -1,3 +1,8 @@
+{% extends "base.html" %}
+{% block title %} Games {% endblock %}
+
+{% block content %}
+{% include 'baseMenu.html' %}
 <!DOCTYPE html>
 <html class="nojs html css_verticalspacer" lang="en-US">
  <head>
@@ -63,6 +68,37 @@ if(typeof Muse == "undefined") window.Muse = {}; window.Muse.assets = {"required
     <div class="clip_frame grpelem" id="u757"><!-- image -->
      <img class="block" id="u757_img" src="images/balloons.png?crc=4264992514" alt="" data-image-width="77" data-image-height="77"/>
     </div>
+	    <div class="container">
+  <div class="page-header">
+    <h1>Games Info</h1>
+  </div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+      <th>Name</th>
+	  <th>Game ID</th>
+      <th>Last Maintenance Date</th>
+      <th>Price</th>
+	  <th>Prize</th>
+        </tr>
+      </thead>
+      
+      <tbody>
+        {% for employee in employees %}
+        <tr>
+          <td>{{ employee[0] }}</td>
+          <td>{{ employee[1] }}</td>
+          <td>{{ employee[2] }}</td>
+      	  <td>{{ employee[3] }}</td>
+      	  <td>{{ employee[4] }}</td>
+      	  <td>{{ employee[5] }}</td>
+        	<td>{{ employee[6] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+</div>
+{% endblock %}
    </div>
    <div class="verticalspacer" data-offset-top="0" data-content-above-spacer="438" data-content-below-spacer="500"></div>
   </div>
